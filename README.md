@@ -46,6 +46,9 @@ BASEBALL 서비스 - 3팀
 * 조원이 슬랙에 올려놓은 데일리 스크럼 내용을 위키에 취합
 * 행아웃 링크 파기
 
+## 요구사항 기술서
+[Issue 정리](https://docs.google.com/spreadsheets/d/1_meI29jk3RBhBRhzUIN3UBA7qRZcMujgE7Nq7Q21tMI/edit?usp=sharing)
+
 ## API 정리 문서
 
 [데이터 요청 API 문서]()
