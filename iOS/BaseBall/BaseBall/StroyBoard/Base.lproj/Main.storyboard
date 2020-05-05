@@ -59,19 +59,7 @@
                     <view key="view" contentMode="scaleToFill" id="sjP-XA-gaE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEZ-cX-IkP">
-                                <rect key="frame" x="0.0" y="44" width="375" height="162.33333333333334"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="oEZ-cX-IkP" firstAttribute="top" secondItem="1RR-QF-JTU" secondAttribute="top" id="BeW-PL-FfI"/>
-                            <constraint firstItem="oEZ-cX-IkP" firstAttribute="height" secondItem="sjP-XA-gaE" secondAttribute="height" multiplier="0.2" id="TyO-IN-Tmk"/>
-                            <constraint firstItem="oEZ-cX-IkP" firstAttribute="width" secondItem="sjP-XA-gaE" secondAttribute="width" id="dUa-Yl-5Fj"/>
-                            <constraint firstItem="oEZ-cX-IkP" firstAttribute="centerX" secondItem="1RR-QF-JTU" secondAttribute="centerX" id="pUE-0R-dSP"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1RR-QF-JTU"/>
                     </view>
                 </viewController>
