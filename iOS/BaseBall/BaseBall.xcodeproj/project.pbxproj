@@ -79,13 +79,12 @@
 		A545AEDB246155450094C821 /* BaseBall */ = {
 			isa = PBXGroup;
 			children = (
+				A5C238232461AD340087F61A /* StroyBoard */,
+				A5C238222461AD2A0087F61A /* Resources */,
+				A5C238212461AD100087F61A /* GameListView */,
+				A5C238202461AD0E0087F61A /* LoginView */,
 				A545AEDC246155450094C821 /* AppDelegate.swift */,
-				A545AF00246156DC0094C821 /* LoginViewController.swift */,
-				A545AEE4246155450094C821 /* Main.storyboard */,
-				A545AEE7246155470094C821 /* Assets.xcassets */,
-				A545AEE9246155470094C821 /* LaunchScreen.storyboard */,
 				A545AEEC246155470094C821 /* Info.plist */,
-				A5C2381E24616DF30087F61A /* GameListViewController.swift */,
 			);
 			path = BaseBall;
 			sourceTree = "<group>";
@@ -97,6 +96,39 @@
 				A545AEF7246155480094C821 /* Info.plist */,
 			);
 			path = BaseBallTests;
+			sourceTree = "<group>";
+		};
+		A5C238202461AD0E0087F61A /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				A545AF00246156DC0094C821 /* LoginViewController.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		A5C238212461AD100087F61A /* GameListView */ = {
+			isa = PBXGroup;
+			children = (
+				A5C2381E24616DF30087F61A /* GameListViewController.swift */,
+			);
+			path = GameListView;
+			sourceTree = "<group>";
+		};
+		A5C238222461AD2A0087F61A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A545AEE7246155470094C821 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A5C238232461AD340087F61A /* StroyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				A545AEE4246155450094C821 /* Main.storyboard */,
+				A545AEE9246155470094C821 /* LaunchScreen.storyboard */,
+			);
+			path = StroyBoard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
