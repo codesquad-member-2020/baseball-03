@@ -16,15 +16,16 @@ class GameListViewController: UIViewController {
         label.textColor = .white
         return label
     }()
-    
     private var scrollView: UIScrollView = UIScrollView()
     private var gameListStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = 5
+        stackView.spacing = 10
+        stackView.alignment = .center
         return stackView
     }()
+    private var gameListViews: [GameListView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class GameListViewController: UIViewController {
         setupGameListLabel()
         setupSrcollView()
         setupGameListStackView()
+        setupGameListViews()
     }
     
     private func setupSubview() {
@@ -63,5 +65,15 @@ class GameListViewController: UIViewController {
         gameListStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor).isActive = true
         gameListStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor).isActive = true
         gameListStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, multiplier: 1).isActive = true
+    }
+    
+    private func setupGameListViews() {
+        for _ in 0..<10 {
+            let gameListView = GameListView()
+            gameListViews.append(gameListView)
+            gameListStackView.addArrangedSubview(gameListView)
+            gameListView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2).isActive = true
+            gameListView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95).isActive = true
+        }
     }
 }
