@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var logoButton: UIButton!
     
     private let logoName = ["Doosan", "Hanwha", "Kia", "Kiwoom", "KT", "LG", "Lotte", "NC", "Samsung", "SK"]
-    private let blurView = BlurView(effect: UIBlurEffect(style: .regular))
+    private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     
     override func viewDidLoad() {
         super.viewDidLoad()
