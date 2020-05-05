@@ -3,7 +3,6 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +20,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AZZ-cV-JY2" secondAttribute="height" multiplier="1.2:1" id="mDm-ta-wjK"/>
                                 </constraints>
-                                <state key="normal" image="Doosan"/>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoButtonPushed:" destination="hKE-Le-CYK" eventType="touchUpInside" id="wKf-3u-sPU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로고를 눌러서 로그인을 해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZX-xK-5hk">
                                 <rect key="frame" x="75.666666666666686" y="601" width="224" height="21"/>
@@ -30,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="Doosan"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AZZ-cV-JY2" firstAttribute="width" secondItem="Qis-sh-3Lj" secondAttribute="width" multiplier="0.8" id="5qi-se-SyR"/>
                             <constraint firstItem="qZX-xK-5hk" firstAttribute="centerX" secondItem="w8v-aw-a4K" secondAttribute="centerX" id="CGx-Ni-ImS"/>
@@ -48,11 +52,20 @@
             </objects>
             <point key="canvasLocation" x="-325.60000000000002" y="-32.512315270935964"/>
         </scene>
+        <!--Game List View Controller-->
+        <scene sceneID="EFk-z3-kt1">
+            <objects>
+                <viewController storyboardIdentifier="GameListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VfA-rC-TCk" customClass="GameListViewController" customModule="BaseBall" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sjP-XA-gaE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1RR-QF-JTU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="juP-tS-NUu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="407" y="-33"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="Doosan" width="403.66665649414062" height="341.33334350585938"/>
-        <namedColor name="Doosan">
-            <color red="0.062745098039215685" green="0.058823529411764705" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

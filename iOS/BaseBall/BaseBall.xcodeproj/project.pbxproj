@@ -13,6 +13,7 @@
 		A545AEEB246155470094C821 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE9246155470094C821 /* LaunchScreen.storyboard */; };
 		A545AEF6246155470094C821 /* BaseBallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AEF5246155470094C821 /* BaseBallTests.swift */; };
 		A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AF00246156DC0094C821 /* LoginViewController.swift */; };
+		A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2381E24616DF30087F61A /* GameListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A545AEF5246155470094C821 /* BaseBallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBallTests.swift; sourceTree = "<group>"; };
 		A545AEF7246155480094C821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A545AF00246156DC0094C821 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A5C2381E24616DF30087F61A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				A545AEE7246155470094C821 /* Assets.xcassets */,
 				A545AEE9246155470094C821 /* LaunchScreen.storyboard */,
 				A545AEEC246155470094C821 /* Info.plist */,
+				A5C2381E24616DF30087F61A /* GameListViewController.swift */,
 			);
 			path = BaseBall;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */,
+				A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */,
 				A545AEDD246155450094C821 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
