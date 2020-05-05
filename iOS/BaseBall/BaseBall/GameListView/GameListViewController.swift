@@ -9,7 +9,7 @@
 import UIKit
 
 class GameListViewController: UIViewController {
-    
+
     private var gameListLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 35)
@@ -21,7 +21,7 @@ class GameListViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = 10
+        stackView.spacing = 20
         stackView.alignment = .center
         return stackView
     }()
@@ -54,7 +54,7 @@ class GameListViewController: UIViewController {
         scrollView.topAnchor.constraint(equalTo: gameListLabel.bottomAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
     private func setupGameListStackView() {

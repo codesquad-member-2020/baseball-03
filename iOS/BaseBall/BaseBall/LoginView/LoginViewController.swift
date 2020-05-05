@@ -9,19 +9,23 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    private let logoName = ["Doosan", "Hanwha", "Kia", "Kiwoom", "KT", "LG", "Lotte", "NC", "Samsung", "SK"]
     
     @IBAction func logoButtonPushed(_ sender: UIButton) {
         guard let gameListViewController = storyboard?.instantiateViewController(identifier: "GameListViewController") else {return}
-        gameListViewController.modalPresentationStyle = .fullScreen
+        gameListViewController.modalPresentationStyle = .overFullScreen
+        gameListViewController.view.backgroundColor = .clear
+        self.view.addSubview(blurView)
         present(gameListViewController, animated: true)
     }
-    
     @IBOutlet weak var logoButton: UIButton!
+    
+    private let logoName = ["Doosan", "Hanwha", "Kia", "Kiwoom", "KT", "LG", "Lotte", "NC", "Samsung", "SK"]
+    private let blurView = BlurView(effect: UIBlurEffect(style: .regular))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLogInImage()
+        setupBlurView()
     }
     
     private func setupLogInImage() {
@@ -43,6 +47,10 @@ class LoginViewController: UIViewController {
                 logoButton.heightAnchor.constraint(equalTo: logoButton.widthAnchor, multiplier: 1 / 1.4).isActive = true
             }
         }
+    }
+    
+    private func setupBlurView() {
+        blurView.frame = self.view.frame
     }
 }
 

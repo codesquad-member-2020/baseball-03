@@ -13,14 +13,14 @@ class GameListView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.backgroundColor = .lightGray
-        self.alpha = 0.8
+        self.alpha = 0.6
         self.layer.cornerRadius = 20
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .lightGray
-        self.alpha = 0.8
+        self.alpha = 0.6
         self.layer.cornerRadius = 20
     }
 }
