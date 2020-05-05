@@ -9,21 +9,29 @@
 import UIKit
 
 class GameListViewController: UIViewController {
-
+    
     private var gameListLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = .boldSystemFont(ofSize: 35)
         label.textColor = .white
         return label
     }()
     
     private var scrollView: UIScrollView = UIScrollView()
+    private var gameListStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 5
+        return stackView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubview()
         setupGameListLabel()
         setupSrcollView()
+        setupGameListStackView()
     }
     
     private func setupSubview() {
@@ -45,5 +53,15 @@ class GameListViewController: UIViewController {
         scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+    
+    private func setupGameListStackView() {
+        gameListStackView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(gameListStackView)
+        gameListStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor).isActive = true
+        gameListStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor).isActive = true
+        gameListStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor).isActive = true
+        gameListStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor).isActive = true
+        gameListStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, multiplier: 1).isActive = true
     }
 }
