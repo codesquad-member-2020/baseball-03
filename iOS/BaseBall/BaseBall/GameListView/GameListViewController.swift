@@ -56,12 +56,13 @@ class GameListViewController: UIViewController {
     }
     
     private func setupGameListViews() {
-        for _ in 0..<10 {
+        for index in 0..<10 {
             let gameListView = GameListView()
             gameListViews.append(gameListView)
             gameListStackView.addArrangedSubview(gameListView)
             gameListView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2).isActive = true
             gameListView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95).isActive = true
+            gameListView.gameLabel.text = "GAME \(index + 1)"
         }
     }
 }
