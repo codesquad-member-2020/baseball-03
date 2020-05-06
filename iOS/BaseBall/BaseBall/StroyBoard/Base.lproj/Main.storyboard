@@ -37,7 +37,7 @@
             </objects>
             <point key="canvasLocation" x="405.60000000000002" y="-33.251231527093594"/>
         </scene>
-        <!--Item 2-->
+        <!--Scores-->
         <scene sceneID="NJc-XX-OQc">
             <objects>
                 <viewController id="dZm-fR-2di" sceneMemberID="viewController">
@@ -47,13 +47,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="v1C-Sp-jTG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="mjT-4L-0Mf"/>
+                    <tabBarItem key="tabBarItem" title="Scores" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="mjT-4L-0Mf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktq-oU-Kab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2102" y="300"/>
         </scene>
-        <!--Item 1-->
+        <!--Play-->
         <scene sceneID="6Sj-qR-fyp">
             <objects>
                 <viewController id="0dg-j3-Q8z" customClass="GameViewController" customModule="BaseBall" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GnE-2V-9vw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="fqh-xO-muW"/>
+                    <tabBarItem key="tabBarItem" title="Play" image="ball" landscapeImage="ball" id="fqh-xO-muW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsk-EE-FqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,4 +88,9 @@
             <point key="canvasLocation" x="1177" y="-33"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ball" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="chart.bar" catalog="system" width="128" height="90"/>
+        <image name="chart.bar.fill" catalog="system" width="128" height="89"/>
+    </resources>
 </document>
