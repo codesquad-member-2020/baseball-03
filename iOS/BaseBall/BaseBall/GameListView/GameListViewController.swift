@@ -10,21 +10,9 @@ import UIKit
 
 class GameListViewController: UIViewController {
 
-    private var gameListLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 35)
-        label.textColor = .white
-        return label
-    }()
+    private var gameListLabel: GameListLabel = GameListLabel()
     private var scrollView: UIScrollView = UIScrollView()
-    private var gameListStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 20
-        stackView.alignment = .center
-        return stackView
-    }()
+    private var gameListStackView: GameListStackView = GameListStackView()
     private var gameListViews: [GameListView] = []
     
     override func viewDidLoad() {

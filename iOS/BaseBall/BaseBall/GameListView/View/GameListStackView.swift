@@ -1,5 +1,5 @@
 //
-//  GameListView.swift
+//  GameListStackView.swift
 //  BaseBall
 //
 //  Created by 신한섭 on 2020/05/06.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class GameListView: UIView {
+class GameListStackView: UIStackView {
     
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
@@ -21,8 +21,9 @@ class GameListView: UIView {
     }
     
     private func setup() {
-        self.backgroundColor = .lightGray
-        self.alpha = 0.6
-        self.layer.cornerRadius = 20
+        self.axis = .vertical
+        self.distribution = .fill
+        self.spacing = 20
+        self.alignment = .center
     }
 }

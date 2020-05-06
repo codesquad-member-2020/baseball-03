@@ -1,5 +1,5 @@
 //
-//  GameListView.swift
+//  GameListLabel.swift
 //  BaseBall
 //
 //  Created by 신한섭 on 2020/05/06.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameListView: UIView {
+class GameListLabel: UILabel {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -21,8 +21,7 @@ class GameListView: UIView {
     }
     
     private func setup() {
-        self.backgroundColor = .lightGray
-        self.alpha = 0.6
-        self.layer.cornerRadius = 20
+        self.font = .boldSystemFont(ofSize: 35)
+        self.textColor = .white
     }
 }
