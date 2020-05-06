@@ -10,14 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBAction func logoButtonPushed(_ sender: UIButton) {
-        guard let gameListViewController = storyboard?.instantiateViewController(identifier: "GameListViewController") else {return}
-        gameListViewController.modalPresentationStyle = .overFullScreen
-        gameListViewController.view.backgroundColor = .clear
-        self.view.addSubview(blurView)
-        present(gameListViewController, animated: true)
-    }
-    @IBOutlet weak var logoButton: UIButton!
+    private var logoButton = UIButton()
+    private var loginLabel = UILabel()
     
     private let logoName = ["Doosan", "Hanwha", "Kia", "Kiwoom", "KT", "LG", "Lotte", "NC", "Samsung", "SK"]
     private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
@@ -25,32 +19,44 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLogInImage()
+        setupLoginLabel()
         setupBlurView()
     }
     
     private func setupLogInImage() {
         let name = logoName[Int.random(in: 0..<logoName.count)]
-        self.logoButton.setImage(UIImage(named: name), for: .normal)
+        self.view.addSubview(logoButton)
         self.view.backgroundColor = UIColor(named: name)
-        
-        if name == "Hanwha" || name == "NC" || name == "Kiwoom" {
-            logoButton.translatesAutoresizingMaskIntoConstraints = false
-            let widthAnchor = logoButton.widthAnchor
-            logoButton.removeConstraints(logoButton.constraints)
-            logoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            logoButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-            logoButton.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-            
-            if name == "Hanwha" {
-                logoButton.heightAnchor.constraint(equalTo: logoButton.widthAnchor, multiplier: 1 / 1.5).isActive = true
-            } else {
-                logoButton.heightAnchor.constraint(equalTo: logoButton.widthAnchor, multiplier: 1 / 1.4).isActive = true
-            }
-        }
+        self.logoButton.translatesAutoresizingMaskIntoConstraints = false
+        self.logoButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.logoButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.logoButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5).isActive = true
+        self.logoButton.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9).isActive = true
+        self.logoButton.imageView?.contentMode = .scaleAspectFit
+        self.logoButton.setImage(UIImage(named: name), for: .normal)
+        self.logoButton.addTarget(self, action: #selector(logoButtonPushed(_:)), for: .touchUpInside)
+    }
+    
+    private func setupLoginLabel() {
+        self.view.addSubview(self.loginLabel)
+        self.loginLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.loginLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.loginLabel.topAnchor.constraint(equalTo: self.logoButton.bottomAnchor, constant: 20).isActive = true
+        self.loginLabel.textColor = .white
+        self.loginLabel.font = .systemFont(ofSize: 20)
+        self.loginLabel.text = "로고를 눌러서 로그인을 해주세요!"
     }
     
     private func setupBlurView() {
-        blurView.frame = self.view.frame
+        self.blurView.frame = self.view.frame
+    }
+    
+    @objc func logoButtonPushed(_ sender: UIButton) {
+        guard let gameListViewController = storyboard?.instantiateViewController(identifier: "GameListViewController") else {return}
+        gameListViewController.modalPresentationStyle = .overFullScreen
+        gameListViewController.view.backgroundColor = .clear
+        self.view.addSubview(blurView)
+        present(gameListViewController, animated: true)
     }
 }
 
