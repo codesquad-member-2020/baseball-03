@@ -18,6 +18,7 @@ class GameListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubview()
+        setupObserver()
         setupGameListLabel()
         setupSrcollView()
         setupGameListStackView()
@@ -78,10 +79,14 @@ class GameListViewController: UIViewController {
     }
     
     @objc func homeTeamSelected(_ notification: Notification) {
-        
+        guard let gameViewController = storyboard?.instantiateViewController(identifier: "GameViewController") as? GameViewController else {return}
+        gameViewController.modalPresentationStyle = .fullScreen
+        present(gameViewController, animated: true)
     }
     
     @objc func awayTeamSelected(_ notification: Notification) {
-        
+        guard let gameViewController = storyboard?.instantiateViewController(identifier: "GameViewController") as? GameViewController else {return}
+        gameViewController.modalPresentationStyle = .fullScreen
+        present(gameViewController, animated: true)
     }
 }
