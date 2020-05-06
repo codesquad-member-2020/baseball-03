@@ -79,13 +79,13 @@ class GameListViewController: UIViewController {
     }
     
     @objc func homeTeamSelected(_ notification: Notification) {
-        guard let gameViewController = storyboard?.instantiateViewController(identifier: "GameViewController") as? GameViewController else {return}
-        gameViewController.modalPresentationStyle = .fullScreen
-        present(gameViewController, animated: true)
+        guard let gameTabBarController = storyboard?.instantiateViewController(identifier: "GameTabBarController") as? UITabBarController else {return}
+        gameTabBarController.modalPresentationStyle = .fullScreen
+        present(gameTabBarController, animated: true)
     }
     
     @objc func awayTeamSelected(_ notification: Notification) {
-        guard let gameViewController = storyboard?.instantiateViewController(identifier: "GameViewController") as? GameViewController else {return}
+        guard let gameViewController = storyboard?.instantiateViewController(identifier: "GameTabBarController") as? UITabBarController else {return}
         gameViewController.modalPresentationStyle = .fullScreen
         present(gameViewController, animated: true)
     }
