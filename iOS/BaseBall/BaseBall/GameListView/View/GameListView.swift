@@ -87,7 +87,7 @@ class GameListView: UIView {
         containerView.trailingAnchor.constraint(equalTo: versusLabel.leadingAnchor).isActive = true
         containerView.topAnchor.constraint(equalTo: versusView.topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: versusView.bottomAnchor).isActive = true
-
+        
         containerView.addSubview(homeTeamButton)
         let image = UIImage(named: "NC")
         homeTeamButton.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +97,7 @@ class GameListView: UIView {
         homeTeamButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         homeTeamButton.imageView?.contentMode = .scaleAspectFit
         homeTeamButton.setImage(image, for: .normal)
+        homeTeamButton.addTarget(self, action: #selector(homeTeamPushed(_:)), for: .touchUpInside)
     }
     
     private func setupAwayTeamImage() {
@@ -107,7 +108,7 @@ class GameListView: UIView {
         containerView.trailingAnchor.constraint(equalTo: versusView.trailingAnchor).isActive = true
         containerView.topAnchor.constraint(equalTo: versusView.topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: versusView.bottomAnchor).isActive = true
-
+        
         containerView.addSubview(awayTeamButon)
         let image = UIImage(named: "Hanwha")
         awayTeamButon.translatesAutoresizingMaskIntoConstraints = false
@@ -117,5 +118,21 @@ class GameListView: UIView {
         awayTeamButon.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         awayTeamButon.imageView?.contentMode = .scaleAspectFit
         awayTeamButon.setImage(image, for: .normal)
+        awayTeamButon.addTarget(self, action: #selector(awayTeamPushed(_:)), for: .touchUpInside)
     }
+    
+    @objc func homeTeamPushed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: .HomeTeamSelected,
+                                        object: nil)
+    }
+    
+    @objc func awayTeamPushed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: .AwayTeamSelected,
+                                        object: nil)
+    }
+}
+
+extension Notification.Name {
+    static let HomeTeamSelected = Notification.Name("homeTeamSelected")
+    static let AwayTeamSelected = Notification.Name("awayTeamSelected")
 }

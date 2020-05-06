@@ -9,7 +9,7 @@
 import UIKit
 
 class GameListViewController: UIViewController {
-
+    
     private var gameListLabel: GameListLabel = GameListLabel()
     private var scrollView: UIScrollView = UIScrollView()
     private var gameListStackView: GameListStackView = GameListStackView()
@@ -22,6 +22,17 @@ class GameListViewController: UIViewController {
         setupSrcollView()
         setupGameListStackView()
         setupGameListViews()
+    }
+    
+    private func setupObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(homeTeamSelected(_:)),
+                                               name: .HomeTeamSelected,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(awayTeamSelected(_:)),
+                                               name: .AwayTeamSelected,
+                                               object: nil)
     }
     
     private func setupSubview() {
@@ -64,5 +75,13 @@ class GameListViewController: UIViewController {
             gameListView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95).isActive = true
             gameListView.gameLabel.text = "GAME \(index + 1)"
         }
+    }
+    
+    @objc func homeTeamSelected(_ notification: Notification) {
+        
+    }
+    
+    @objc func awayTeamSelected(_ notification: Notification) {
+        
     }
 }
