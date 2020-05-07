@@ -30,10 +30,11 @@ class GameViewController: UIViewController {
     
     private func setupFieldView() {
         self.view.addSubview(fieldView)
+        fieldView.backgroundColor = .systemBackground
         fieldView.translatesAutoresizingMaskIntoConstraints = false
         fieldView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         fieldView.topAnchor.constraint(equalTo: scoreView.bottomAnchor).isActive = true
         fieldView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        fieldView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.4).isActive = true
+        fieldView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5).isActive = true
     }
 }
