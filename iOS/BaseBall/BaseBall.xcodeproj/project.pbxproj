@@ -19,6 +19,7 @@
 		A545AEF6246155470094C821 /* BaseBallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AEF5246155470094C821 /* BaseBallTests.swift */; };
 		A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AF00246156DC0094C821 /* LoginViewController.swift */; };
 		A5BD609D2462F5C30073CE3E /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD609C2462F5C30073CE3E /* FieldView.swift */; };
+		A5BD609F2463F7130073CE3E /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD609E2463F7130073CE3E /* StatusView.swift */; };
 		A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2381E24616DF30087F61A /* GameListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		A545AEF7246155480094C821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A545AF00246156DC0094C821 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A5BD609C2462F5C30073CE3E /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		A5BD609E2463F7130073CE3E /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		A5C2381E24616DF30087F61A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 			children = (
 				A5276CC82462D23900085D2E /* ScoreView.swift */,
 				A5BD609C2462F5C30073CE3E /* FieldView.swift */,
+				A5BD609E2463F7130073CE3E /* StatusView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				A5276CC92462D23900085D2E /* ScoreView.swift in Sources */,
 				A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */,
 				A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */,
+				A5BD609F2463F7130073CE3E /* StatusView.swift in Sources */,
 				A5276CBC2461DD1A00085D2E /* GameListView.swift in Sources */,
 				A5276CC12462465100085D2E /* GameListLabel.swift in Sources */,
 				A545AEDD246155450094C821 /* AppDelegate.swift in Sources */,
