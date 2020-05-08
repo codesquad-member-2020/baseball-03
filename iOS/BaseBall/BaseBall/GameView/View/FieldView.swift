@@ -8,34 +8,20 @@
 
 import UIKit
 
-class FieldView: UIView {
+@IBDesignable class FieldView: UIView {
     
     static var isRotate = true
-    private var statusView = StatusView()
-    
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupStatusView()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupStatusView()
     }
     
     override func draw(_ rect: CGRect) {
         setupFieldPath()
-    }
-    
-    private func setupStatusView() {
-        self.addSubview(statusView)
-        statusView.translatesAutoresizingMaskIntoConstraints = false
-        statusView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        statusView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        statusView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        statusView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        statusView.backgroundColor = .clear
     }
     
     private func setupFieldPath() {

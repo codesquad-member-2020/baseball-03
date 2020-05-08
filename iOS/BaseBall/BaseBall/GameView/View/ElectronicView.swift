@@ -1,14 +1,14 @@
 //
-//  StatusView.swift
+//  ElectronicView.swift
 //  BaseBall
 //
-//  Created by 신한섭 on 2020/05/07.
+//  Created by 신한섭 on 2020/05/08.
 //  Copyright © 2020 신한섭. All rights reserved.
 //
 
 import UIKit
 
-class StatusView: UIView {
+class ElectronicView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
