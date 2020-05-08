@@ -32,7 +32,7 @@ import UIKit
         UIColor(named: "FieldColor")?.setFill()
         square.rotate(translate: center, angle: 45)
         square.fill()
-        
+    
         let radius = side
         let circleCenter = CGPoint(x: side * 0.8, y: side * 0.8)
         let basePath = UIBezierPath()

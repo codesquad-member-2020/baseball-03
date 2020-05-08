@@ -12,9 +12,11 @@ class ElectronicView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.layer.cornerRadius = self.frame.width / 20
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.layer.cornerRadius = self.frame.width / 20
     }
 }
