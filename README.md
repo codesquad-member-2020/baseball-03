@@ -49,6 +49,6 @@ BASEBALL 서비스 - 3팀
 ## 요구사항 기술서
 [Issue 정리](https://docs.google.com/spreadsheets/d/1_meI29jk3RBhBRhzUIN3UBA7qRZcMujgE7Nq7Q21tMI/edit?usp=sharing)
 
-## API 정리 문서
+## API 문서
 
-[데이터 요청 API 문서]()
+[mock API 문서](https://documenter.getpostman.com/view/10834855/Szme5dqK)
