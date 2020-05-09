@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
         self.loginLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.loginLabel.topAnchor.constraint(equalTo: self.logoButton.bottomAnchor, constant: 20).isActive = true
         self.loginLabel.textColor = .white
-        self.loginLabel.font = .systemFont(ofSize: 20)
+        self.loginLabel.font = UIFont(name: "DungGeunMo", size: 20)
         self.loginLabel.text = "로고를 눌러서 로그인을 해주세요!"
     }
     
