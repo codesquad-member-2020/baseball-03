@@ -46,7 +46,7 @@
         <!--Scores-->
         <scene sceneID="NJc-XX-OQc">
             <objects>
-                <viewController id="dZm-fR-2di" sceneMemberID="viewController">
+                <viewController id="dZm-fR-2di" customClass="DetailScoreViewController" customModule="BaseBall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kck-yq-g5H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,14 +193,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lwn-C0-9Xs" userLabel="Division View">
-                                        <rect key="frame" x="75" y="20.000000000000014" width="300" height="2"/>
+                                        <rect key="frame" x="75" y="23.000000000000014" width="300" height="2"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="4le-Ox-n4T"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UZo-bb-d6a" userLabel="Detail Score Stack View">
-                                        <rect key="frame" x="75" y="22.000000000000014" width="300" height="45"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UZo-bb-d6a" userLabel="Detail Score Stack View">
+                                        <rect key="frame" x="75" y="28.000000000000014" width="300" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DmQ-Js-grl" userLabel="Away Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
@@ -280,7 +280,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KyT-3N-lKu" userLabel="Home Stack View">
-                                                <rect key="frame" x="0.0" y="25" width="300" height="20"/>
+                                                <rect key="frame" x="0.0" y="30" width="300" height="20"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-cD-gNN">
                                                         <rect key="frame" x="0.0" y="0.0" width="25" height="20"/>
@@ -359,16 +359,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P0Y-DG-QYT" userLabel="Team Name Stack View">
-                                        <rect key="frame" x="0.0" y="22.000000000000014" width="75" height="45"/>
+                                        <rect key="frame" x="0.0" y="28.000000000000014" width="75" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hanwha" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tm-16-B8e" userLabel="Away Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="22.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="25"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Samsung" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEt-60-BPI" userLabel="Home Stack View">
-                                                <rect key="frame" x="0.0" y="22.333333333333314" width="75" height="22.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="25" width="75" height="25"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -376,31 +376,41 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWe-2I-abx" userLabel="Division View">
-                                        <rect key="frame" x="75" y="67.000000000000014" width="300" height="2"/>
+                                        <rect key="frame" x="75" y="81.000000000000014" width="300" height="2"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="oKe-cv-lDk"/>
                                         </constraints>
                                     </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="w0g-xP-F4Q" userLabel="Taam Select Segmented Control">
+                                        <rect key="frame" x="18.666666666666657" y="123" width="337.66666666666674" height="32"/>
+                                        <segments>
+                                            <segment title="Hanwha"/>
+                                            <segment title="Samsung"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="039-8M-ICX" secondAttribute="trailing" id="0ZS-ve-FxA"/>
                                     <constraint firstItem="UZo-bb-d6a" firstAttribute="leading" secondItem="039-8M-ICX" secondAttribute="leading" id="1Ql-bv-GtN"/>
-                                    <constraint firstItem="Lwn-C0-9Xs" firstAttribute="top" secondItem="039-8M-ICX" secondAttribute="bottom" id="3NE-Kk-2da"/>
+                                    <constraint firstItem="Lwn-C0-9Xs" firstAttribute="top" secondItem="039-8M-ICX" secondAttribute="bottom" constant="3" id="3NE-Kk-2da"/>
                                     <constraint firstItem="039-8M-ICX" firstAttribute="leading" secondItem="P0Y-DG-QYT" secondAttribute="trailing" id="AOB-JY-PeX"/>
                                     <constraint firstItem="Lwn-C0-9Xs" firstAttribute="leading" secondItem="039-8M-ICX" secondAttribute="leading" id="DPc-d0-Xyf"/>
                                     <constraint firstItem="CWe-2I-abx" firstAttribute="leading" secondItem="039-8M-ICX" secondAttribute="leading" id="GyR-JM-XaB"/>
-                                    <constraint firstItem="CWe-2I-abx" firstAttribute="top" secondItem="UZo-bb-d6a" secondAttribute="bottom" id="J6J-FA-xzu"/>
+                                    <constraint firstItem="CWe-2I-abx" firstAttribute="top" secondItem="UZo-bb-d6a" secondAttribute="bottom" constant="3" id="J6J-FA-xzu"/>
                                     <constraint firstItem="039-8M-ICX" firstAttribute="top" secondItem="AP2-oD-Gyx" secondAttribute="top" id="Lje-gs-I8O"/>
                                     <constraint firstItem="P0Y-DG-QYT" firstAttribute="top" secondItem="UZo-bb-d6a" secondAttribute="top" id="Nsn-Cz-yO6"/>
                                     <constraint firstItem="UZo-bb-d6a" firstAttribute="trailing" secondItem="039-8M-ICX" secondAttribute="trailing" id="PQw-gd-j60"/>
                                     <constraint firstItem="P0Y-DG-QYT" firstAttribute="width" secondItem="AP2-oD-Gyx" secondAttribute="width" multiplier="0.2" id="R7N-rx-WbD"/>
+                                    <constraint firstItem="w0g-xP-F4Q" firstAttribute="top" secondItem="CWe-2I-abx" secondAttribute="bottom" constant="40" id="TKf-5R-iHu"/>
+                                    <constraint firstItem="w0g-xP-F4Q" firstAttribute="centerX" secondItem="AP2-oD-Gyx" secondAttribute="centerX" id="Udj-LI-Da6"/>
                                     <constraint firstItem="Lwn-C0-9Xs" firstAttribute="trailing" secondItem="039-8M-ICX" secondAttribute="trailing" id="W1N-0D-0F7"/>
                                     <constraint firstItem="P0Y-DG-QYT" firstAttribute="leading" secondItem="AP2-oD-Gyx" secondAttribute="leading" id="ZAN-7P-4RC"/>
                                     <constraint firstItem="P0Y-DG-QYT" firstAttribute="bottom" secondItem="UZo-bb-d6a" secondAttribute="bottom" id="aZw-Rk-AYK"/>
-                                    <constraint firstItem="UZo-bb-d6a" firstAttribute="top" secondItem="Lwn-C0-9Xs" secondAttribute="bottom" id="r7j-vq-zP8"/>
+                                    <constraint firstItem="UZo-bb-d6a" firstAttribute="top" secondItem="Lwn-C0-9Xs" secondAttribute="bottom" constant="3" id="r7j-vq-zP8"/>
                                     <constraint firstItem="CWe-2I-abx" firstAttribute="trailing" secondItem="039-8M-ICX" secondAttribute="trailing" id="wxw-hn-bpM"/>
+                                    <constraint firstItem="w0g-xP-F4Q" firstAttribute="width" secondItem="AP2-oD-Gyx" secondAttribute="width" multiplier="0.9" id="zxn-0P-VDT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -422,6 +432,9 @@
                         <viewLayoutGuide key="safeArea" id="v1C-Sp-jTG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Scores" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="mjT-4L-0Mf"/>
+                    <connections>
+                        <outlet property="teamSelectSegmentedControl" destination="w0g-xP-F4Q" id="BCQ-h3-WBw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktq-oU-Kab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -518,7 +531,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qk-5v-7HI">
-                                                                <rect key="frame" x="132.33333333333334" y="5.6666666666666643" width="34.666666666666657" height="23"/>
+                                                                <rect key="frame" x="132.33333333333334" y="3.6666666666666643" width="34.666666666666657" height="27"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="23"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -575,7 +588,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tir-7b-gkh">
-                                                                <rect key="frame" x="132.33333333333334" y="5.3333333333333286" width="34.666666666666657" height="23"/>
+                                                                <rect key="frame" x="132.33333333333334" y="3.3333333333333286" width="34.666666666666657" height="27"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="23"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -775,27 +788,27 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentPlayerCell" id="wwr-st-jlo" customClass="CurrentPlayerCell" customModule="BaseBall" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="24.333333969116211"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="23.666666030883789"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wwr-st-jlo" id="4kR-qn-Eqz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="24.333333969116211"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="23.666666030883789"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="투수" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwV-V9-p0d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="24.333333333333332"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="23.666666666666668"/>
+                                                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최동원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-z9-YoM">
-                                                    <rect key="frame" x="75" y="0.0" width="112.66666666666669" height="24.333333333333332"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <rect key="frame" x="75" y="0.0" width="112.66666666666669" height="23.666666666666668"/>
+                                                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#39" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLs-IW-sb0">
-                                                    <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="24.333333333333332"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="23.666666666666668"/>
+                                                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                     <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -858,14 +871,14 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스트라이크" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfX-Qq-4jX" userLabel="SBO Label">
-                                                    <rect key="frame" x="54" y="10" width="269" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <rect key="frame" x="54" y="10.333333333333334" width="265.66666666666669" height="23.333333333333329"/>
+                                                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-z0-vJD" userLabel="Count Label">
-                                                    <rect key="frame" x="323" y="10" width="27" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <rect key="frame" x="319.66666666666669" y="10.333333333333334" width="30.333333333333314" height="23.333333333333329"/>
+                                                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

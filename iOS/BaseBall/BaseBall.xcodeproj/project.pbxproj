@@ -25,6 +25,7 @@
 		A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AF00246156DC0094C821 /* LoginViewController.swift */; };
 		A54FD7AC2466CCDC0069BB7A /* scoreboard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A54FD7AB2466CCDB0069BB7A /* scoreboard.ttf */; };
 		A54FD7AE2466CF2E0069BB7A /* DungGeunMo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A54FD7AD2466CF2E0069BB7A /* DungGeunMo.ttf */; };
+		A54FD7B12466E7250069BB7A /* DetailScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54FD7B02466E7250069BB7A /* DetailScoreViewController.swift */; };
 		A5BD609D2462F5C30073CE3E /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD609C2462F5C30073CE3E /* FieldView.swift */; };
 		A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2381E24616DF30087F61A /* GameListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		A545AF00246156DC0094C821 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A54FD7AB2466CCDB0069BB7A /* scoreboard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreboard.ttf; sourceTree = "<group>"; };
 		A54FD7AD2466CF2E0069BB7A /* DungGeunMo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.ttf; sourceTree = "<group>"; };
+		A54FD7B02466E7250069BB7A /* DetailScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScoreViewController.swift; sourceTree = "<group>"; };
 		A5BD609C2462F5C30073CE3E /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		A5C2381E24616DF30087F61A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 		A545AEDB246155450094C821 /* BaseBall */ = {
 			isa = PBXGroup;
 			children = (
+				A54FD7AF2466E70D0069BB7A /* DetailScoreView */,
 				A5276CC42462B86300085D2E /* GameView */,
 				A5C238232461AD340087F61A /* StroyBoard */,
 				A5C238222461AD2A0087F61A /* Resources */,
@@ -164,6 +167,14 @@
 				A545AEF7246155480094C821 /* Info.plist */,
 			);
 			path = BaseBallTests;
+			sourceTree = "<group>";
+		};
+		A54FD7AF2466E70D0069BB7A /* DetailScoreView */ = {
+			isa = PBXGroup;
+			children = (
+				A54FD7B02466E7250069BB7A /* DetailScoreViewController.swift */,
+			);
+			path = DetailScoreView;
 			sourceTree = "<group>";
 		};
 		A5C238202461AD0E0087F61A /* LoginView */ = {
@@ -309,6 +320,7 @@
 				A531825024668992005B6B20 /* CurrentRecordDataSource.swift in Sources */,
 				A5276CC62462B88500085D2E /* GameViewController.swift in Sources */,
 				A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */,
+				A54FD7B12466E7250069BB7A /* DetailScoreViewController.swift in Sources */,
 				A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */,
 				A531824E2466892D005B6B20 /* CurrentPlayerDataSource.swift in Sources */,
 				A531824224653DC3005B6B20 /* ElectronicView.swift in Sources */,
