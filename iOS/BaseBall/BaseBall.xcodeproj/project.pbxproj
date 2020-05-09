@@ -15,6 +15,8 @@
 		A531824224653DC3005B6B20 /* ElectronicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824124653DC3005B6B20 /* ElectronicView.swift */; };
 		A53182482466560D005B6B20 /* CurrentPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53182472466560D005B6B20 /* CurrentPlayerCell.swift */; };
 		A531824A24668448005B6B20 /* CurrentRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824924668448005B6B20 /* CurrentRecordCell.swift */; };
+		A531824E2466892D005B6B20 /* CurrentPlayerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824D2466892D005B6B20 /* CurrentPlayerDataSource.swift */; };
+		A531825024668992005B6B20 /* CurrentRecordDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824F24668992005B6B20 /* CurrentRecordDataSource.swift */; };
 		A545AEDD246155450094C821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AEDC246155450094C821 /* AppDelegate.swift */; };
 		A545AEE6246155450094C821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE4246155450094C821 /* Main.storyboard */; };
 		A545AEE8246155470094C821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE7246155470094C821 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		A531824124653DC3005B6B20 /* ElectronicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectronicView.swift; sourceTree = "<group>"; };
 		A53182472466560D005B6B20 /* CurrentPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerCell.swift; sourceTree = "<group>"; };
 		A531824924668448005B6B20 /* CurrentRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRecordCell.swift; sourceTree = "<group>"; };
+		A531824D2466892D005B6B20 /* CurrentPlayerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerDataSource.swift; sourceTree = "<group>"; };
+		A531824F24668992005B6B20 /* CurrentRecordDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRecordDataSource.swift; sourceTree = "<group>"; };
 		A545AED9246155450094C821 /* BaseBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A545AEDC246155450094C821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A545AEE5246155450094C821 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 		A5276CC42462B86300085D2E /* GameView */ = {
 			isa = PBXGroup;
 			children = (
+				A531824C246688FF005B6B20 /* TableViewDataSource */,
 				A5276CC72462D21000085D2E /* View */,
 				A5276CC52462B88500085D2E /* GameViewController.swift */,
 			);
@@ -105,6 +110,15 @@
 				A531824924668448005B6B20 /* CurrentRecordCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A531824C246688FF005B6B20 /* TableViewDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A531824D2466892D005B6B20 /* CurrentPlayerDataSource.swift */,
+				A531824F24668992005B6B20 /* CurrentRecordDataSource.swift */,
+			);
+			path = TableViewDataSource;
 			sourceTree = "<group>";
 		};
 		A545AED0246155450094C821 = {
@@ -284,9 +298,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A531824A24668448005B6B20 /* CurrentRecordCell.swift in Sources */,
+				A531825024668992005B6B20 /* CurrentRecordDataSource.swift in Sources */,
 				A5276CC62462B88500085D2E /* GameViewController.swift in Sources */,
 				A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */,
 				A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */,
+				A531824E2466892D005B6B20 /* CurrentPlayerDataSource.swift in Sources */,
 				A531824224653DC3005B6B20 /* ElectronicView.swift in Sources */,
 				A5276CBC2461DD1A00085D2E /* GameListView.swift in Sources */,
 				A5276CC12462465100085D2E /* GameListLabel.swift in Sources */,
