@@ -12,7 +12,15 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var currentPlayerTableView: UITableView!
     @IBOutlet weak var currentRecordTableView: UITableView!
+    @IBOutlet weak var pitchButton: UIButton!
+    @IBAction func pitchButtonPushed(_ sender: UIButton) {
+        self.pitchButton.isEnabled = false
+        UIView.animate(withDuration: 0.5) {
+            self.pitchButton.alpha = 0
+        }
+    }
     
+    private var isAttack = false
     private let currentRecordDataSource = CurrentRecordDataSource()
     private let currentPlayerDataSource = CurrentPlayerDataSource()
     
@@ -21,6 +29,12 @@ class GameViewController: UIViewController {
         currentPlayerTableView.delegate = self
         currentPlayerTableView.dataSource = currentPlayerDataSource
         currentRecordTableView.dataSource = currentRecordDataSource
+        setupPitchButton()
+    }
+    
+    private func setupPitchButton() {
+        pitchButton.isHidden = isAttack
+        pitchButton.layer.cornerRadius = pitchButton.frame.height / 2
     }
 }
 
