@@ -21,7 +21,7 @@ class GameListLabel: UILabel {
     }
     
     private func setup() {
-        self.font = .boldSystemFont(ofSize: 35)
+        self.font = UIFont(name: "DungGeunMo", size: 40)
         self.textColor = .white
     }
 }

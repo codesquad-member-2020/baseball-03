@@ -56,7 +56,7 @@ class GameListView: UIView {
         gameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         gameLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         gameLabel.textColor = .white
-        gameLabel.font = .boldSystemFont(ofSize: 17)
+        gameLabel.font = UIFont(name: "DungGeunMo", size: 30)
         gameLabel.text = "GAME"
     }
     
@@ -75,7 +75,7 @@ class GameListView: UIView {
         versusLabel.centerXAnchor.constraint(equalTo: versusView.centerXAnchor).isActive = true
         versusLabel.centerYAnchor.constraint(equalTo: versusView.centerYAnchor).isActive = true
         versusLabel.textColor = .white
-        versusLabel.font = .boldSystemFont(ofSize: 30)
+        versusLabel.font = UIFont(name: "DungGeunMo", size: 40)
         versusLabel.text = "VS"
     }
     
