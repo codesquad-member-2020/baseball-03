@@ -8,7 +8,19 @@
 
 import UIKit
 
-class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GameViewController: UIViewController {
+    
+    @IBOutlet weak var currentPlayerTableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        currentPlayerTableView.delegate = self
+        currentPlayerTableView.dataSource = self
+    }
+}
+
+extension GameViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -18,17 +30,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.accessoryView = UIImageView(image: UIImage(systemName: "checkmark"))
         return cell
     }
-    
+}
+
+extension GameViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height / 2
-    }
-    
-    
-    @IBOutlet weak var currentPlayerTableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        currentPlayerTableView.delegate = self
-        currentPlayerTableView.dataSource = self
     }
 }

@@ -9,4 +9,8 @@
 import UIKit
 
 class CurrentPlayerTableViewCell: UITableViewCell {
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        self.selectedBackgroundView?.backgroundColor = .clear
+    }
 }
