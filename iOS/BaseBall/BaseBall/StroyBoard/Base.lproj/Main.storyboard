@@ -72,7 +72,27 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1I-RM-qJe" customClass="FieldView" customModule="BaseBall" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="112.66666666666666" width="375" height="342.33333333333337"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLN-j0-5ow">
+                                        <rect key="frame" x="298.66666666666669" y="266" width="56.333333333333314" height="56.333333333333314"/>
+                                        <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zLN-j0-5ow" secondAttribute="height" multiplier="1:1" id="2xS-ck-jVX"/>
+                                        </constraints>
+                                        <state key="normal" image="pitcher">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pitchButtonPushed:" destination="0dg-j3-Q8z" eventType="touchUpInside" id="4gK-dB-rvY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="zLN-j0-5ow" firstAttribute="width" secondItem="t1I-RM-qJe" secondAttribute="width" multiplier="0.15" id="YPY-Mt-1Gv"/>
+                                    <constraint firstAttribute="bottom" secondItem="zLN-j0-5ow" secondAttribute="bottom" constant="20" id="sbc-DA-dpx"/>
+                                    <constraint firstAttribute="trailing" secondItem="zLN-j0-5ow" secondAttribute="trailing" constant="20" id="xKf-05-NB2"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-BS-F1o" userLabel="Division View">
                                 <rect key="frame" x="0.0" y="455" width="375" height="2"/>
@@ -538,6 +558,7 @@
                     <connections>
                         <outlet property="currentPlayerTableView" destination="aUq-aZ-He7" id="kok-l0-vAy"/>
                         <outlet property="currentRecordTableView" destination="npG-8P-BvP" id="yHc-Li-Du9"/>
+                        <outlet property="pitchButton" destination="zLN-j0-5ow" id="jxI-oQ-PJN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsk-EE-FqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -569,6 +590,7 @@
         <image name="ball" width="21.333333969116211" height="21.333333969116211"/>
         <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="89"/>
+        <image name="pitcher" width="42.666667938232422" height="42.666667938232422"/>
         <namedColor name="FieldColor">
             <color red="0.0" green="0.7803921568627451" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
