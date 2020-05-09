@@ -1,5 +1,5 @@
 //
-//  CurrentPlayerTableViewCell.swift
+//  CurrentPlayerCell.swift
 //  BaseBall
 //
 //  Created by 신한섭 on 2020/05/09.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentPlayerTableViewCell: UITableViewCell {
+class CurrentPlayerCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         self.selectedBackgroundView?.backgroundColor = .clear
