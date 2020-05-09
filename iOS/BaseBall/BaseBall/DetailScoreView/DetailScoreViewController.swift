@@ -13,31 +13,17 @@ class DetailScoreViewController: UIViewController {
     @IBOutlet weak var teamSelectSegmentedControl: UISegmentedControl!
     @IBOutlet weak var playerInfoTableView: UITableView!
     
+    private let detailTableViewDataSource = DetailTableViewDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSegmentedControl()
-        playerInfoTableView.dataSource = self
+        playerInfoTableView.dataSource = detailTableViewDataSource
         playerInfoTableView.delegate = self
     }
     
     private func setupSegmentedControl() {
         teamSelectSegmentedControl.setTitleTextAttributes([.font : UIFont(name: "DungGeunMo", size: 17) as Any], for: .normal)
-    }
-}
-
-extension DetailScoreViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerInfoCell") as? PlayerInfoCell else {return UITableViewCell()}
-        if indexPath.row == 9 {
-            cell.configuateAverage()
-        } else {
-            cell.configurateCell()
-        }
-        return cell
     }
 }
 

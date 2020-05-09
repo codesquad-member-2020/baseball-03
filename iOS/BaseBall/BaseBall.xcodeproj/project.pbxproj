@@ -26,6 +26,7 @@
 		A54FD7AE2466CF2E0069BB7A /* DungGeunMo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A54FD7AD2466CF2E0069BB7A /* DungGeunMo.ttf */; };
 		A54FD7B12466E7250069BB7A /* DetailScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54FD7B02466E7250069BB7A /* DetailScoreViewController.swift */; };
 		A54FD7B4246703DB0069BB7A /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54FD7B3246703DB0069BB7A /* PlayerInfoCell.swift */; };
+		A54FD7B6246712170069BB7A /* DetailTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54FD7B5246712170069BB7A /* DetailTableViewDataSource.swift */; };
 		A5BD609D2462F5C30073CE3E /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD609C2462F5C30073CE3E /* FieldView.swift */; };
 		A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2381E24616DF30087F61A /* GameListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		A54FD7AD2466CF2E0069BB7A /* DungGeunMo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.ttf; sourceTree = "<group>"; };
 		A54FD7B02466E7250069BB7A /* DetailScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScoreViewController.swift; sourceTree = "<group>"; };
 		A54FD7B3246703DB0069BB7A /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
+		A54FD7B5246712170069BB7A /* DetailTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewDataSource.swift; sourceTree = "<group>"; };
 		A5BD609C2462F5C30073CE3E /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		A5C2381E24616DF30087F61A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				A54FD7B3246703DB0069BB7A /* PlayerInfoCell.swift */,
+				A54FD7B5246712170069BB7A /* DetailTableViewDataSource.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				A5276CC12462465100085D2E /* GameListLabel.swift in Sources */,
 				A545AEDD246155450094C821 /* AppDelegate.swift in Sources */,
 				A5BD609D2462F5C30073CE3E /* FieldView.swift in Sources */,
+				A54FD7B6246712170069BB7A /* DetailTableViewDataSource.swift in Sources */,
 				A5276CC3246246C800085D2E /* GameListStackView.swift in Sources */,
 				A53182482466560D005B6B20 /* CurrentPlayerCell.swift in Sources */,
 				A5318240246533D8005B6B20 /* ScoreView.swift in Sources */,
