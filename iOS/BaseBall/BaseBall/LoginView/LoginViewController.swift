@@ -15,25 +15,39 @@ class LoginViewController: UIViewController {
     
     private let logoName = ["Doosan", "Hanwha", "Kia", "Kiwoom", "KT", "LG", "Lotte", "NC", "Samsung", "SK"]
     private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+    private let useCase = TeamListUseCase(networkManager: NetworkManager())
+    private let teamListManager = TeamListManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupModel()
+        setupObserver()
         setupLogInImage()
         setupLoginLabel()
         setupBlurView()
     }
     
+    private func setupModel() {
+        useCase.requestTeamList(failureHandler: {
+            self.errorHandling(error: $0)
+        }) {
+            self.teamListManager.insertTeamList(teamList: $0)
+        }
+    }
+    
+    private func setupObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(teamListInserted),
+                                               name: .TeamListInserted,
+                                               object: nil)
+    }
+    
     private func setupLogInImage() {
-        let name = logoName[Int.random(in: 0..<logoName.count)]
         self.view.addSubview(logoButton)
-        self.view.backgroundColor = UIColor(named: name)
         self.logoButton.translatesAutoresizingMaskIntoConstraints = false
         self.logoButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.logoButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        self.logoButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5).isActive = true
-        self.logoButton.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9).isActive = true
         self.logoButton.imageView?.contentMode = .scaleAspectFit
-        self.logoButton.setImage(UIImage(named: name), for: .normal)
         self.logoButton.addTarget(self, action: #selector(logoButtonPushed(_:)), for: .touchUpInside)
     }
     
@@ -51,12 +65,37 @@ class LoginViewController: UIViewController {
         self.blurView.frame = self.view.frame
     }
     
+    private func alertError(message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "문제가 생겼어요", message: message, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "넵...", style: .default)
+            alert.addAction(ok)
+            self.present(alert, animated: true)
+        }
+    }
+    
+    private func errorHandling(error: NetworkManager.NetworkError) {
+        alertError(message: error.message())
+    }
+    
     @objc func logoButtonPushed(_ sender: UIButton) {
         guard let gameListViewController = storyboard?.instantiateViewController(identifier: "GameListViewController") else {return}
         gameListViewController.modalPresentationStyle = .overFullScreen
         gameListViewController.view.backgroundColor = .clear
         self.view.addSubview(blurView)
         present(gameListViewController, animated: true)
+    }
+    
+    @objc func teamListInserted() {
+        let name = logoName[Int.random(in: 0..<logoName.count)]
+        let image = UIImage(named: name)
+        
+        DispatchQueue.main.async {
+            self.view.backgroundColor = UIColor(named: name)
+            self.logoButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3).isActive = true
+            self.logoButton.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * self.logoButton.frame.height / (image?.size.height ?? 0)).isActive = true
+            self.logoButton.setImage(image, for: .normal)
+        }
     }
 }
 
