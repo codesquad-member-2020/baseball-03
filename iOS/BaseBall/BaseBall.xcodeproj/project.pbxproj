@@ -30,6 +30,7 @@
 		A587E2FB2468202700371BE4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587E2FA2468202700371BE4 /* EndPoint.swift */; };
 		A587E3042468242700371BE4 /* TeamList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587E3032468242700371BE4 /* TeamList.swift */; };
 		A587E30724682AB000371BE4 /* TeamListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587E30624682AB000371BE4 /* TeamListUseCase.swift */; };
+		A587E30C24682EF500371BE4 /* TeamListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587E30B24682EF500371BE4 /* TeamListManager.swift */; };
 		A592390D2467D70400331014 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592390C2467D70400331014 /* UIColorExtension.swift */; };
 		A5B67FB12467C5A0000D8C54 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67FB02467C5A0000D8C54 /* Request.swift */; };
 		A5B67FB32467CCB6000D8C54 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67FB22467CCB6000D8C54 /* NetworkManager.swift */; };
@@ -75,6 +76,7 @@
 		A587E2FA2468202700371BE4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A587E3032468242700371BE4 /* TeamList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamList.swift; sourceTree = "<group>"; };
 		A587E30624682AB000371BE4 /* TeamListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListUseCase.swift; sourceTree = "<group>"; };
+		A587E30B24682EF500371BE4 /* TeamListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListManager.swift; sourceTree = "<group>"; };
 		A592390C2467D70400331014 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A5B67FB02467C5A0000D8C54 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A5B67FB22467CCB6000D8C54 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -229,9 +231,18 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		A587E30824682ED900371BE4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A587E30B24682EF500371BE4 /* TeamListManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		A5B67FAB2467B80C000D8C54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A587E30824682ED900371BE4 /* Manager */,
 				A587E3012468240600371BE4 /* Extension */,
 				A587E2FF246823FA00371BE4 /* Network */,
 				A587E3032468242700371BE4 /* TeamList.swift */,
@@ -390,6 +401,7 @@
 				A5276CBC2461DD1A00085D2E /* GameListView.swift in Sources */,
 				A587E2FB2468202700371BE4 /* EndPoint.swift in Sources */,
 				A5276CC12462465100085D2E /* GameListLabel.swift in Sources */,
+				A587E30C24682EF500371BE4 /* TeamListManager.swift in Sources */,
 				A587E3042468242700371BE4 /* TeamList.swift in Sources */,
 				A5B67FB12467C5A0000D8C54 /* Request.swift in Sources */,
 				A587E30724682AB000371BE4 /* TeamListUseCase.swift in Sources */,

@@ -22,7 +22,7 @@ struct TeamListUseCase<T: NetworkManageable> {
         self.networkManager = networkManager
     }
     
-    func requestTeamList(failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(TeamList) -> ()) {
+    func requestTeamList(failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping([Team]) -> ()) {
         networkManager.getResource(request: TeamListRequest()) {
             switch $0 {
             case .failure(let error):
@@ -30,7 +30,7 @@ struct TeamListUseCase<T: NetworkManageable> {
             case .success(let data):
                 do {
                     let model = try JSONDecoder().decode(TeamListResponse.self, from: data)
-                    completed(model.content)
+                    completed(model.content.teams)
                 } catch {
                     failureHandler(.DecodeError)
                 }
