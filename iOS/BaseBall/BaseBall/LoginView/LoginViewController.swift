@@ -12,8 +12,7 @@ class LoginViewController: UIViewController {
     
     private var logoButton = UIButton()
     private var loginLabel = UILabel()
-    
-    private let logoName = ["Doosan", "Hanwha", "Kia", "Kiwoom", "KT", "LG", "Lotte", "NC", "Samsung", "SK"]
+
     private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     private let useCase = TeamListUseCase(networkManager: NetworkManager())
     private let teamListManager = TeamListManager()
