@@ -9,21 +9,13 @@
 import Foundation
 
 protocol NetworkManageable {
-    associatedtype dataResponse
-    associatedtype downloadResponse
+    typealias dataResponse = Result<Data, NetworkManager.NetworkError>
+    typealias downloadResponse = Result<URL, NetworkManager.NetworkError>
     func getResource(request: Request, handler: @escaping (dataResponse) -> ())
     func downloadResource(request: Request, handler: @escaping (downloadResponse) ->())
 }
 
 class NetworkManager: NetworkManageable {
-
-    typealias dataResponse = Result<Data, NetworkManager.NetworkError>
-    typealias downloadResponse = Result<URL, NetworkManager.NetworkError>
-    
-    enum EndPoints {
-        static let defaultURL = "https://69612ad4-ca1b-4bc6-a7e2-a7d141c32cb5.mock.pstmn.io/api/"
-        static let matches = "matches"
-    }
     
     enum NetworkError: Error {
         case DataEmpty
