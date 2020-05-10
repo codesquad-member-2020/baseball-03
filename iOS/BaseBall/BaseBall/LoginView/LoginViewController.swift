@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(self.loginLabel)
         self.loginLabel.translatesAutoresizingMaskIntoConstraints = false
         self.loginLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.loginLabel.topAnchor.constraint(equalTo: self.logoButton.bottomAnchor, constant: 20).isActive = true
+        self.loginLabel.topAnchor.constraint(equalTo: self.logoButton.bottomAnchor, constant: 30).isActive = true
         self.loginLabel.textColor = .white
         self.loginLabel.font = UIFont(name: "DungGeunMo", size: 20)
         self.loginLabel.text = "로고를 눌러서 로그인을 해주세요!"
@@ -87,14 +87,37 @@ class LoginViewController: UIViewController {
     }
     
     @objc func teamListInserted() {
-        let name = logoName[Int.random(in: 0..<logoName.count)]
-        let image = UIImage(named: name)
+        let group = DispatchGroup()
+        let queue = DispatchQueue.global()
         
-        DispatchQueue.main.async {
-            self.view.backgroundColor = UIColor(named: name)
-            self.logoButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3).isActive = true
-            self.logoButton.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * self.logoButton.frame.height / (image?.size.height ?? 0)).isActive = true
-            self.logoButton.setImage(image, for: .normal)
+        DispatchQueue.concurrentPerform(iterations: teamListManager.count()) {
+            guard let team = teamListManager.team(at: $0) else {return}
+            group.enter()
+            queue.async {
+                self.useCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
+                    self.errorHandling(error: $0)
+                }) {_ in
+                    group.leave()
+                }
+            }
+        }
+        
+        group.notify(queue: queue) {
+            guard let team = self.teamListManager.random() else {
+                return
+            }
+            
+            self.useCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
+                self.errorHandling(error: $0)
+            }) {
+                let image = UIImage(data: $0)
+                DispatchQueue.main.async {
+                    self.view.backgroundColor = UIColor(hex: team.color)
+                    self.logoButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3).isActive = true
+                    self.logoButton.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * self.logoButton.frame.height / (image?.size.height ?? 0)).isActive = true
+                    self.logoButton.setImage(image, for: .normal)
+                }
+            }
         }
     }
 }

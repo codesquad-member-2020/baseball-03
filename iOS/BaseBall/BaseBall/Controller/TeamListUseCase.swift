@@ -8,14 +8,20 @@
 
 import Foundation
 
+
 struct TeamListUseCase<T: NetworkManageable> {
     
-    var networkManager: T
+    private var networkManager: T
+    let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     
     struct TeamListRequest: Request {
         var path: String {
             return EndPoint.defaultURL + EndPoint.teams
         }
+    }
+    
+    struct ImageRequest: Request {
+        var path: String
     }
     
     init(networkManager: T) {
@@ -35,6 +41,34 @@ struct TeamListUseCase<T: NetworkManageable> {
                     failureHandler(.DecodeError)
                 }
             }
+        }
+    }
+    
+    func requestTeamImage(name: String, from: String, failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(Data) -> ()) {
+        
+        let imageURL = cachesDirectory.appendingPathComponent(name)
+        if FileManager.default.fileExists(atPath: imageURL.path) {
+            handleData(from: imageURL, failureHandler: failureHandler, completed: completed)
+        } else {
+            let request = ImageRequest(path: from)
+            networkManager.downloadResource(request: request) {
+                switch $0 {
+                case .failure(let error):
+                    failureHandler(error)
+                case .success(let url):
+                    self.handleData(from: url, failureHandler: failureHandler, completed: completed)
+                    try? FileManager.default.moveItem(at: url, to: imageURL)
+                }
+            }
+        }
+    }
+    
+    private func handleData(from url: URL, failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(Data) -> ()) {
+        do {
+            let data = try Data(contentsOf: url)
+            completed(data)
+        } catch {
+            failureHandler(.DecodeError)
         }
     }
 }

@@ -18,10 +18,16 @@ class TeamListManager {
                                         object: nil)
     }
     
-    func iterate(_ transform: (Team) -> ()) {
-        teamList?.forEach {
-            transform($0)
-        }
+    func count() -> Int {
+        return teamList?.count ?? 0
+    }
+    
+    func team(at index: Int) -> Team? {
+        return teamList?[index]
+    }
+    
+    func random() -> Team? {
+        return teamList?.randomElement()
     }
 }
 

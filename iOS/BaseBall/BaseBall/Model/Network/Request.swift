@@ -36,7 +36,8 @@ extension Request {
     var httpHeaderFields: [String]? {return nil}
     
     func urlRequest() -> URLRequest? {
-        guard let url = URL(string: path) else {return nil}
+        guard let encodedPath = path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {return nil}
+        guard let url = URL(string: encodedPath) else {return nil}
         let urlRequest: URLRequest = {
             var request = URLRequest(url: url)
             request.httpMethod = httpMethod.description
