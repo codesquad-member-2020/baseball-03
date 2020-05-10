@@ -57,7 +57,7 @@ VALUES (1, 1, 1),
 
 INSERT INTO team_game (team, game, user, is_home)
 VALUES (1, 1, 1, true), (2, 1, 2, false),
-        (3, 2, -1, true), (4, 2, -1, false),
-        (5, 3, -1, true), (6, 3, -1, false),
-        (7, 4, 3, true), (8, 4, -1, false),
-        (9, 5, -1, true), (10, 5, -1, false);
+        (3, 2, null, true), (4, 2, null, false),
+        (5, 3, null, true), (6, 3, null, false),
+        (7, 4, 3, true), (8, 4, null, false),
+        (9, 5, null, true), (10, 5, null, false);
