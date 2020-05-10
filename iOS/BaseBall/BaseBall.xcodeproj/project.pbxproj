@@ -27,6 +27,7 @@
 		A54FD7B12466E7250069BB7A /* DetailScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54FD7B02466E7250069BB7A /* DetailScoreViewController.swift */; };
 		A54FD7B4246703DB0069BB7A /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54FD7B3246703DB0069BB7A /* PlayerInfoCell.swift */; };
 		A54FD7B6246712170069BB7A /* DetailTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54FD7B5246712170069BB7A /* DetailTableViewDataSource.swift */; };
+		A5B67FB12467C5A0000D8C54 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67FB02467C5A0000D8C54 /* Request.swift */; };
 		A5BD609D2462F5C30073CE3E /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD609C2462F5C30073CE3E /* FieldView.swift */; };
 		A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2381E24616DF30087F61A /* GameListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		A54FD7B02466E7250069BB7A /* DetailScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScoreViewController.swift; sourceTree = "<group>"; };
 		A54FD7B3246703DB0069BB7A /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
 		A54FD7B5246712170069BB7A /* DetailTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewDataSource.swift; sourceTree = "<group>"; };
+		A5B67FB02467C5A0000D8C54 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A5BD609C2462F5C30073CE3E /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		A5C2381E24616DF30087F61A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 		A545AEDB246155450094C821 /* BaseBall */ = {
 			isa = PBXGroup;
 			children = (
+				A5B67FAB2467B80C000D8C54 /* Model */,
 				A54FD7AF2466E70D0069BB7A /* DetailScoreView */,
 				A5276CC42462B86300085D2E /* GameView */,
 				A5C238232461AD340087F61A /* StroyBoard */,
@@ -187,6 +190,14 @@
 				A54FD7B5246712170069BB7A /* DetailTableViewDataSource.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A5B67FAB2467B80C000D8C54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5B67FB02467C5A0000D8C54 /* Request.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A5C238202461AD0E0087F61A /* LoginView */ = {
@@ -337,6 +348,7 @@
 				A54FD7B4246703DB0069BB7A /* PlayerInfoCell.swift in Sources */,
 				A5276CBC2461DD1A00085D2E /* GameListView.swift in Sources */,
 				A5276CC12462465100085D2E /* GameListLabel.swift in Sources */,
+				A5B67FB12467C5A0000D8C54 /* Request.swift in Sources */,
 				A545AEDD246155450094C821 /* AppDelegate.swift in Sources */,
 				A5BD609D2462F5C30073CE3E /* FieldView.swift in Sources */,
 				A54FD7B6246712170069BB7A /* DetailTableViewDataSource.swift in Sources */,
