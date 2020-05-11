@@ -38,7 +38,8 @@ CREATE TABLE player (
 CREATE TABLE game (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     home_batting_order INT NOT NULL ,
-    away_batting_order INT NOT NULL
+    away_batting_order INT NOT NULL ,
+    is_over BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE team_game (
