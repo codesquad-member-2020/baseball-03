@@ -21,4 +21,5 @@ struct Match: Decodable {
 struct TeamInMatch: Decodable {
     var id: String
     var name: String
+    var thumbnail_url: String
 }

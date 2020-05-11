@@ -78,6 +78,19 @@ class GameListViewController: UIViewController {
         }
     }
     
+    private func alertError(message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "문제가 생겼어요", message: message, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "넵...", style: .default)
+            alert.addAction(ok)
+            self.present(alert, animated: true)
+        }
+    }
+    
+    private func errorHandling(error: NetworkManager.NetworkError) {
+        alertError(message: error.message())
+    }
+    
     @objc func homeTeamSelected(_ notification: Notification) {
         guard let gameTabBarController = storyboard?.instantiateViewController(identifier: "GameTabBarController") as? UITabBarController else {return}
         gameTabBarController.modalPresentationStyle = .fullScreen
