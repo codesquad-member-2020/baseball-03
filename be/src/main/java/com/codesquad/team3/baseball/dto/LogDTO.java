@@ -7,7 +7,7 @@ import java.util.Map;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class LogDTO {
 
-    private Result result;
+    private String result;
 
     private Map<Result, Integer> count;
 
@@ -16,7 +16,7 @@ public class LogDTO {
     private boolean isHit;
 
     public LogDTO(Result result, Map<Result, Integer> count, boolean isOut, boolean isHit) {
-        this.result = result;
+        this.result = result.getValue();
         this.count = count;
         this.isOut = isOut;
         this.isHit = isHit;
