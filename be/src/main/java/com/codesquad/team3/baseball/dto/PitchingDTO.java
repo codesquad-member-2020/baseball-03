@@ -11,7 +11,6 @@ public class PitchingDTO {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean isOver;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean isHome;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -27,6 +26,9 @@ public class PitchingDTO {
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private LogDTO log;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private Map<Base, Boolean> base;
 
     public PitchingDTO(Builder builder) {
         this.isOver = builder.isOver;
@@ -53,6 +55,8 @@ public class PitchingDTO {
         private PlayerDTO hitter;
 
         private LogDTO log;
+
+        private Map<Base, Boolean> base;
 
         public Builder isOver(boolean isOver) {
             this.isOver = isOver;
@@ -86,6 +90,11 @@ public class PitchingDTO {
 
         public Builder log(LogDTO log) {
             this.log = log;
+            return this;
+        }
+
+        public Builder base(Map<Base, Boolean> base) {
+            this.base = base;
             return this;
         }
 
