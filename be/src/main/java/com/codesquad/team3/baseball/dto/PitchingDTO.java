@@ -9,6 +9,9 @@ import java.util.Map;
 public class PitchingDTO {
 
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean isOver;
+
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean isHome;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -26,6 +29,7 @@ public class PitchingDTO {
     private LogDTO log;
 
     public PitchingDTO(Builder builder) {
+        this.isOver = builder.isOver;
         this.isHome = builder.isHome;
         this.gameScore = builder.gameScore;
         this.halfInning = builder.halfInning;
@@ -35,6 +39,8 @@ public class PitchingDTO {
     }
 
     public static class Builder {
+
+        private boolean isOver;
 
         private boolean isHome;
 
@@ -47,6 +53,11 @@ public class PitchingDTO {
         private PlayerDTO hitter;
 
         private LogDTO log;
+
+        public Builder isOver(boolean isOver) {
+            this.isOver = isOver;
+            return this;
+        }
 
         public Builder isHome(boolean isHome) {
             this.isHome = isHome;
