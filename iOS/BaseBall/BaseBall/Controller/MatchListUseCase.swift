@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct MatchListUseCase<T: NetworkManageable> {
+struct MatchListUseCase {
     
-    private var networkManager: T
+    private var networkManager: NetworkManageable
     
     struct MatchListRequest: Request {
         var path: String {
@@ -18,7 +18,7 @@ struct MatchListUseCase<T: NetworkManageable> {
         }
     }
     
-    init(networkManager: T) {
+    init(networkManager: NetworkManageable) {
         self.networkManager = networkManager
     }
     

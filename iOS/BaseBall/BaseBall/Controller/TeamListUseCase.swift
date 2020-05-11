@@ -9,9 +9,9 @@
 import Foundation
 
 
-struct TeamListUseCase<T: NetworkManageable> {
+struct TeamListUseCase {
     
-    private var networkManager: T
+    private var networkManager: NetworkManageable
     let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     
     struct TeamListRequest: Request {
@@ -24,7 +24,7 @@ struct TeamListUseCase<T: NetworkManageable> {
         var path: String
     }
     
-    init(networkManager: T) {
+    init(networkManager: NetworkManageable) {
         self.networkManager = networkManager
     }
     
