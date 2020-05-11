@@ -9,13 +9,13 @@ public class LogDTO {
 
     private Result result;
 
-    private Map<String, Integer> count;
+    private Map<Result, Integer> count;
 
     private boolean isOut;
 
     private boolean isHit;
 
-    public LogDTO(Result result, Map<String, Integer> count, boolean isOut, boolean isHit) {
+    public LogDTO(Result result, Map<Result, Integer> count, boolean isOut, boolean isHit) {
         this.result = result;
         this.count = count;
         this.isOut = isOut;

@@ -11,12 +11,9 @@ public class HalfInningDTO {
 
     private boolean isAttack;
 
-    private int out;
-
-    public HalfInningDTO(int round, boolean isTop, boolean isAttack, int out) {
+    public HalfInningDTO(int round, boolean isTop, boolean isAttack) {
         this.round = round;
         this.isTop = isTop;
         this.isAttack = isAttack;
-        this.out = out;
     }
 }
