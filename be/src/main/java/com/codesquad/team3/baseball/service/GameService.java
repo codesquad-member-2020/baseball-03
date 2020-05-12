@@ -1,14 +1,12 @@
 package com.codesquad.team3.baseball.service;
 
 import com.codesquad.team3.baseball.dao.GameDAO;
-import com.codesquad.team3.baseball.domain.HalfInning;
 import com.codesquad.team3.baseball.dto.HalfInningDTO;
 import com.codesquad.team3.baseball.dto.PitchingDTO;
 import com.codesquad.team3.baseball.dto.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,14 +16,8 @@ public class GameService {
     @Autowired
     private GameDAO gameDAO;
 
-    public void initGame(Integer gameId, HttpSession session) {
+    public void initGame(Integer gameId) {
         gameDAO.addHalfInning(gameId, true, 1);
-
-        //새로운 하프이닝 상태를 세션에 저장
-        Integer halfInningId = gameDAO.findHalfInningId(gameId,1,true);
-        HalfInning halfInning = new HalfInning(halfInningId, 1, true);
-        session.setAttribute("halfInning", halfInning);
-
         gameDAO.addTeamRecord(gameId); //해당 경기의 선수 레코드들 모두 초기화로 추가
     }
 
