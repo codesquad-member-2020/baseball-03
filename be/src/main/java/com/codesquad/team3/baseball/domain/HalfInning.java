@@ -11,11 +11,16 @@ public class HalfInning {
     private boolean first;
     private boolean second;
     private boolean third;
+    private int batting_order;
 
     public HalfInning(Integer id, int inning, boolean isTop) {
         this.id = id;
         this.inning = inning;
         this.isTop = isTop;
+    }
+
+    public void setBatting_order(int batting_order) {
+        this.batting_order = batting_order;
     }
 
     public int addScore(){
