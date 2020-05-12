@@ -13,7 +13,9 @@ class GameListViewController: UIViewController {
     private var gameListLabel: GameListLabel = GameListLabel()
     private var scrollView: UIScrollView = UIScrollView()
     private var gameListStackView: GameListStackView = GameListStackView()
-    private var gameListViews: [GameListView] = []
+    private var useCase: MatchListUseCase = MatchListUseCase(networkManager: NetworkManager())
+    private var imageUseCase: ImageUseCase = ImageUseCase(networkManager: NetworkManager())
+    private var matchListManager = MatchListManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +24,23 @@ class GameListViewController: UIViewController {
         setupGameListLabel()
         setupSrcollView()
         setupGameListStackView()
-        setupGameListViews()
+        setupUseCase()
+        //        setupGameListViews()
+    }
+    
+    private func setupUseCase() {
+        useCase.requestMatchList(failureHandler: {
+            self.errorHandling(error:$0)
+        }) {
+            self.matchListManager.insertMatchList(matchList: $0)
+        }
     }
     
     private func setupObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(matchListInserted),
+                                               name: .MatchListInserted,
+                                               object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(homeTeamSelected(_:)),
                                                name: .HomeTeamSelected,
@@ -68,14 +83,53 @@ class GameListViewController: UIViewController {
     }
     
     private func setupGameListViews() {
-        for index in 0..<10 {
-            let gameListView = GameListView()
-            gameListViews.append(gameListView)
-            gameListStackView.addArrangedSubview(gameListView)
-            gameListView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2).isActive = true
-            gameListView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95).isActive = true
-            gameListView.gameLabel.text = "GAME \(index + 1)"
+        for index in 0..<matchListManager.count() {
+            DispatchQueue.main.async {
+                guard let match = self.matchListManager.match(at: index) else {return}
+                let gameListView = GameListView()
+                self.gameListStackView.addArrangedSubview(gameListView)
+               
+                gameListView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2).isActive = true
+                gameListView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95).isActive = true
+                
+                gameListView.setGameLabel(order: match.matchId)
+                
+                self.imageUseCase.requestTeamImage(name: match.away.name + "_thumbnail", from: match.away.thumbnail_url, failureHandler: {
+                    self.errorHandling(error: $0)
+                }) {
+                    let data = $0
+                    DispatchQueue.main.async {
+                        gameListView.setAwayTeamImage(data: data)
+                    }
+                }
+                
+                self.imageUseCase.requestTeamImage(name: match.home.name + "_thumbnail", from: match.home.thumbnail_url, failureHandler: {
+                    self.errorHandling(error: $0)
+                }) {
+                    let data = $0
+                    DispatchQueue.main.async {
+                        gameListView.setHomeTeamImage(data: data)
+                    }
+                }
+            }
         }
+    }
+    
+    private func alertError(message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "문제가 생겼어요", message: message, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "넵...", style: .default)
+            alert.addAction(ok)
+            self.present(alert, animated: true)
+        }
+    }
+    
+    private func errorHandling(error: NetworkManager.NetworkError) {
+        alertError(message: error.message())
+    }
+    
+    @objc func matchListInserted() {
+        setupGameListViews()
     }
     
     @objc func homeTeamSelected(_ notification: Notification) {
