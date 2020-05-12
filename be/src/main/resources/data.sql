@@ -52,7 +52,7 @@ INSERT INTO game (id, home_batting_order, away_batting_order, is_over)
 VALUES (1, 1, 1, false),
         (2, 1, 1, false),
         (3, 1, 1, false),
-        (4, 1, 1, true),
+        (4, 1, 1, false),
         (5, 1, 1, false);
 
 INSERT INTO team_game (team, game, user, is_home)
