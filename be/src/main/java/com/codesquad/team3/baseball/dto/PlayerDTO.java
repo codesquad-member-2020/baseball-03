@@ -8,7 +8,6 @@ public class PlayerDTO {
 
     private String name;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private int pitchCount;
 
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
