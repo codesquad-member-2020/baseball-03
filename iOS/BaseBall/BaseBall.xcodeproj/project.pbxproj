@@ -13,10 +13,10 @@
 		A5276CC62462B88500085D2E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5276CC52462B88500085D2E /* GameViewController.swift */; };
 		A5318240246533D8005B6B20 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531823F246533D8005B6B20 /* ScoreView.swift */; };
 		A531824224653DC3005B6B20 /* ElectronicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824124653DC3005B6B20 /* ElectronicView.swift */; };
-		A53182482466560D005B6B20 /* CurrentPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53182472466560D005B6B20 /* CurrentPlayerCell.swift */; };
-		A531824A24668448005B6B20 /* CurrentRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824924668448005B6B20 /* CurrentRecordCell.swift */; };
-		A531824E2466892D005B6B20 /* CurrentPlayerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824D2466892D005B6B20 /* CurrentPlayerDataSource.swift */; };
-		A531825024668992005B6B20 /* CurrentRecordDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824F24668992005B6B20 /* CurrentRecordDataSource.swift */; };
+		A53182482466560D005B6B20 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53182472466560D005B6B20 /* PlayerCell.swift */; };
+		A531824A24668448005B6B20 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824924668448005B6B20 /* RecordCell.swift */; };
+		A531824E2466892D005B6B20 /* PlayerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824D2466892D005B6B20 /* PlayerDataSource.swift */; };
+		A531825024668992005B6B20 /* RecordDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531824F24668992005B6B20 /* RecordDataSource.swift */; };
 		A545AEDD246155450094C821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AEDC246155450094C821 /* AppDelegate.swift */; };
 		A545AEE6246155450094C821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE4246155450094C821 /* Main.storyboard */; };
 		A545AEE8246155470094C821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE7246155470094C821 /* Assets.xcassets */; };
@@ -59,10 +59,10 @@
 		A5276CC52462B88500085D2E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A531823F246533D8005B6B20 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		A531824124653DC3005B6B20 /* ElectronicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectronicView.swift; sourceTree = "<group>"; };
-		A53182472466560D005B6B20 /* CurrentPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerCell.swift; sourceTree = "<group>"; };
-		A531824924668448005B6B20 /* CurrentRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRecordCell.swift; sourceTree = "<group>"; };
-		A531824D2466892D005B6B20 /* CurrentPlayerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerDataSource.swift; sourceTree = "<group>"; };
-		A531824F24668992005B6B20 /* CurrentRecordDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRecordDataSource.swift; sourceTree = "<group>"; };
+		A53182472466560D005B6B20 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		A531824924668448005B6B20 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		A531824D2466892D005B6B20 /* PlayerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDataSource.swift; sourceTree = "<group>"; };
+		A531824F24668992005B6B20 /* RecordDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDataSource.swift; sourceTree = "<group>"; };
 		A545AED9246155450094C821 /* BaseBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A545AEDC246155450094C821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A545AEE5246155450094C821 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 				A5BD609C2462F5C30073CE3E /* FieldView.swift */,
 				A531823F246533D8005B6B20 /* ScoreView.swift */,
 				A531824124653DC3005B6B20 /* ElectronicView.swift */,
-				A53182472466560D005B6B20 /* CurrentPlayerCell.swift */,
-				A531824924668448005B6B20 /* CurrentRecordCell.swift */,
+				A53182472466560D005B6B20 /* PlayerCell.swift */,
+				A531824924668448005B6B20 /* RecordCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,8 +145,8 @@
 		A531824C246688FF005B6B20 /* TableViewDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				A531824D2466892D005B6B20 /* CurrentPlayerDataSource.swift */,
-				A531824F24668992005B6B20 /* CurrentRecordDataSource.swift */,
+				A531824D2466892D005B6B20 /* PlayerDataSource.swift */,
+				A531824F24668992005B6B20 /* RecordDataSource.swift */,
 			);
 			path = TableViewDataSource;
 			sourceTree = "<group>";
@@ -400,14 +400,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B67FB32467CCB6000D8C54 /* NetworkManager.swift in Sources */,
-				A531824A24668448005B6B20 /* CurrentRecordCell.swift in Sources */,
-				A531825024668992005B6B20 /* CurrentRecordDataSource.swift in Sources */,
+				A531824A24668448005B6B20 /* RecordCell.swift in Sources */,
+				A531825024668992005B6B20 /* RecordDataSource.swift in Sources */,
 				A5276CC62462B88500085D2E /* GameViewController.swift in Sources */,
 				A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */,
 				A54FD7B12466E7250069BB7A /* DetailScoreViewController.swift in Sources */,
 				A5C2381F24616DF30087F61A /* GameListViewController.swift in Sources */,
 				A592390D2467D70400331014 /* UIColorExtension.swift in Sources */,
-				A531824E2466892D005B6B20 /* CurrentPlayerDataSource.swift in Sources */,
+				A531824E2466892D005B6B20 /* PlayerDataSource.swift in Sources */,
 				A531824224653DC3005B6B20 /* ElectronicView.swift in Sources */,
 				A54FD7B4246703DB0069BB7A /* PlayerInfoCell.swift in Sources */,
 				A5276CBC2461DD1A00085D2E /* GameListView.swift in Sources */,
@@ -422,7 +422,7 @@
 				A5C95A7C2468AE8400549905 /* MatchList.swift in Sources */,
 				A54FD7B6246712170069BB7A /* DetailTableViewDataSource.swift in Sources */,
 				A5276CC3246246C800085D2E /* GameListStackView.swift in Sources */,
-				A53182482466560D005B6B20 /* CurrentPlayerCell.swift in Sources */,
+				A53182482466560D005B6B20 /* PlayerCell.swift in Sources */,
 				A5318240246533D8005B6B20 /* ScoreView.swift in Sources */,
 				A5C95A8A246935BA00549905 /* ImageUseCase.swift in Sources */,
 				A5C95A8824692CC400549905 /* MatchListManager.swift in Sources */,
