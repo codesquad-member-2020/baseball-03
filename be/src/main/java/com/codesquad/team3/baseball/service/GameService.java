@@ -35,7 +35,7 @@ public class GameService {
 
     //DB에서 홈인지 어웨이인지 확인하고 반환
     private boolean checkHome(Integer gameId, Integer teamId) {
-        return true;
+        return gameDAO.checkHome(gameId, teamId);
     }
 
     private Map<String, Integer> initScore() {
@@ -66,7 +66,7 @@ public class GameService {
 
 
     private PlayerDTO initHitter(Integer teamId, Integer gameId) {
-        return gameDAO.getHitter(teamId, gameId);
+        return gameDAO.getHitter(teamId, gameId, true);
     }
 
 }
