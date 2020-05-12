@@ -10,4 +10,9 @@ public class PitcherDTO {
     public PitcherDTO(String name) {
         this.name = name;
     }
+
+    public PitcherDTO(String name, int pitchCount) {
+        this.name = name;
+        this.pitchCount = pitchCount;
+    }
 }
