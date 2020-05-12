@@ -11,7 +11,7 @@ public class HalfInning {
     private boolean first;
     private boolean second;
     private boolean third;
-    private int batting_order;
+    private boolean home;
 
     public HalfInning(Integer id, int inning, boolean isTop) {
         this.id = id;
@@ -19,8 +19,18 @@ public class HalfInning {
         this.isTop = isTop;
     }
 
-    public void setBatting_order(int batting_order) {
-        this.batting_order = batting_order;
+    public HalfInning(Builder builder) {
+        this.id = builder.id;
+        this.inning = builder.inning;
+        this.isTop = builder.isTop;
+        this.score = builder.score;
+        this.strike = builder.strike;
+        this.ball = builder.ball;
+        this.out = builder.out;
+        this.first = builder.first;
+        this.second = builder.second;
+        this.third = builder.third;
+        this.home = builder.home;
     }
 
     public int addScore(){
@@ -77,5 +87,78 @@ public class HalfInning {
                 ", second=" + second +
                 ", third=" + third +
                 '}';
+    }
+
+    public static class Builder {
+
+        private Integer id;
+        private int inning;
+        private boolean isTop;
+        private int score;
+        private int strike;
+        private int ball;
+        private int out;
+        private boolean first;
+        private boolean second;
+        private boolean third;
+        private boolean home;
+
+        public Builder(Integer id) {
+            this.id = id;
+        }
+
+        public Builder inning(int inning) {
+            this.inning = inning;
+            return this;
+        }
+
+        public Builder isTop(boolean isTop) {
+            this.isTop = isTop;
+            return this;
+        }
+
+        public Builder score(int score) {
+            this.score = score;
+            return this;
+        }
+
+        public Builder strike(int strike) {
+            this.strike = strike;
+            return this;
+        }
+
+        public Builder ball(int ball) {
+            this.ball = ball;
+            return this;
+        }
+
+        public Builder out(int out) {
+            this.out = out;
+            return this;
+        }
+
+        public Builder first(boolean first) {
+            this.first = first;
+            return this;
+        }
+
+        public Builder second(boolean second) {
+            this.second = second;
+            return this;
+        }
+
+        public Builder third(boolean third) {
+            this.third = third;
+            return this;
+        }
+
+        public Builder home(boolean home) {
+            this.home = home;
+            return this;
+        }
+
+        public HalfInning build() {
+            return new HalfInning(this);
+        }
     }
 }
