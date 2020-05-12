@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -16,7 +17,7 @@ public class GameService {
 
     public void initGame(Integer gameId) {
         gameDAO.addHalfInning(gameId, true, 1);
-        gameDAO.addTeamRecord(gameId); //해당 경기의 선수 레코드들 모두 초기화로 추가
+        addTeamRecord(gameId);
     }
 
     public PitchingDTO getInitGameData(Integer gameId, Integer teamId) {
@@ -29,6 +30,14 @@ public class GameService {
                                     .build();
 
         return pitchingDTO;
+    }
+
+    public void addTeamRecord(Integer gameId) {
+        List<Integer> teams = gameDAO.findTeamIdWithGameId(gameId);
+        for (Integer team:teams) {
+            gameDAO.addTeamPitcherRecordRecords(gameId, team);
+            gameDAO.addTeamHitterRecordRecords(gameId, team);
+        }
     }
 
     //DB에서 홈인지 어웨이인지 확인하고 반환
