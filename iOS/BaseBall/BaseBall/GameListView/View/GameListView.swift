@@ -22,8 +22,8 @@ class GameListView: UIView {
         setupGameLabel()
         setupVersusView()
         setupVersusLabel()
-        setupHomeTeamImage()
-        setupAwayTeamImage()
+        setupHomeTeamButton()
+        setupAwayTeamButton()
     }
     
     override init(frame: CGRect) {
@@ -32,8 +32,24 @@ class GameListView: UIView {
         setupGameLabel()
         setupVersusView()
         setupVersusLabel()
-        setupHomeTeamImage()
-        setupAwayTeamImage()
+        setupHomeTeamButton()
+        setupAwayTeamButton()
+    }
+    
+    func setGameLabel(order: String) {
+        self.gameLabel.text = "GAME " + order
+    }
+    
+    func setHomeTeamImage(data: Data) {
+        let image = UIImage(data: data)
+        homeTeamButton.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * homeTeamButton.frame.height / (image?.size.height ?? 0)).isActive = true
+        homeTeamButton.setImage(image, for: .normal)
+    }
+
+    func setAwayTeamImage(data: Data) {
+        let image = UIImage(data: data)
+        awayTeamButon.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * awayTeamButon.frame.height / (image?.size.height ?? 0)).isActive = true
+        awayTeamButon.setImage(image, for: .normal)
     }
     
     private func setup() {
@@ -57,7 +73,6 @@ class GameListView: UIView {
         gameLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         gameLabel.textColor = .white
         gameLabel.font = UIFont(name: "DungGeunMo", size: 30)
-        gameLabel.text = "GAME"
     }
     
     private func setupVersusView() {
@@ -79,7 +94,7 @@ class GameListView: UIView {
         versusLabel.text = "VS"
     }
     
-    private func setupHomeTeamImage() {
+    private func setupHomeTeamButton() {
         let containerView = UIView()
         self.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,18 +104,16 @@ class GameListView: UIView {
         containerView.bottomAnchor.constraint(equalTo: versusView.bottomAnchor).isActive = true
         
         containerView.addSubview(homeTeamButton)
-        let image = UIImage(named: "NC")
+        
         homeTeamButton.translatesAutoresizingMaskIntoConstraints = false
         homeTeamButton.heightAnchor.constraint(equalTo: versusView.heightAnchor, multiplier: 0.7).isActive = true
-        homeTeamButton.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * homeTeamButton.frame.height / (image?.size.height ?? 0)).isActive = true
         homeTeamButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         homeTeamButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         homeTeamButton.imageView?.contentMode = .scaleAspectFit
-        homeTeamButton.setImage(image, for: .normal)
         homeTeamButton.addTarget(self, action: #selector(homeTeamPushed(_:)), for: .touchUpInside)
     }
     
-    private func setupAwayTeamImage() {
+    private func setupAwayTeamButton() {
         let containerView = UIView()
         self.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -110,16 +123,14 @@ class GameListView: UIView {
         containerView.bottomAnchor.constraint(equalTo: versusView.bottomAnchor).isActive = true
         
         containerView.addSubview(awayTeamButon)
-        let image = UIImage(named: "Hanwha")
         awayTeamButon.translatesAutoresizingMaskIntoConstraints = false
         awayTeamButon.heightAnchor.constraint(equalTo: versusView.heightAnchor, multiplier: 0.7).isActive = true
-        awayTeamButon.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * awayTeamButon.frame.height / (image?.size.height ?? 0)).isActive = true
         awayTeamButon.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         awayTeamButon.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         awayTeamButon.imageView?.contentMode = .scaleAspectFit
-        awayTeamButon.setImage(image, for: .normal)
         awayTeamButon.addTarget(self, action: #selector(awayTeamPushed(_:)), for: .touchUpInside)
     }
+
     
     @objc func homeTeamPushed(_ sender: UIButton) {
         NotificationCenter.default.post(name: .HomeTeamSelected,

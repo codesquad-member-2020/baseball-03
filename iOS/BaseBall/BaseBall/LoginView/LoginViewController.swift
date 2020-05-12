@@ -12,10 +12,10 @@ class LoginViewController: UIViewController {
     
     private var logoButton = UIButton()
     private var loginLabel = UILabel()
-    
-    private let logoName = ["Doosan", "Hanwha", "Kia", "Kiwoom", "KT", "LG", "Lotte", "NC", "Samsung", "SK"]
+
     private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     private let useCase = TeamListUseCase(networkManager: NetworkManager())
+    private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private let teamListManager = TeamListManager()
     
     override func viewDidLoad() {
@@ -94,7 +94,7 @@ class LoginViewController: UIViewController {
             guard let team = teamListManager.team(at: $0) else {return}
             group.enter()
             queue.async {
-                self.useCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
+                self.imageUseCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
                     self.errorHandling(error: $0)
                 }) {_ in
                     group.leave()
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            self.useCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
+            self.imageUseCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
                 self.errorHandling(error: $0)
             }) {
                 let image = UIImage(data: $0)
