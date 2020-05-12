@@ -101,6 +101,18 @@ public class GameDAO {
         }
     }
 
+    public String findTeamNameWithGameId(Integer gameId, boolean isHome) {
+        String sql = "SELECT t.name " +
+                "FROM team_game g " +
+                "JOIN team t " +
+                "ON g.team = t.id " +
+                "WHERE game = :game_id " +
+                "AND is_home = :is_home";
+        SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId)
+                                                                .addValue("is_home", isHome);
+        return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, String.class);
+    }
+
     private List<Integer> findHitterIds(Integer teamId) {
         String sql = "SELECT id FROM player WHERE team = :team_id AND is_pitcher = false";
         SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
