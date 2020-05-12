@@ -16,8 +16,10 @@ public class GameService {
     private GameDAO gameDAO;
 
     public void initGame(Integer gameId) {
-        gameDAO.addHalfInning(gameId, true, 1);
-        addTeamRecord(gameId);
+        if(gameDAO.getHalfInningCount(gameId)==0){
+            gameDAO.addHalfInning(gameId, true, 1);
+            addTeamRecord(gameId);
+        }
     }
 
     public PitchingDTO getInitGameData(Integer gameId, Integer teamId) {
@@ -33,7 +35,7 @@ public class GameService {
         return pitchingDTO;
     }
 
-    public void addTeamRecord(Integer gameId) {
+    private void addTeamRecord(Integer gameId) {
         List<Integer> teams = gameDAO.findTeamIdWithGameId(gameId);
         for (Integer team:teams) {
             gameDAO.addTeamPitcherRecordRecords(gameId, team);

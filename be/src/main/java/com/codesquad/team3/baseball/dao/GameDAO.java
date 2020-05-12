@@ -113,6 +113,12 @@ public class GameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, String.class);
     }
 
+    public int getHalfInningCount(Integer gameId) {
+        String sql = "SELECT COUNT(*) FROM half_inning WHERE game = :game_id";
+        SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId);
+        return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, Integer.class);
+    }
+
     private List<Integer> findHitterIds(Integer teamId) {
         String sql = "SELECT id FROM player WHERE team = :team_id AND is_pitcher = false";
         SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
@@ -132,5 +138,4 @@ public class GameDAO {
         SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId).addValue("inning", inning).addValue("is_top", isTop);
         return namedParameterJdbcTemplate.queryForObject(sql,parameterSource,Integer.class);
     }
-
 }
