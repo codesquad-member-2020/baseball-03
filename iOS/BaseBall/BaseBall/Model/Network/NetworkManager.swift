@@ -11,8 +11,8 @@ import Foundation
 protocol NetworkManageable {
     typealias DataResponse = Result<Data, NetworkManager.NetworkError>
     typealias DownloadResponse = Result<URL, NetworkManager.NetworkError>
-    func getResource(request: Request, handler: @escaping (DataResponse) -> ())
-    func downloadResource(request: Request, handler: @escaping (DownloadResponse) ->())
+    func loadResource(request: Request, handler: @escaping (DataResponse) -> ())
+    func storeResource(request: Request, handler: @escaping (DownloadResponse) ->())
 }
 
 class NetworkManager: NetworkManageable {
@@ -43,7 +43,7 @@ class NetworkManager: NetworkManageable {
         }
     }
     
-    func downloadResource(request: Request, handler: @escaping (DownloadResponse) -> ()) {
+    func storeResource(request: Request, handler: @escaping (DownloadResponse) -> ()) {
         guard let urlRequest = request.urlRequest() else {
             handler(.failure(.InvalidURL))
             return
@@ -74,7 +74,7 @@ class NetworkManager: NetworkManageable {
         }.resume()
     }
 
-    func getResource(request: Request, handler: @escaping (DataResponse) -> ()) {
+    func loadResource(request: Request, handler: @escaping (DataResponse) -> ()) {
         guard let urlRequest = request.urlRequest() else {
             handler(.failure(.InvalidURL))
             return

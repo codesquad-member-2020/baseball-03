@@ -28,7 +28,7 @@ struct ImageUseCase {
             completed(imageURL)
         } else {
             let request = ImageRequest(path: from)
-            networkManager.downloadResource(request: request) {
+            networkManager.storeResource(request: request) {
                 switch $0 {
                 case .failure(let error):
                     failureHandler(error)
