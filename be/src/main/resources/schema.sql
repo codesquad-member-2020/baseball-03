@@ -37,9 +37,9 @@ CREATE TABLE player (
 
 CREATE TABLE game (
     id INT AUTO_INCREMENT PRIMARY KEY ,
-    home_batting_order INT NOT NULL ,
-    away_batting_order INT NOT NULL ,
-    is_over BOOLEAN DEFAULT FALSE NOT NULL
+    home_batting_order INT DEFAULT 1 NOT NULL ,
+    away_batting_order INT DEFAULT 1 NOT NULL ,
+    is_over BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE team_game (
@@ -51,7 +51,7 @@ CREATE TABLE team_game (
 );
 
 CREATE TABLE pitcher_record (
-    pitch INT NOT NULL ,
+    pitch INT DEFAULT 0 NOT NULL ,
     team_game_team INT REFERENCES team_game(team),
     team_game_game INT REFERENCES team_game(game),
     player INT REFERENCES player(id),
@@ -59,9 +59,9 @@ CREATE TABLE pitcher_record (
 );
 
 CREATE TABLE hitter_record (
-    at_bat INT NOT NULL ,
-    hit INT NOT NULL ,
-    outs INT NOT NULL ,
+    at_bat INT DEFAULT 0 NOT NULL ,
+    hit INT DEFAULT 0 NOT NULL ,
+    outs INT DEFAULT 0 NOT NULL ,
     team_game_team INT REFERENCES team_game(team),
     team_game_game INT REFERENCES team_game(game),
     player INT REFERENCES player(id),
@@ -70,20 +70,14 @@ CREATE TABLE hitter_record (
 
 CREATE TABLE half_inning (
     id INT AUTO_INCREMENT PRIMARY KEY ,
-    score INT NOT NULL ,
-    outs INT NOT NULL ,
+    score INT DEFAULT 0 NOT NULL ,
+    outs INT DEFAULT 0 NOT NULL ,
     is_top BOOLEAN NOT NULL ,
     inning INT NOT NULL ,
-    first_base BOOLEAN NOT NULL ,
-    second_base BOOLEAN NOT NULL ,
-    third_base BOOLEAN NOT NULL ,
+    first_base BOOLEAN DEFAULT false NOT NULL ,
+    second_base BOOLEAN DEFAULT false NOT NULL ,
+    third_base BOOLEAN DEFAULT false NOT NULL ,
     game INT REFERENCES game(id)
-);
-
-CREATE TABLE at_bat (
-    id INT AUTO_INCREMENT PRIMARY KEY ,
-    half_inning INT REFERENCES half_inning(id) ,
-    hitter INT REFERENCES player(id)
 );
 
 CREATE TABLE game_log (
@@ -91,5 +85,6 @@ CREATE TABLE game_log (
     result ENUM('STRIKE', 'HIT', 'BALL', 'OUT') NOT NULL ,
     create_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     pitcher INT REFERENCES player(id) ,
-    at_bat INT REFERENCES at_bat(id)
+    half_inning INT REFERENCES half_inning(id) ,
+    hitter INT REFERENCES player(id)
 );
