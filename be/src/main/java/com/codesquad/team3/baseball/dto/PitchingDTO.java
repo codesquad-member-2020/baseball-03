@@ -14,6 +14,9 @@ public class PitchingDTO {
     private boolean isHome;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private Map<String, String> team;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Map<String, Integer> gameScore;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -33,6 +36,7 @@ public class PitchingDTO {
     public PitchingDTO(Builder builder) {
         this.isOver = builder.isOver;
         this.isHome = builder.isHome;
+        this.team = builder.team;
         this.gameScore = builder.gameScore;
         this.halfInning = builder.halfInning;
         this.pitcher = builder.pitcher;
@@ -45,6 +49,8 @@ public class PitchingDTO {
         private boolean isOver;
 
         private boolean isHome;
+
+        private Map<String, String> team;
 
         private Map<String, Integer> gameScore;
 
@@ -65,6 +71,11 @@ public class PitchingDTO {
 
         public Builder isHome(boolean isHome) {
             this.isHome = isHome;
+            return this;
+        }
+
+        public Builder team(Map<String, String> team) {
+            this.team = team;
             return this;
         }
 
