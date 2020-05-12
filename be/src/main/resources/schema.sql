@@ -77,6 +77,7 @@ CREATE TABLE half_inning (
     first_base BOOLEAN DEFAULT false NOT NULL ,
     second_base BOOLEAN DEFAULT false NOT NULL ,
     third_base BOOLEAN DEFAULT false NOT NULL ,
+    home_base BOOLEAN DEFAULT false NOT NULL ,
     game INT REFERENCES game(id)
 );
 
