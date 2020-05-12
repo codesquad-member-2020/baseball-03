@@ -19,10 +19,10 @@ public class PitchingDTO {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private HalfInningDTO halfInning;
 
-    private PlayerDTO pitcher;
+    private PitcherDTO pitcher;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private PlayerDTO hitter;
+    private HitterDTO hitter;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private LogDTO log;
@@ -50,9 +50,9 @@ public class PitchingDTO {
 
         private HalfInningDTO halfInning;
 
-        private PlayerDTO pitcher;
+        private PitcherDTO pitcher;
 
-        private PlayerDTO hitter;
+        private HitterDTO hitter;
 
         private LogDTO log;
 
@@ -78,12 +78,12 @@ public class PitchingDTO {
             return this;
         }
 
-        public Builder pitcher(PlayerDTO pitcher) {
+        public Builder pitcher(PitcherDTO pitcher) {
             this.pitcher = pitcher;
             return this;
         }
 
-        public Builder hitter(PlayerDTO hitter) {
+        public Builder hitter(HitterDTO hitter) {
             this.hitter = hitter;
             return this;
         }

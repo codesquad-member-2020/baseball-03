@@ -7,8 +7,7 @@ public class PitcherDTO {
     private String name;
     private int pitchCount;
 
-    public PitcherDTO(String name, int pitchCount) {
+    public PitcherDTO(String name) {
         this.name = name;
-        this.pitchCount = pitchCount;
     }
 }

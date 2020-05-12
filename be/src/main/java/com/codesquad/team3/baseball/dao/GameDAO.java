@@ -1,5 +1,6 @@
 package com.codesquad.team3.baseball.dao;
 
+import com.codesquad.team3.baseball.dto.HitterDTO;
 import com.codesquad.team3.baseball.dto.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,27 +24,28 @@ public class GameDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public String getPitcher(Integer teamId) {
+    public String getPitcherName(Integer teamId) {
         String sql = "SELECT name FROM player WHERE team = :team_id AND is_pitcher = true";
         SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
     }
 
-    public PlayerDTO getHitter(Integer gameId, Integer teamId, boolean isTop) {
+    public HitterDTO getHitter(Integer gameId, Integer teamId, boolean isTop) {
         //현재 공격 타순 가져오기
         Integer nowHitterBattingOrder = findBattingOrderWithGameId(gameId, isTop);
-        String sql = "SELECT p.name, p.batting_order, " +
-                "h.at_bat, h.hit FROM player p JOIN hitter_record h " +
+        String sql = "SELECT p.name, p.batting_order, p.average, h.at_bat, h.hit, h.outs " +
+                "FROM player p JOIN hitter_record h " +
                 "ON p.id = h.player " +
                 "WHERE team = ? " +
                 "AND batting_order = ?";
         return jdbcTemplate.queryForObject(sql, new Object[] {teamId, nowHitterBattingOrder}, ((rs, rowNum) -> {
-            PlayerDTO playerDTO = new PlayerDTO.Builder(rs.getString("name"))
-                                                .order(rs.getInt("batting_order"))
-                                                .atBats(rs.getInt("at_bat"))
-                                                .hits(rs.getInt("hit"))
-                                                .build();
-            return playerDTO;
+            HitterDTO hitterDTO = new HitterDTO(rs.getString("name"),
+                                                rs.getInt("batting_order"),
+                                                rs.getInt("at_bat"),
+                                                rs.getInt("hit"),
+                                                rs.getInt("outs"),
+                                                rs.getFloat("average"));
+            return hitterDTO;
         }));
     }
 

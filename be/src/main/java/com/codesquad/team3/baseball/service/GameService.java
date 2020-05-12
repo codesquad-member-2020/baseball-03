@@ -1,9 +1,7 @@
 package com.codesquad.team3.baseball.service;
 
 import com.codesquad.team3.baseball.dao.GameDAO;
-import com.codesquad.team3.baseball.dto.HalfInningDTO;
-import com.codesquad.team3.baseball.dto.PitchingDTO;
-import com.codesquad.team3.baseball.dto.PlayerDTO;
+import com.codesquad.team3.baseball.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,14 +56,12 @@ public class GameService {
         return halfInningDTO;
     }
 
-    private PlayerDTO initPitcher(Integer teamId) {
-        return new PlayerDTO.Builder(gameDAO.getPitcher(teamId))
-                                .pitchCount(0)
-                                .build();
+    private PitcherDTO initPitcher(Integer teamId) {
+        return new PitcherDTO(gameDAO.getPitcherName(teamId));
     }
 
 
-    private PlayerDTO initHitter(Integer teamId, Integer gameId) {
+    private HitterDTO initHitter(Integer teamId, Integer gameId) {
         return gameDAO.getHitter(teamId, gameId, true);
     }
 
