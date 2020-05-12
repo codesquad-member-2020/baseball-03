@@ -25,15 +25,14 @@ class GameListViewController: UIViewController {
         setupSrcollView()
         setupGameListStackView()
         setupUseCase()
-        //        setupGameListViews()
     }
     
     private func setupUseCase() {
         useCase.requestMatchList(failureHandler: {
-            self.errorHandling(error:$0)
-        }) {
+            self.errorHandling(error: $0)
+        }, completed: {
             self.matchListManager.insertMatchList(matchList: $0)
-        }
+        })
     }
     
     private func setupObserver() {
@@ -96,21 +95,21 @@ class GameListViewController: UIViewController {
                 
                 self.imageUseCase.requestTeamImage(name: match.away.name + "_thumbnail", from: match.away.thumbnail_url, failureHandler: {
                     self.errorHandling(error: $0)
-                }) {
+                }, completed: {
                     let data = $0
                     DispatchQueue.main.async {
                         gameListView.setAwayTeamImage(data: data)
                     }
-                }
+                })
                 
                 self.imageUseCase.requestTeamImage(name: match.home.name + "_thumbnail", from: match.home.thumbnail_url, failureHandler: {
                     self.errorHandling(error: $0)
-                }) {
+                }, completed: {
                     let data = $0
                     DispatchQueue.main.async {
                         gameListView.setHomeTeamImage(data: data)
                     }
-                }
+                })
             }
         }
     }
