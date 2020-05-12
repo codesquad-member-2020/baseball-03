@@ -10,12 +10,12 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
-public class MainDAO {
+public class MatchingDAO {
 
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public MainDAO(DataSource dataSource) {
+    public MatchingDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
