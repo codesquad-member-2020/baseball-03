@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentRecordDataSource: NSObject, UITableViewDataSource {
+class RecordDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
