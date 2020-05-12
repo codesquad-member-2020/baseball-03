@@ -37,8 +37,8 @@ CREATE TABLE player (
 
 CREATE TABLE game (
     id INT AUTO_INCREMENT PRIMARY KEY ,
-    home_batting_order INT NOT NULL ,
-    away_batting_order INT NOT NULL ,
+    home_batting_order INT DEFAULT 1 NOT NULL ,
+    away_batting_order INT DEFAULT 1 NOT NULL ,
     is_over BOOLEAN DEFAULT FALSE
 );
 
@@ -80,16 +80,11 @@ CREATE TABLE half_inning (
     game INT REFERENCES game(id)
 );
 
-CREATE TABLE at_bat (
-    id INT AUTO_INCREMENT PRIMARY KEY ,
-    half_inning INT REFERENCES half_inning(id) ,
-    hitter INT REFERENCES player(id)
-);
-
 CREATE TABLE game_log (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     result ENUM('STRIKE', 'HIT', 'BALL', 'OUT') NOT NULL ,
     create_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     pitcher INT REFERENCES player(id) ,
-    at_bat INT REFERENCES at_bat(id)
+    half_inning INT REFERENCES half_inning(id) ,
+    hitter INT REFERENCES player(id)
 );
