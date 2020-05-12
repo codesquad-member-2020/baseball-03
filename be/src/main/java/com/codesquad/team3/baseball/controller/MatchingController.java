@@ -21,9 +21,7 @@ public class MatchingController {
 
     @GetMapping("/teams")
     public ResponseEntity<ResponseData> getTeams() {
-        HashMap<String, Object> teams = new HashMap<>();
-        teams.put("teams", matchingService.getAllTeams());
-        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, teams), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, matchingService.getAllTeams()), HttpStatus.OK);
     }
 
     @GetMapping("/games")
