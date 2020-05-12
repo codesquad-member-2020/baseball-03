@@ -23,6 +23,7 @@ public class GameService {
     public PitchingDTO getInitGameData(Integer gameId, Integer teamId) {
         PitchingDTO pitchingDTO = new PitchingDTO.Builder()
                                     .isHome(checkHome(gameId,teamId))
+                                    .team(getTeamsName(gameId))
                                     .gameScore(initScore())
                                     .halfInning(initHalfInning(gameId, teamId))
                                     .pitcher(initPitcher(teamId))
@@ -69,9 +70,15 @@ public class GameService {
         return new PitcherDTO(gameDAO.getPitcherName(teamId));
     }
 
-
     private HitterDTO initHitter(Integer teamId, Integer gameId) {
         return gameDAO.getHitter(teamId, gameId, true);
+    }
+
+    private Map<String, String> getTeamsName(Integer gameId) {
+        Map<String, String> team = new HashMap<>();
+        team.put("home", gameDAO.findTeamNameWithGameId(gameId, true));
+        team.put("away", gameDAO.findTeamNameWithGameId(gameId, false));
+        return team;
     }
 
 }
