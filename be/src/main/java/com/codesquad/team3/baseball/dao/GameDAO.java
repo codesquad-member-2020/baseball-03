@@ -89,33 +89,6 @@ public class GameDAO {
         }));
     }
 
-    public void addAtBatHitter(Integer halfInningId, Integer gameId, boolean isTop) {
-        //현재 게임의 공격 팀 id 가져오기
-        Integer teamId;
-        if(isTop) {
-            teamId = findAttackTeam(gameId, false);
-        } else {
-            teamId = findAttackTeam(gameId, true);
-        }
-
-        Integer playerId = findPlayerIdWithBattingOrder(teamId, 1);
-        String sql = "INSERT INTO at_bat (half_inning, hitter) VALUES (:half_inning, :hitter)";
-        SqlParameterSource parameterSource = new MapSqlParameterSource("half_inning", halfInningId).addValue("hitter", playerId);
-        namedParameterJdbcTemplate.update(sql, parameterSource);
-    }
-
-    private Integer findAttackTeam(Integer gameId, boolean isHome) {
-        String sql = "SELECT team FROM team_game WHERE game = :game_id AND is_home = :is_home";
-        SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId).addValue("is_home", isHome);
-        return namedParameterJdbcTemplate.queryForObject(sql,parameterSource,Integer.class);
-    }
-
-    private Integer findPlayerIdWithBattingOrder(Integer teamId, int batting_order) {
-        String sql = "SELECT id FROM player WHERE team = :team_id AND batting_order = :order";
-        SqlParameterSource parameterSource = new MapSqlParameterSource("team_id", teamId).addValue("order", batting_order);
-        return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, Integer.class);
-    }
-
     public Integer findHalfInningId(Integer gameId, int inning, boolean isTop) {
         String sql = "SELECT id FROM half_inning WHERE game = :game_id AND inning = :inning AND is_top = :is_top";
         SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId).addValue("inning", inning).addValue("is_top", isTop);

@@ -27,7 +27,6 @@ public class GameService {
         session.setAttribute("halfInning", halfInning);
 
         gameDAO.addTeamRecord(gameId); //해당 경기의 선수 레코드들 모두 초기화로 추가
-        gameDAO.addAtBatHitter(halfInningId, gameId, true);
     }
 
     public PitchingDTO getInitGameData(Integer gameId, Integer teamId) {
