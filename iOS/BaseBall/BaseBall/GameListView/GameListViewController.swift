@@ -98,7 +98,8 @@ class GameListViewController: UIViewController {
                 }, completed: {
                     let data = $0
                     DispatchQueue.main.async {
-                        gameListView.setAwayTeamImage(data: data)
+                        let image = UIImage(named: data.path)
+                        gameListView.setAwayTeamImage(image: image)
                     }
                 })
                 
@@ -107,7 +108,8 @@ class GameListViewController: UIViewController {
                 }, completed: {
                     let data = $0
                     DispatchQueue.main.async {
-                        gameListView.setHomeTeamImage(data: data)
+                        let image = UIImage(named: data.path)
+                        gameListView.setHomeTeamImage(image: image)
                     }
                 })
             }

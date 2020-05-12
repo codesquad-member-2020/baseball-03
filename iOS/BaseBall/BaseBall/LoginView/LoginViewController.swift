@@ -110,7 +110,7 @@ class LoginViewController: UIViewController {
             self.imageUseCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
                 self.errorHandling(error: $0)
             }, completed: {
-                let image = UIImage(data: $0)
+                let image = UIImage(contentsOfFile: $0.path)
                 DispatchQueue.main.async {
                     self.view.backgroundColor = UIColor(hex: team.color)
                     self.logoButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3).isActive = true

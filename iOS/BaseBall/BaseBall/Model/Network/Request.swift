@@ -38,18 +38,17 @@ extension Request {
     func urlRequest() -> URLRequest? {
         guard let encodedPath = path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {return nil}
         guard let url = URL(string: encodedPath) else {return nil}
-        let urlRequest: URLRequest = {
-            var request = URLRequest(url: url)
-            request.httpMethod = httpMethod.description
-            request.httpBody = httpBody
-            
-            guard let headerFields = httpHeaderFields, let headerValue = httpHeaderValue else {return request}
-            
-            headerFields.forEach {
-                request.addValue(headerValue, forHTTPHeaderField: $0)
-            }
-            return request
-        }()
-        return urlRequest
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod.description
+        request.httpBody = httpBody
+        
+        guard let headerFields = httpHeaderFields, let headerValue = httpHeaderValue else {return request}
+        
+        headerFields.forEach {
+            request.addValue(headerValue, forHTTPHeaderField: $0)
+        }
+        
+        return request
     }
 }
