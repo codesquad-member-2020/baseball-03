@@ -48,12 +48,12 @@ VALUES ('정수빈', false, 0.211, 1, 1), ('오재원', false, 0.237, 2, 1), ('�
         ('노수광', false, 0.250, 1, 10), ('고종욱', false, 0.323, 2, 10), ('최정', false, 0.292, 3, 10), ('로맥', false, 0.276, 4, 10), ('한동민', false, 0.265, 5, 10),
         ('나주환', false, 0.222, 6, 10), ('이재원', false, 0.268, 7, 10), ('김창평', false, 0.178, 8, 10), ('정현', false, 0.246, 9, 10), ('킹엄', true, -1, -1, 10);
 
-INSERT INTO game (id, home_batting_order, away_batting_order)
-VALUES (1, 1, 1),
-        (2, 1, 1),
-        (3, 1, 1),
-        (4, 1, 1),
-        (5, 1, 1);
+INSERT INTO game (id, home_batting_order, away_batting_order, is_over)
+VALUES (1, 1, 1, false),
+        (2, 1, 1, false),
+        (3, 1, 1, false),
+        (4, 1, 1, true),
+        (5, 1, 1, false);
 
 INSERT INTO team_game (team, game, user, is_home)
 VALUES (1, 1, 1, true), (2, 1, 2, false),
