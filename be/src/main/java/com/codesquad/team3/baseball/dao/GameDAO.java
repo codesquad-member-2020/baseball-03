@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class GameDAO {
@@ -57,14 +58,6 @@ public class GameDAO {
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
 
-    public void addTeamRecord(Integer gameId) {
-        List<Integer> teams = findTeamIdWithGameId(gameId);
-        for (Integer team:teams) {
-            addTeamPitcherRecordRecords(gameId, team);
-            addTeamHitterRecordRecords(gameId, team);
-        }
-    }
-
     public boolean checkHome(Integer gameId, Integer teamId) {
         String sql = "SELECT is_home FROM team_game WHERE game = :game_id AND team = :team_id";
         SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId).addValue("team_id", teamId);
@@ -82,7 +75,7 @@ public class GameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, Integer.class);
     }
 
-    private void addTeamPitcherRecordRecords(Integer gameId, Integer teamId) {
+    public void addTeamPitcherRecordRecords(Integer gameId, Integer teamId) {
         Integer pitcherId = findPitcherId(teamId);
         String sql = "INSERT INTO pitcher_record (team_game_team, team_game_game, player) VALUES (:team_id, :game_id, :player_id)";
         SqlParameterSource parameterSource = new MapSqlParameterSource("team_id", teamId)
@@ -91,19 +84,13 @@ public class GameDAO {
         namedParameterJdbcTemplate.update(sql, parameterSource);
     }
 
-    private Integer findPitcherId(Integer teamId) {
-        String sql = "SELECT id FROM player WHERE team = :team_id AND is_pitcher = true";
-        SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
-        return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, Integer.class);
-    }
-
-    private List<Integer> findTeamIdWithGameId(Integer gameId) {
+    public List<Integer> findTeamIdWithGameId(Integer gameId) {
         String sql = "SELECT team FROM team_game WHERE game = :game_id";
         SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId);
         return namedParameterJdbcTemplate.queryForList(sql,parameterSource, Integer.class);
     }
 
-    private void addTeamHitterRecordRecords(Integer gameId, Integer teamId) {
+    public void addTeamHitterRecordRecords(Integer gameId, Integer teamId) {
         List<Integer> hitterIds = findHitterIds(teamId);
         String sql = "INSERT INTO hitter_record (team_game_team, team_game_game, player) VALUES (:team_id, :game_id, :player_id)";
         SqlParameterSource parameterSource;
@@ -120,6 +107,12 @@ public class GameDAO {
         return namedParameterJdbcTemplate.query(sql, namedParameters,((rs, rowNum) -> {
             return rs.getInt("id");
         }));
+    }
+
+    private Integer findPitcherId(Integer teamId) {
+        String sql = "SELECT id FROM player WHERE team = :team_id AND is_pitcher = true";
+        SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
+        return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, Integer.class);
     }
 
     public Integer findHalfInningId(Integer gameId, int inning, boolean isTop) {
