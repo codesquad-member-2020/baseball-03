@@ -859,7 +859,7 @@
                                 <rect key="frame" x="0.0" y="457" width="375" height="105.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentPlayerCell" id="wwr-st-jlo" customClass="CurrentPlayerCell" customModule="BaseBall" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentPlayerCell" id="wwr-st-jlo" customClass="PlayerCell" customModule="BaseBall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="23.666666030883789"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wwr-st-jlo" id="4kR-qn-Eqz">
@@ -914,7 +914,7 @@
                                 <rect key="frame" x="0.0" y="564.66666666666663" width="375" height="164.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentRecordCell" id="e6G-Lq-pAF" customClass="CurrentRecordCell" customModule="BaseBall" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentRecordCell" id="e6G-Lq-pAF" customClass="RecordCell" customModule="BaseBall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e6G-Lq-pAF" id="T9l-xd-loD">
@@ -1014,8 +1014,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Play" image="ball" landscapeImage="ball" id="fqh-xO-muW"/>
                     <connections>
-                        <outlet property="currentPlayerTableView" destination="aUq-aZ-He7" id="kok-l0-vAy"/>
-                        <outlet property="currentRecordTableView" destination="npG-8P-BvP" id="yHc-Li-Du9"/>
+                        <outlet property="PlayerTableView" destination="aUq-aZ-He7" id="kok-l0-vAy"/>
+                        <outlet property="RecordTableView" destination="npG-8P-BvP" id="yHc-Li-Du9"/>
                         <outlet property="pitchButton" destination="zLN-j0-5ow" id="jxI-oQ-PJN"/>
                     </connections>
                 </viewController>

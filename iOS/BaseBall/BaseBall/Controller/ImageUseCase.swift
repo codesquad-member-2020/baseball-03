@@ -21,31 +21,22 @@ struct ImageUseCase {
         self.networkManager = networkManager
     }
     
-    func requestTeamImage(name: String, from: String, failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(Data) -> ()) {
+    func requestTeamImage(name: String, from: String, failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(URL) -> ()) {
         
         let imageURL = cachesDirectory.appendingPathComponent(name)
         if FileManager.default.fileExists(atPath: imageURL.path) {
-            handleData(from: imageURL, failureHandler: failureHandler, completed: completed)
+            completed(imageURL)
         } else {
             let request = ImageRequest(path: from)
-            networkManager.downloadResource(request: request) {
+            networkManager.storeResource(request: request) {
                 switch $0 {
                 case .failure(let error):
                     failureHandler(error)
                 case .success(let url):
-                    self.handleData(from: url, failureHandler: failureHandler, completed: completed)
                     try? FileManager.default.moveItem(at: url, to: imageURL)
+                    completed(imageURL)
                 }
             }
-        }
-    }
-    
-    private func handleData(from url: URL, failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(Data) -> ()) {
-        do {
-            let data = try Data(contentsOf: url)
-            completed(data)
-        } catch {
-            failureHandler(.DecodeError)
         }
     }
 }

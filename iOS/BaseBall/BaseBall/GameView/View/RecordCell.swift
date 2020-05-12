@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentRecordCell: UITableViewCell {
+class RecordCell: UITableViewCell {
     
     @IBOutlet weak var orderView: UIView!
     @IBOutlet weak var orderLabel: UILabel!

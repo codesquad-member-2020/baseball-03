@@ -30,9 +30,9 @@ class LoginViewController: UIViewController {
     private func setupModel() {
         useCase.requestTeamList(failureHandler: {
             self.errorHandling(error: $0)
-        }) {
+        }, completed: {
             self.teamListManager.insertTeamList(teamList: $0)
-        }
+        })
     }
     
     private func setupObserver() {
@@ -96,9 +96,9 @@ class LoginViewController: UIViewController {
             queue.async {
                 self.imageUseCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
                     self.errorHandling(error: $0)
-                }) {_ in
+                }, completed: {_ in
                     group.leave()
-                }
+                })
             }
         }
         
@@ -109,15 +109,15 @@ class LoginViewController: UIViewController {
             
             self.imageUseCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
                 self.errorHandling(error: $0)
-            }) {
-                let image = UIImage(data: $0)
+            }, completed: {
+                let image = UIImage(contentsOfFile: $0.path)
                 DispatchQueue.main.async {
                     self.view.backgroundColor = UIColor(hex: team.color)
                     self.logoButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3).isActive = true
                     self.logoButton.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * self.logoButton.frame.height / (image?.size.height ?? 0)).isActive = true
                     self.logoButton.setImage(image, for: .normal)
                 }
-            }
+            })
         }
     }
 }

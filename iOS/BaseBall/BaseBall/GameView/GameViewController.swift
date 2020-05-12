@@ -10,8 +10,8 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    @IBOutlet weak var currentPlayerTableView: UITableView!
-    @IBOutlet weak var currentRecordTableView: UITableView!
+    @IBOutlet weak var playerTableView: UITableView!
+    @IBOutlet weak var recordTableView: UITableView!
     @IBOutlet weak var pitchButton: UIButton!
     @IBAction func pitchButtonPushed(_ sender: UIButton) {
         self.pitchButton.isEnabled = false
@@ -21,14 +21,14 @@ class GameViewController: UIViewController {
     }
     
     private var isAttack = false
-    private let currentRecordDataSource = CurrentRecordDataSource()
-    private let currentPlayerDataSource = CurrentPlayerDataSource()
+    private let recordDataSource = RecordDataSource()
+    private let playerDataSource = PlayerDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentPlayerTableView.delegate = self
-        currentPlayerTableView.dataSource = currentPlayerDataSource
-        currentRecordTableView.dataSource = currentRecordDataSource
+        playerTableView.delegate = self
+        playerTableView.dataSource = playerDataSource
+        recordTableView.dataSource = recordDataSource
         setupPitchButton()
     }
     
