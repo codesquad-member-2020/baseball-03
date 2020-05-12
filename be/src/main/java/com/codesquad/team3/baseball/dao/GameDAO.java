@@ -2,6 +2,7 @@ package com.codesquad.team3.baseball.dao;
 
 import com.codesquad.team3.baseball.dto.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -13,11 +14,13 @@ import java.util.List;
 @Repository
 public class GameDAO {
 
+    private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Autowired
     public GameDAO(DataSource dataSource) {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public String getPitcher(Integer teamId) {
@@ -27,10 +30,22 @@ public class GameDAO {
     }
 
 //TODO: 현재 타자 가져오는 로직 추가
-    public PlayerDTO getHitter(Integer gameId, Integer teamId) {
-
-        return null;
-
+    public PlayerDTO getHitter(Integer gameId, Integer teamId, boolean isTop) {
+        //현재 공격 타순 가져오기
+        Integer nowHitterBattingOrder = findBattingOrderWithGameId(gameId, isTop);
+        String sql = "SELECT p.name, p.batting_order, " +
+                "h.at_bat, h.hit FROM player p JOIN hitter_record h " +
+                "ON p.id = h.player " +
+                "WHERE team = ? " +
+                "AND batting_order = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[] {teamId, nowHitterBattingOrder}, ((rs, rowNum) -> {
+            PlayerDTO playerDTO = new PlayerDTO.Builder(rs.getString("name"))
+                                                .order(rs.getInt("batting_order"))
+                                                .atBats(rs.getInt("at_bat"))
+                                                .hits(rs.getInt("hit"))
+                                                .build();
+            return playerDTO;
+        }));
     }
 
     public void addHalfInning(Integer gameId, boolean isTop, int inning) {
@@ -47,6 +62,23 @@ public class GameDAO {
             addTeamPitcherRecordRecords(gameId, team);
             addTeamHitterRecordRecords(gameId, team);
         }
+    }
+
+    public boolean checkHome(Integer gameId, Integer teamId) {
+        String sql = "SELECT is_home FROM team_game WHERE game = :game_id AND team = :team_id";
+        SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId).addValue("team_id", teamId);
+        return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, Boolean.class);
+    }
+
+    public Integer findBattingOrderWithGameId(Integer gameId, boolean isTop) {
+        String sql;
+        if(isTop) {
+            sql = "SELECT away_batting_order FROM game WHERE id = :game_id";
+        } else {
+            sql = "SELECT home_batting_order FROM game WHERE id = :game_id";
+        }
+        SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId);
+        return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, Integer.class);
     }
 
     private void addTeamPitcherRecordRecords(Integer gameId, Integer teamId) {
