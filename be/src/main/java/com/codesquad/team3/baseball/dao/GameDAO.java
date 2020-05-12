@@ -29,7 +29,6 @@ public class GameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
     }
 
-//TODO: 현재 타자 가져오는 로직 추가
     public PlayerDTO getHitter(Integer gameId, Integer teamId, boolean isTop) {
         //현재 공격 타순 가져오기
         Integer nowHitterBattingOrder = findBattingOrderWithGameId(gameId, isTop);
