@@ -61,6 +61,3 @@ VALUES (1, 1, 1, true), (2, 1, 2, false),
         (5, 3, null, true), (6, 3, null, false),
         (7, 4, 3, true), (8, 4, null, false),
         (9, 5, null, true), (10, 5, null, false);
-
-INSERT INTO game_manager (is_updated)
-VALUES ( FALSE );
