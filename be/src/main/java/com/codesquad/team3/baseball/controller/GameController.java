@@ -20,9 +20,8 @@ public class GameController {
 
     @GetMapping("/init")
     public ResponseEntity<ResponseData> initGame(@PathVariable Integer gameId,
-                                                 @PathVariable Integer teamId,
-                                                 HttpSession session) {
-        gameService.initGame(gameId, session);
+                                                 @PathVariable Integer teamId) {
+        gameService.initGame(gameId);
         PitchingDTO pitchingDTO = gameService.getInitGameData(gameId, teamId);
 
         return new ResponseEntity<>(new ResponseData(Status.SUCCESS, pitchingDTO), HttpStatus.OK);
