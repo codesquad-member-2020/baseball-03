@@ -15,7 +15,7 @@ class RecordDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentRecordCell") as? CurrentRecordCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentRecordCell") as? RecordCell else {return UITableViewCell()}
         cell.orderView.layer.cornerRadius = cell.orderView.frame.height / 2
         cell.orderLabel.text = String(indexPath.row + 1)
         return cell
