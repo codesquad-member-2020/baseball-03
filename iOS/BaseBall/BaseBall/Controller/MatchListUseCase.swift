@@ -23,7 +23,7 @@ struct MatchListUseCase {
     }
     
     func requestMatchList(failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping([Match]) -> ()) {
-        networkManager.getResource(request: MatchListRequest()) {
+        networkManager.loadResource(request: MatchListRequest()) {
             switch $0 {
             case .failure(let error):
                 failureHandler(error)

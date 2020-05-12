@@ -40,14 +40,12 @@ class GameListView: UIView {
         self.gameLabel.text = "GAME " + order
     }
     
-    func setHomeTeamImage(data: Data) {
-        let image = UIImage(data: data)
+    func setHomeTeamImage(image: UIImage?) {
         homeTeamButton.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * homeTeamButton.frame.height / (image?.size.height ?? 0)).isActive = true
         homeTeamButton.setImage(image, for: .normal)
     }
 
-    func setAwayTeamImage(data: Data) {
-        let image = UIImage(data: data)
+    func setAwayTeamImage(image: UIImage?) {
         awayTeamButon.widthAnchor.constraint(equalToConstant: image?.size.width ?? 0 * awayTeamButon.frame.height / (image?.size.height ?? 0)).isActive = true
         awayTeamButon.setImage(image, for: .normal)
     }

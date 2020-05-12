@@ -9,10 +9,10 @@
 import Foundation
 
 protocol NetworkManageable {
-    typealias dataResponse = Result<Data, NetworkManager.NetworkError>
-    typealias downloadResponse = Result<URL, NetworkManager.NetworkError>
-    func getResource(request: Request, handler: @escaping (dataResponse) -> ())
-    func downloadResource(request: Request, handler: @escaping (downloadResponse) ->())
+    typealias DataResponse = Result<Data, NetworkManager.NetworkError>
+    typealias DownloadResponse = Result<URL, NetworkManager.NetworkError>
+    func loadResource(request: Request, handler: @escaping (DataResponse) -> ())
+    func storeResource(request: Request, handler: @escaping (DownloadResponse) ->())
 }
 
 class NetworkManager: NetworkManageable {
@@ -43,7 +43,7 @@ class NetworkManager: NetworkManageable {
         }
     }
     
-    func downloadResource(request: Request, handler: @escaping (downloadResponse) -> ()) {
+    func storeResource(request: Request, handler: @escaping (DownloadResponse) -> ()) {
         guard let urlRequest = request.urlRequest() else {
             handler(.failure(.InvalidURL))
             return
@@ -74,7 +74,7 @@ class NetworkManager: NetworkManageable {
         }.resume()
     }
 
-    func getResource(request: Request, handler: @escaping (dataResponse) -> ()) {
+    func loadResource(request: Request, handler: @escaping (DataResponse) -> ()) {
         guard let urlRequest = request.urlRequest() else {
             handler(.failure(.InvalidURL))
             return

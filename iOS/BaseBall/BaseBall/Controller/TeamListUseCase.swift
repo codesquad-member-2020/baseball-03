@@ -28,7 +28,7 @@ struct TeamListUseCase {
     }
     
     func requestTeamList(failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping([Team]) -> ()) {
-        networkManager.getResource(request: TeamListRequest()) {
+        networkManager.loadResource(request: TeamListRequest()) {
             switch $0 {
             case .failure(let error):
                 failureHandler(error)

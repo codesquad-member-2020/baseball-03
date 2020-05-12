@@ -8,15 +8,15 @@
 
 import UIKit
 
-class CurrentPlayerDataSource: NSObject, UITableViewDataSource {
+class PlayerDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentPlayerCell") as? CurrentPlayerCell else {return UITableViewCell()}
-        cell.accessoryView = UIImageView(image: UIImage(systemName: "checkmark"))
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentPlayerCell") as? PlayerCell else {return UITableViewCell()}
+        cell.accessoryType = .checkmark
         return cell
     }
 }
