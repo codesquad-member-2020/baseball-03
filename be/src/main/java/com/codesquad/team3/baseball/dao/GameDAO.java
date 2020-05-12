@@ -26,8 +26,9 @@ public class GameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
     }
 
+//TODO: 현재 타자 가져오는 로직 추가
+    public PlayerDTO getHitter(Integer gameId, Integer teamId) {
 
-    public PlayerDTO getFirstHitter(Integer gameId, Integer teamId) {
         return null;
 
     }

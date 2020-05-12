@@ -75,7 +75,7 @@ public class GameService {
 
 
     private PlayerDTO initHitter(Integer teamId, Integer gameId) {
-        return gameDAO.getFirstHitter(teamId, gameId);
+        return gameDAO.getHitter(teamId, gameId);
     }
 
 }
