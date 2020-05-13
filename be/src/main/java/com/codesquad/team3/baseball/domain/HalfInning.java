@@ -1,6 +1,9 @@
 package com.codesquad.team3.baseball.domain;
 
+import com.codesquad.team3.baseball.dto.Result;
+
 public class HalfInning {
+
     private Integer id;
     private int inning;
     private boolean isTop;
@@ -33,6 +36,50 @@ public class HalfInning {
         this.home = builder.home;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public int getInning() {
+        return inning;
+    }
+
+    public boolean isTop() {
+        return isTop;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getOut() {
+        return out;
+    }
+
+    public boolean isFirst() {
+        return first;
+    }
+
+    public boolean isSecond() {
+        return second;
+    }
+
+    public boolean isThird() {
+        return third;
+    }
+
+    public boolean isHome() {
+        return home;
+    }
+
     public int addScore(){
         return this.score++;
     }
@@ -61,6 +108,11 @@ public class HalfInning {
         return this.out = 0;
     }
 
+    public void initAtBat() {
+        this.ball = 0;
+        this.strike = 0;
+    }
+
     public boolean turnFirst(boolean status) {
         return this.first = status;
     }
@@ -71,6 +123,59 @@ public class HalfInning {
 
     public boolean turnThird(boolean status) {
         return this.third = status;
+    }
+
+    public boolean update(Result result) {
+        switch (result) {
+            case HIT:
+                updateBases();
+                return true;
+            case STRIKE:
+                strike++;
+                if (strike == 3) {
+                    out++;
+                    return true;
+                }
+                return false;
+            case OUT:
+                out++;
+                if (out == 3) {
+                    return true;
+                }
+                return true;
+            case BALL:
+                ball++;
+                if (ball == 4) {
+                    updateBases();
+                    return true;
+                }
+                return false;
+        }
+        return false;
+    }
+
+    public boolean is3Strikes() {
+        return strike == 3;
+    }
+
+    public boolean isOver() {
+        return out == 3;
+    }
+
+    private void updateBases() {
+        if (third) {
+            addScore();
+            this.third = false;
+            this.home = true;
+        }
+        if (second) {
+            this.third = true;
+            this.second = false;
+        }
+        if (first) {
+            this.second = true;
+        }
+        this.first = false;
     }
 
     @Override

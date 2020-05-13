@@ -1,5 +1,7 @@
 package com.codesquad.team3.baseball.domain;
 
+import com.codesquad.team3.baseball.dto.Result;
+
 public class Player {
 
     private Integer id;
@@ -16,6 +18,27 @@ public class Player {
         this.average = builder.average;
         this.battingOrder = builder.battingOrder;
         this.team = builder.team;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Result hit() {
+        int hit = (int)(average * 1000);
+        int strike = ((1000 - hit) / 2 - 50);
+        int ball = ((1000 - hit) / 2 - 50);
+        int result = (int)(Math.random() * 1000);
+
+        if(result < hit){
+            return Result.HIT;
+        }else if(result < hit + strike){
+            return Result.STRIKE;
+        }else if(result >= (hit + strike) && result < (hit + strike + ball)){
+            return Result.BALL;
+        }else{
+            return Result.OUT;
+        }
     }
 
     public static class Builder {
