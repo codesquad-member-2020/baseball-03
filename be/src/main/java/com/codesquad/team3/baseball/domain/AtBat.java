@@ -15,7 +15,7 @@ public class AtBat {
         this.strike = strike;
         this.ball = ball;
     }
-
+    
     public Integer getId() {
         return id;
     }
