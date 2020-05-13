@@ -8,13 +8,11 @@ public class HalfInning {
     private int inning;
     private boolean isTop;
     private int score;
-    private int strike;
-    private int ball;
     private int out;
-    private boolean first;
-    private boolean second;
-    private boolean third;
-    private boolean home;
+    private boolean firstBase;
+    private boolean secondBase;
+    private boolean thirdBase;
+    private boolean homeBase;
 
     public HalfInning(Integer id, int inning, boolean isTop) {
         this.id = id;
@@ -27,13 +25,11 @@ public class HalfInning {
         this.inning = builder.inning;
         this.isTop = builder.isTop;
         this.score = builder.score;
-        this.strike = builder.strike;
-        this.ball = builder.ball;
         this.out = builder.out;
-        this.first = builder.first;
-        this.second = builder.second;
-        this.third = builder.third;
-        this.home = builder.home;
+        this.firstBase = builder.firstBase;
+        this.secondBase = builder.secondBase;
+        this.thirdBase = builder.thirdBase;
+        this.homeBase = builder.homeBase;
     }
 
     public Integer getId() {
@@ -52,52 +48,28 @@ public class HalfInning {
         return score;
     }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
     public int getOut() {
         return out;
     }
 
-    public boolean isFirst() {
-        return first;
+    public boolean isFirstBase() {
+        return firstBase;
     }
 
-    public boolean isSecond() {
-        return second;
+    public boolean isSecondBase() {
+        return secondBase;
     }
 
-    public boolean isThird() {
-        return third;
+    public boolean isThirdBase() {
+        return thirdBase;
     }
 
-    public boolean isHome() {
-        return home;
+    public boolean isHomeBase() {
+        return homeBase;
     }
 
     public int addScore(){
         return this.score++;
-    }
-
-    public int addStrike(){
-        return this.strike++;
-    }
-
-    public int initStrike() {
-        return this.strike = 0;
-    }
-
-    public int addBall(){
-        return this.ball++;
-    }
-
-    public int initBall() {
-        return this.ball = 0;
     }
 
     public int addOut(){
@@ -108,31 +80,26 @@ public class HalfInning {
         return this.out = 0;
     }
 
-    public void initAtBat() {
-        this.ball = 0;
-        this.strike = 0;
-    }
-
     public boolean turnFirst(boolean status) {
-        return this.first = status;
+        return this.firstBase = status;
     }
 
     public boolean turnSecond(boolean status) {
-        return this.second = status;
+        return this.secondBase = status;
     }
 
     public boolean turnThird(boolean status) {
-        return this.third = status;
+        return this.thirdBase = status;
     }
 
-    public boolean update(Result result) {
+    public boolean update(Result result, AtBat atBat) {
         switch (result) {
             case HIT:
                 updateBases();
                 return true;
             case STRIKE:
-                strike++;
-                if (strike == 3) {
+                atBat.addStrike();
+                if (atBat.is3Strikes()) {
                     out++;
                     return true;
                 }
@@ -144,8 +111,8 @@ public class HalfInning {
                 }
                 return true;
             case BALL:
-                ball++;
-                if (ball == 4) {
+                atBat.addBall();
+                if (atBat.is4Balls()) {
                     updateBases();
                     return true;
                 }
@@ -154,28 +121,24 @@ public class HalfInning {
         return false;
     }
 
-    public boolean is3Strikes() {
-        return strike == 3;
-    }
-
     public boolean isOver() {
         return out == 3;
     }
 
     private void updateBases() {
-        if (third) {
+        if (thirdBase) {
             addScore();
-            this.third = false;
-            this.home = true;
+            this.thirdBase = false;
+            this.homeBase = true;
         }
-        if (second) {
-            this.third = true;
-            this.second = false;
+        if (secondBase) {
+            this.thirdBase = true;
+            this.secondBase = false;
         }
-        if (first) {
-            this.second = true;
+        if (firstBase) {
+            this.secondBase = true;
         }
-        this.first = false;
+        this.firstBase = false;
     }
 
     @Override
@@ -185,12 +148,11 @@ public class HalfInning {
                 ", inning=" + inning +
                 ", isTop=" + isTop +
                 ", score=" + score +
-                ", strike=" + strike +
-                ", ball=" + ball +
                 ", out=" + out +
-                ", first=" + first +
-                ", second=" + second +
-                ", third=" + third +
+                ", firstBase=" + firstBase +
+                ", secondBase=" + secondBase +
+                ", thirdBase=" + thirdBase +
+                ", homeBase=" + homeBase +
                 '}';
     }
 
@@ -200,13 +162,11 @@ public class HalfInning {
         private int inning;
         private boolean isTop;
         private int score;
-        private int strike;
-        private int ball;
         private int out;
-        private boolean first;
-        private boolean second;
-        private boolean third;
-        private boolean home;
+        private boolean firstBase;
+        private boolean secondBase;
+        private boolean thirdBase;
+        private boolean homeBase;
 
         public Builder(Integer id) {
             this.id = id;
@@ -227,38 +187,28 @@ public class HalfInning {
             return this;
         }
 
-        public Builder strike(int strike) {
-            this.strike = strike;
-            return this;
-        }
-
-        public Builder ball(int ball) {
-            this.ball = ball;
-            return this;
-        }
-
         public Builder out(int out) {
             this.out = out;
             return this;
         }
 
-        public Builder first(boolean first) {
-            this.first = first;
+        public Builder firstBase(boolean firstBase) {
+            this.firstBase = firstBase;
             return this;
         }
 
-        public Builder second(boolean second) {
-            this.second = second;
+        public Builder secondBase(boolean secondBase) {
+            this.secondBase = secondBase;
             return this;
         }
 
-        public Builder third(boolean third) {
-            this.third = third;
+        public Builder thirdBase(boolean thirdBase) {
+            this.thirdBase = thirdBase;
             return this;
         }
 
-        public Builder home(boolean home) {
-            this.home = home;
+        public Builder homeBase(boolean homeBase) {
+            this.homeBase = homeBase;
             return this;
         }
 
