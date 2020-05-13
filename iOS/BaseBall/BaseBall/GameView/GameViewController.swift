@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
     private let recordDataSource = RecordDataSource()
     private let playerDataSource = PlayerDataSource()
     private let useCase = MatchInProgressUseCase(networkManager: NetworkManager())
+    private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private let matchInProgressManager = MatchInProgressManager()
     
     override func viewDidLoad() {
@@ -59,10 +60,29 @@ class GameViewController: UIViewController {
     }
     
     @objc func setupUI() {
+        guard let team = self.matchInProgressManager.teamInfo() else {return}
+        
         DispatchQueue.main.async {
-            guard let team = self.matchInProgressManager.teamInfo() else {return}
             self.electronicView.setTeamName(team: team)
         }
+        
+        imageUseCase.loadTeamImage(name: team.away, failureHandler: {
+            AlertView.alertError(viewController: self, message: $0)
+        }, completed: {
+            let url = $0
+            DispatchQueue.main.async {
+                self.electronicView.setAwayTeamImage(url: url)
+            }
+        })
+        
+        imageUseCase.loadTeamImage(name: team.home, failureHandler: {
+            AlertView.alertError(viewController: self, message: $0)
+        }, completed: {
+            let url = $0
+            DispatchQueue.main.async {
+                self.electronicView.setHomeTeamImage(url: url)
+            }
+        })
     }
 }
 

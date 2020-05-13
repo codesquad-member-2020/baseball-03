@@ -14,10 +14,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ElectronicView" customModule="BaseBall" customModuleProvider="target">
             <connections>
-                <outlet property="awayImage" destination="UHD-OW-Bp8" id="lgo-dy-AiU"/>
+                <outlet property="awayImageView" destination="UHD-OW-Bp8" id="lgo-dy-AiU"/>
                 <outlet property="awayLabel" destination="M2E-2P-h9J" id="eG6-r0-EzV"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="m7I-R0-Gj8"/>
-                <outlet property="homeImage" destination="Lg0-fY-1x4" id="mjw-Ng-Jnd"/>
+                <outlet property="homeImageView" destination="Lg0-fY-1x4" id="mjw-Ng-Jnd"/>
                 <outlet property="homeLabel" destination="xWM-6Z-NLv" id="ViZ-rt-yAs"/>
             </connections>
         </placeholder>
