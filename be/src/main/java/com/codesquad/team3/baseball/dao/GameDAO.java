@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class GameDAO {
@@ -34,19 +33,16 @@ public class GameDAO {
     public HitterDTO getHitter(Integer gameId, Integer teamId, boolean isTop) {
         //현재 공격 타순 가져오기
         Integer nowHitterBattingOrder = findBattingOrderWithGameId(gameId, isTop);
-        String sql = "SELECT p.name, p.batting_order, p.average, h.at_bat, h.hit, h.outs " +
+        String sql = "SELECT p.name, p.batting_order, h.at_bat, h.hit, h.outs " +
                 "FROM player p JOIN hitter_record h " +
                 "ON p.id = h.player " +
                 "WHERE team = ? " +
                 "AND batting_order = ?";
         return jdbcTemplate.queryForObject(sql, new Object[] {teamId, nowHitterBattingOrder}, ((rs, rowNum) -> {
-            HitterDTO hitterDTO = new HitterDTO(rs.getString("name"),
-                                                rs.getInt("batting_order"),
-                                                rs.getInt("at_bat"),
-                                                rs.getInt("hit"),
-                                                rs.getInt("outs"),
-                                                rs.getFloat("average"));
-            return hitterDTO;
+            return new HitterDTO.Builder()
+                    .name(rs.getString("name"))
+                    .order(rs.getInt("batting_order"))
+                    .build();
         }));
     }
 
@@ -131,11 +127,5 @@ public class GameDAO {
         String sql = "SELECT id FROM player WHERE team = :team_id AND is_pitcher = true";
         SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, Integer.class);
-    }
-
-    public Integer findHalfInningId(Integer gameId, int inning, boolean isTop) {
-        String sql = "SELECT id FROM half_inning WHERE game = :game_id AND inning = :inning AND is_top = :is_top";
-        SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId).addValue("inning", inning).addValue("is_top", isTop);
-        return namedParameterJdbcTemplate.queryForObject(sql,parameterSource,Integer.class);
     }
 }

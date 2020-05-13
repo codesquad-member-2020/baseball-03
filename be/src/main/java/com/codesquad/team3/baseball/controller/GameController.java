@@ -42,7 +42,7 @@ public class GameController {
                                                @PathVariable Integer teamId) {
         return new ResponseEntity<>(new ResponseData(Status.SUCCESS, null), HttpStatus.OK);
     }
-    
+
     @GetMapping("")
     public ResponseEntity<ResponseData> attack(@PathVariable Integer gameId,
                                                @PathVariable Integer teamId) {

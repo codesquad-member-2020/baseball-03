@@ -25,16 +25,12 @@ public class GameService {
     }
 
     public PitchingDTO getInitGameData(Integer gameId, Integer teamId) {
-        PitchingDTO pitchingDTO = new PitchingDTO.Builder()
+        return new PitchingDTO.Builder()
                                     .isHome(checkHome(gameId,teamId))
                                     .team(getTeamsName(gameId))
-                                    .gameScore(initScore())
-                                    .halfInning(initHalfInning(gameId, teamId))
                                     .pitcher(initPitcher(teamId))
                                     .hitter(initHitter(teamId, gameId))
                                     .build();
-
-        return pitchingDTO;
     }
 
     private void addTeamRecord(Integer gameId) {
@@ -48,26 +44,6 @@ public class GameService {
     //DB에서 홈인지 어웨이인지 확인하고 반환
     private boolean checkHome(Integer gameId, Integer teamId) {
         return gameDAO.checkHome(gameId, teamId);
-    }
-
-    private Map<String, Integer> initScore() {
-        Map<String, Integer> scores = new HashMap<>();
-        scores.put("home", 0);
-        scores.put("away", 0);
-
-        return scores;
-    }
-
-    private HalfInningDTO initHalfInning(Integer gameId, Integer teamId) {
-        HalfInningDTO halfInningDTO;
-
-        if(checkHome(gameId, teamId)) {
-            halfInningDTO = new HalfInningDTO(1, true, false);
-        } else {
-            halfInningDTO = new HalfInningDTO(1, true, true);
-        }
-
-        return halfInningDTO;
     }
 
     private PitcherDTO initPitcher(Integer teamId) {
