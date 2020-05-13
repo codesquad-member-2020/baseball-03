@@ -83,6 +83,12 @@ CREATE TABLE half_inning (
     game INT REFERENCES game(id)
 );
 
+CREATE TABLE at_bat (
+    id INT AUTO_INCREMENT PRIMARY KEY ,
+    half_inning INT REFERENCES half_inning(id) ,
+    hitter INT REFERENCES player(id)
+);
+
 CREATE TABLE game_log (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     result ENUM('STRIKE', 'HIT', 'BALL', 'OUT') NOT NULL ,
