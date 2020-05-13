@@ -11,18 +11,21 @@ import UIKit
 @IBDesignable class ElectronicView: UIView {
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var awayImage: UIImageView!
+    @IBOutlet weak var awayLabel: UILabel!
+    @IBOutlet weak var homeImage: UIImageView!
+    @IBOutlet weak var homeLabel: UILabel!
+    
     private let xibName = String(describing: ElectronicView.self)
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setXib()
-        self.layer.cornerRadius = self.frame.width / 20
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setXib()
-        self.layer.cornerRadius = self.frame.width / 20
     }
     
     private func setXib() {
@@ -30,6 +33,12 @@ import UIKit
         bundle.loadNibNamed(xibName, owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
+        contentView.layer.cornerRadius = contentView.frame.width / 20
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    func setTeamName(team: TeamInMatch) {
+        self.awayLabel.text = team.away
+        self.homeLabel.text = team.home
     }
 }

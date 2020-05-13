@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var playerTableView: UITableView!
     @IBOutlet weak var recordTableView: UITableView!
     @IBOutlet weak var pitchButton: UIButton!
+    @IBOutlet weak var electronicView: ElectronicView!
     @IBAction func pitchButtonPushed(_ sender: UIButton) {
         self.pitchButton.isEnabled = false
         UIView.animate(withDuration: 0.5) {
@@ -28,11 +29,13 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.electronicView.layer.cornerRadius = self.electronicView.frame.width / 20
         playerTableView.delegate = self
         playerTableView.dataSource = playerDataSource
         recordTableView.dataSource = recordDataSource
         setupPitchButton()
         setupUseCase()
+        setupObserver()
     }
     
     private func setupObserver() {
@@ -56,7 +59,10 @@ class GameViewController: UIViewController {
     }
     
     @objc func setupUI() {
-        
+        DispatchQueue.main.async {
+            guard let team = self.matchInProgressManager.teamInfo() else {return}
+            self.electronicView.setTeamName(team: team)
+        }
     }
 }
 

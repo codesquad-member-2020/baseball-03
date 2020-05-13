@@ -9,12 +9,16 @@
 import Foundation
 
 class MatchInProgressManager {
-    var matchInProgress: MatchInProgress?
+    private var matchInProgress: MatchInProgress?
     
     func insertMatch(matchInProgress: MatchInProgress) {
         self.matchInProgress = matchInProgress
         NotificationCenter.default.post(name: .MatchInProgressInserted,
                                         object: nil)
+    }
+    
+    func teamInfo() -> TeamInMatch? {
+        return matchInProgress?.team
     }
 }
 
