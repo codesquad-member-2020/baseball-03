@@ -4,6 +4,7 @@ import com.codesquad.team3.baseball.dao.GameDAO;
 import com.codesquad.team3.baseball.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ public class GameService {
     @Autowired
     private GameDAO gameDAO;
 
+    @Transactional
     public void initGame(Integer gameId) {
         if(gameDAO.getHalfInningCount(gameId)==0){
             gameDAO.addHalfInning(gameId, true, 1);
