@@ -10,6 +10,10 @@ public class Player {
     private float average;
     private int battingOrder;
     private Integer team;
+    private Integer atBats;
+    private Integer hits;
+    private Integer outs;
+    private Integer pitches;
 
     public Player(Builder builder) {
         this.id = builder.id;
@@ -18,10 +22,42 @@ public class Player {
         this.average = builder.average;
         this.battingOrder = builder.battingOrder;
         this.team = builder.team;
+        this.atBats = builder.atBats;
+        this.hits = builder.hits;
+        this.outs = builder.outs;
+        this.pitches = builder.pitches;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getAverage() {
+        return average;
+    }
+
+    public int getBattingOrder() {
+        return battingOrder;
+    }
+
+    public Integer getAtBats() {
+        return atBats;
+    }
+
+    public Integer getHits() {
+        return hits;
+    }
+
+    public Integer getOuts() {
+        return outs;
+    }
+
+    public Integer getPitches() {
+        return pitches;
     }
 
     public Result hit() {
@@ -48,6 +84,10 @@ public class Player {
         private float average;
         private int battingOrder;
         private Integer team;
+        private int atBats;
+        private int hits;
+        private int outs;
+        private int pitches;
 
         public Builder(Integer id) {
             this.id = id;
@@ -75,6 +115,26 @@ public class Player {
 
         public Builder team(Integer team) {
             this.team = team;
+            return this;
+        }
+
+        public Builder atBats(Integer atBats) {
+            this.atBats = atBats;
+            return this;
+        }
+
+        public Builder hits(Integer hits) {
+            this.hits = hits;
+            return this;
+        }
+
+        public Builder outs(Integer outs) {
+            this.outs = outs;
+            return this;
+        }
+
+        public Builder pitches(Integer pitches) {
+            this.pitches = pitches;
             return this;
         }
 
