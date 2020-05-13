@@ -28,13 +28,13 @@ public class GameService {
         return new PitchingDTO.Builder()
                                     .isHome(checkHome(gameId,teamId))
                                     .team(getTeamsName(gameId))
-                                    .pitcher(initPitcher(teamId))
-                                    .hitter(initHitter(teamId, gameId))
+                                    .pitcher(initPitcher(gameId))
+                                    .hitter(initHitter(gameId))
                                     .build();
     }
 
     private void addTeamRecord(Integer gameId) {
-        List<Integer> teams = gameDAO.findTeamIdWithGameId(gameId);
+        List<Integer> teams = gameDAO.findDefenceTeamIdWithGameId(gameId);
         for (Integer team:teams) {
             gameDAO.addTeamPitcherRecordRecords(gameId, team);
             gameDAO.addTeamHitterRecordRecords(gameId, team);
@@ -46,12 +46,12 @@ public class GameService {
         return gameDAO.checkHome(gameId, teamId);
     }
 
-    private PitcherDTO initPitcher(Integer teamId) {
-        return new PitcherDTO(gameDAO.getPitcherName(teamId));
+    private PitcherDTO initPitcher(Integer gameId) {
+        return new PitcherDTO(gameDAO.getPitcherName(gameId, true));
     }
 
-    private HitterDTO initHitter(Integer teamId, Integer gameId) {
-        return gameDAO.getHitter(teamId, gameId, true);
+    private HitterDTO initHitter(Integer gameId) {
+        return gameDAO.getHitter(gameId, true);
     }
 
     private Map<String, String> getTeamsName(Integer gameId) {
