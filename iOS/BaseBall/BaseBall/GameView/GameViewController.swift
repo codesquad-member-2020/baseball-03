@@ -35,6 +35,13 @@ class GameViewController: UIViewController {
         setupUseCase()
     }
     
+    private func setupObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setupUI),
+                                               name: .MatchInProgressInserted,
+                                               object: nil)
+    }
+    
     private func setupUseCase() {
         useCase.requestMatchList(failureHandler: {
             AlertView.errorHandling(viewController: self, error: $0)
@@ -46,6 +53,10 @@ class GameViewController: UIViewController {
     private func setupPitchButton() {
         pitchButton.isHidden = isAttack
         pitchButton.layer.cornerRadius = pitchButton.frame.height / 2
+    }
+    
+    @objc func setupUI() {
+        
     }
 }
 

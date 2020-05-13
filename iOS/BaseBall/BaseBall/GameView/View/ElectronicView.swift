@@ -8,15 +8,28 @@
 
 import UIKit
 
-class ElectronicView: UIView {
+@IBDesignable class ElectronicView: UIView {
+    
+    @IBOutlet var contentView: UIView!
+    private let xibName = String(describing: ElectronicView.self)
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.setXib()
         self.layer.cornerRadius = self.frame.width / 20
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.setXib()
         self.layer.cornerRadius = self.frame.width / 20
+    }
+    
+    private func setXib() {
+        let bundle = Bundle(for: ElectronicView.self)
+        bundle.loadNibNamed(xibName, owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }
