@@ -42,7 +42,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgG-jJ-Pkn" userLabel="Team Name View">
                                             <rect key="frame" x="13" y="0.0" width="117.5" height="35"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hanwha_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="UHD-OW-Bp8" userLabel="Team Logo Image View">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="codesquad" translatesAutoresizingMaskIntoConstraints="NO" id="UHD-OW-Bp8" userLabel="Team Logo Image View">
                                                     <rect key="frame" x="0.0" y="0.0" width="34.5" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="UHD-OW-Bp8" secondAttribute="height" multiplier="1:1" id="p7Q-lv-d4z"/>
@@ -99,7 +99,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGN-7W-Cv4" userLabel="Team Name View">
                                             <rect key="frame" x="13" y="0.0" width="117.5" height="35"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Kia_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="Lg0-fY-1x4" userLabel="Team Logo Image View">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="codesquad" translatesAutoresizingMaskIntoConstraints="NO" id="Lg0-fY-1x4" userLabel="Team Logo Image View">
                                                     <rect key="frame" x="0.0" y="0.0" width="34.5" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Lg0-fY-1x4" secondAttribute="height" multiplier="1:1" id="mhs-Xb-j25"/>
@@ -174,21 +174,21 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCG-KC-Bg0" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="15.5" height="15.5"/>
-                                                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="JCG-KC-Bg0" secondAttribute="height" multiplier="1:1" id="akr-jq-9g3"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWt-lu-DF2" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="18.5" y="0.0" width="15" height="15.5"/>
-                                                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="bWt-lu-DF2" secondAttribute="height" multiplier="1:1" id="G8H-Hv-StM"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-sA-sKC" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="36.5" y="0.0" width="15.5" height="15.5"/>
-                                                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="tBf-sA-sKC" secondAttribute="height" multiplier="1:1" id="hEM-ov-Gz6"/>
                                                             </constraints>
@@ -215,21 +215,21 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQv-ZH-oLs" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="15.5" height="15"/>
-                                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="sQv-ZH-oLs" secondAttribute="height" multiplier="1:1" id="I5Z-zn-oqB"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XB4-w2-s7m" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="18.5" y="0.0" width="15" height="15"/>
-                                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="XB4-w2-s7m" secondAttribute="height" multiplier="1:1" id="J4H-Po-f6R"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-bS-8Fd" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="36.5" y="0.0" width="15.5" height="15"/>
-                                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="vdj-bS-8Fd" secondAttribute="height" multiplier="1:1" id="wHK-um-fBA"/>
                                                             </constraints>
@@ -256,21 +256,21 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUF-pM-UCx" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="15.5" height="15.5"/>
-                                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="sUF-pM-UCx" secondAttribute="height" multiplier="1:1" id="DyS-sQ-bwm"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rw-ep-ANG" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="18.5" y="0.0" width="15" height="15.5"/>
-                                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="9Rw-ep-ANG" secondAttribute="height" multiplier="1:1" id="Dih-Lb-jKm"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCE-qC-1VI" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="36.5" y="0.0" width="15.5" height="15.5"/>
-                                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="eCE-qC-1VI" secondAttribute="height" multiplier="1:1" id="4Nj-Fa-U6O"/>
                                                             </constraints>
@@ -325,7 +325,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Hanwha_thumbnail" width="80" height="50"/>
-        <image name="Kia_thumbnail" width="80" height="60.666667938232422"/>
+        <image name="codesquad" width="139.66667175292969" height="110.33333587646484"/>
     </resources>
 </document>
