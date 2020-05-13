@@ -34,6 +34,7 @@
 		A587E30C24682EF500371BE4 /* TeamListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587E30B24682EF500371BE4 /* TeamListManager.swift */; };
 		A592390D2467D70400331014 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592390C2467D70400331014 /* UIColorExtension.swift */; };
 		A5B40D34246BDF3900A972E2 /* MatchInProgressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B40D33246BDF3900A972E2 /* MatchInProgressUseCase.swift */; };
+		A5B40D36246BE2F200A972E2 /* MatchInProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B40D35246BE2F200A972E2 /* MatchInProgressManager.swift */; };
 		A5B67FB12467C5A0000D8C54 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67FB02467C5A0000D8C54 /* Request.swift */; };
 		A5B67FB32467CCB6000D8C54 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67FB22467CCB6000D8C54 /* NetworkManager.swift */; };
 		A5BD609D2462F5C30073CE3E /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD609C2462F5C30073CE3E /* FieldView.swift */; };
@@ -86,6 +87,7 @@
 		A587E30B24682EF500371BE4 /* TeamListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListManager.swift; sourceTree = "<group>"; };
 		A592390C2467D70400331014 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A5B40D33246BDF3900A972E2 /* MatchInProgressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchInProgressUseCase.swift; sourceTree = "<group>"; };
+		A5B40D35246BE2F200A972E2 /* MatchInProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchInProgressManager.swift; sourceTree = "<group>"; };
 		A5B67FB02467C5A0000D8C54 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A5B67FB22467CCB6000D8C54 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A5BD609C2462F5C30073CE3E /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				A587E30B24682EF500371BE4 /* TeamListManager.swift */,
 				A5C95A8724692CC400549905 /* MatchListManager.swift */,
+				A5B40D35246BE2F200A972E2 /* MatchInProgressManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				A5B40D34246BDF3900A972E2 /* MatchInProgressUseCase.swift in Sources */,
 				A531824A24668448005B6B20 /* RecordCell.swift in Sources */,
 				A53004D7246BD7D60015B1BC /* MatchInProgress.swift in Sources */,
+				A5B40D36246BE2F200A972E2 /* MatchInProgressManager.swift in Sources */,
 				A531825024668992005B6B20 /* RecordDataSource.swift in Sources */,
 				A5276CC62462B88500085D2E /* GameViewController.swift in Sources */,
 				A545AF01246156DC0094C821 /* LoginViewController.swift in Sources */,

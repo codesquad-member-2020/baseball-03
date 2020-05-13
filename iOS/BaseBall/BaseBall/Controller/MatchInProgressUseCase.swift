@@ -14,7 +14,7 @@ struct MatchInProgressUseCase {
     
     struct MatchInProgressRequest: Request {
         var path: String {
-            return EndPoint.defaultURL + EndPoint.games
+            return EndPoint.defaultURL + EndPoint.matchInit
         }
     }
     

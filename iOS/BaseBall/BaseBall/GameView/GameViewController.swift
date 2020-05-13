@@ -23,6 +23,8 @@ class GameViewController: UIViewController {
     private var isAttack = false
     private let recordDataSource = RecordDataSource()
     private let playerDataSource = PlayerDataSource()
+    private let useCase = MatchInProgressUseCase(networkManager: NetworkManager())
+    private let matchInProgressManager = MatchInProgressManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,24 @@ class GameViewController: UIViewController {
         playerTableView.dataSource = playerDataSource
         recordTableView.dataSource = recordDataSource
         setupPitchButton()
+        useCase.requestMatchList(failureHandler: {
+            self.errorHandling(error: $0)
+        }, completed:  {
+            self.matchInProgressManager.insertMatch(matchInProgress: $0)
+        })
+    }
+    
+    private func alertError(message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "문제가 생겼어요", message: message, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "넵...", style: .default)
+            alert.addAction(ok)
+            self.present(alert, animated: true)
+        }
+    }
+    
+    private func errorHandling(error: NetworkManager.NetworkError) {
+        alertError(message: error.message())
     }
     
     private func setupPitchButton() {
