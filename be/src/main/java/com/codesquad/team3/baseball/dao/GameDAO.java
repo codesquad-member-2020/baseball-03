@@ -1,7 +1,6 @@
 package com.codesquad.team3.baseball.dao;
 
 import com.codesquad.team3.baseball.dto.HitterDTO;
-import com.codesquad.team3.baseball.dto.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -24,14 +23,17 @@ public class GameDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public String getPitcherName(Integer teamId) {
+    public String getPitcherName(Integer gameId, boolean isTop) {
+        Integer teamId = findDefenceTeamIdWithGameId(gameId, isTop);
+
         String sql = "SELECT name FROM player WHERE team = :team_id AND is_pitcher = true";
         SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
     }
 
-    public HitterDTO getHitter(Integer gameId, Integer teamId, boolean isTop) {
+    public HitterDTO getHitter(Integer gameId, boolean isTop) {
         //현재 공격 타순 가져오기
+        Integer teamId = findAttackTeamIdWithGameId(gameId, isTop);
         Integer nowHitterBattingOrder = findBattingOrderWithGameId(gameId, isTop);
         String sql = "SELECT p.name, p.batting_order, h.at_bat, h.hit, h.outs " +
                 "FROM player p JOIN hitter_record h " +
@@ -80,14 +82,14 @@ public class GameDAO {
         namedParameterJdbcTemplate.update(sql, parameterSource);
     }
 
-    public List<Integer> findTeamIdWithGameId(Integer gameId) {
+    public List<Integer> findDefenceTeamIdWithGameId(Integer gameId) {
         String sql = "SELECT team FROM team_game WHERE game = :game_id";
         SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId);
         return namedParameterJdbcTemplate.queryForList(sql,parameterSource, Integer.class);
     }
 
     public void addTeamHitterRecordRecords(Integer gameId, Integer teamId) {
-        List<Integer> hitterIds = findHitterIds(teamId);
+        List<Integer> hitterIds =  findHitterIds(teamId);
         String sql = "INSERT INTO hitter_record (team_game_team, team_game_game, player) VALUES (:team_id, :game_id, :player_id)";
         SqlParameterSource parameterSource;
 
@@ -127,5 +129,27 @@ public class GameDAO {
         String sql = "SELECT id FROM player WHERE team = :team_id AND is_pitcher = true";
         SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, Integer.class);
+    }
+
+    public Integer findDefenceTeamIdWithGameId(Integer gameId, boolean isTop) {
+        String sql;
+        if(isTop) {
+            sql = "SELECT team FROM team_game WHERE game = :game_id AND is_home = true";
+        } else {
+            sql = "SELECT team FROM team_game WHERE game = :game_id AND is_home = false";
+        }
+        SqlParameterSource parameterSource =new MapSqlParameterSource("game_id", gameId);
+        return namedParameterJdbcTemplate.queryForObject(sql,parameterSource, Integer.class);
+    }
+
+    public Integer findAttackTeamIdWithGameId(Integer gameId, boolean isTop) {
+        String sql;
+        if(isTop) {
+            sql = "SELECT team FROM team_game WHERE game = :game_id AND is_home = false";
+        } else {
+            sql = "SELECT team FROM team_game WHERE game = :game_id AND is_home = true";
+        }
+        SqlParameterSource parameterSource =new MapSqlParameterSource("game_id", gameId);
+        return namedParameterJdbcTemplate.queryForObject(sql,parameterSource, Integer.class);
     }
 }
