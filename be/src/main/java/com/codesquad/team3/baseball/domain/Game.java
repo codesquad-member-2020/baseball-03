@@ -21,12 +21,16 @@ public class Game {
         return id;
     }
 
+    public List<HalfInning> getHalfInnings() {
+        return halfInnings;
+    }
+
     public void nextHomeBattingOrder() {
-        homeBattingOrder = ++homeBattingOrder == 11 ? 0 : homeBattingOrder;
+        homeBattingOrder = ++homeBattingOrder == 10 ? 0 : homeBattingOrder;
     }
 
     public void nextAwayBattingOrder() {
-        awayBattingOrder = ++awayBattingOrder == 11 ? 0 : awayBattingOrder;
+        awayBattingOrder = ++awayBattingOrder == 10 ? 0 : awayBattingOrder;
     }
 
     public void setOver(boolean over) {
@@ -51,5 +55,9 @@ public class Game {
 
     public HalfInning getLastHalfInning() {
         return halfInnings.get(halfInnings.size() - 1);
+    }
+
+    public int getRounds() {
+        return halfInnings.size();
     }
 }
