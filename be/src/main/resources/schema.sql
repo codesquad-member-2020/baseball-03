@@ -72,6 +72,8 @@ CREATE TABLE half_inning (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     score INT DEFAULT 0 NOT NULL ,
     outs INT DEFAULT 0 NOT NULL ,
+    strikes INT DEFAULT 0 NOT NULL ,
+    balls INT DEFAULT 0 NOT NULL ,
     is_top BOOLEAN NOT NULL ,
     inning INT NOT NULL ,
     first_base BOOLEAN DEFAULT false NOT NULL ,
