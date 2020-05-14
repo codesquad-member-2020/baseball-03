@@ -1,5 +1,6 @@
 package com.codesquad.team3.baseball.controller;
 
+import com.codesquad.team3.baseball.dao.MockDAO;
 import com.codesquad.team3.baseball.dto.ResponseData;
 import com.codesquad.team3.baseball.dto.Status;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,6 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class MockController {
 
     private static final Logger log = LoggerFactory.getLogger(MockController.class);
+    private MockDAO mockDAO;
+
+    public MockController(MockDAO mockDAO) {
+        this.mockDAO = mockDAO;
+    }
 
     @GetMapping("/records")
     public ResponseEntity<ResponseData> records(@PathVariable Integer gameId,
@@ -257,4 +263,10 @@ public class MockController {
         return new ResponseEntity<>(new ResponseData(Status.SUCCESS, jsonNode), HttpStatus.OK);
     }
 
+    @GetMapping("/reset")
+    public ResponseEntity<ResponseData> reset(@PathVariable Integer gameId,
+                                                @PathVariable Integer teamId) {
+        mockDAO.resetGame(gameId);
+        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, "초기화 완료"), HttpStatus.OK);
+    }
 }
