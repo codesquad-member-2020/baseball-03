@@ -29,7 +29,6 @@ public class InGameDAO {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    // Aggregate root를 team_game이라고 생각했을 때 버전
     public TeamGame findTeamGameByGameIdAndTeamId(Integer gameId, Integer teamId) {
         Game game = findGameById(gameId);
         game.setHalfInnings(findHalfInningsByGameId(gameId));
@@ -63,7 +62,7 @@ public class InGameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, parameters, Integer.class);
     }
 
-    // 공격 측에서 사용
+    // 새롭게 추가된 하프이닝을 가져올 때
     public HalfInning findLastHalfInning(Integer gameId) {
         String sql = "SELECT id, score, is_top, inning," +
                 " first_base, second_base, third_base, home_base," +

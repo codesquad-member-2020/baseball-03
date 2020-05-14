@@ -107,7 +107,7 @@ public class InGameService {
             atBat = inGameDAO.findLastAtBatByHalfInning(halfInning.getId());
         }
 
-        // 6. PitchingDTO 구성 - 아직 못함
+        // 6. PitchingDTO 구성
         return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, result, atBat);
     }
 
