@@ -48,8 +48,4 @@ public class User {
         return this.password.equals(password);
     }
 
-    public boolean teamIsNull() {
-        return team == 0;
-    }
-
 }

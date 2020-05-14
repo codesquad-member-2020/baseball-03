@@ -87,10 +87,6 @@ public class MatchingController {
 
         checkLogin(user);
 
-        if(!user.teamIsNull()) {
-            throw new DuplicateSelectionException();
-        }
-
         return user.getId();
     }
 
