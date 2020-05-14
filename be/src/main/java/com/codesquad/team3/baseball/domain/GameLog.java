@@ -12,9 +12,10 @@ public class GameLog {
     private Integer hitter;
     private Integer atBat;
 
-    public GameLog(Result result, LocalDateTime createTime) {
+    public GameLog(Result result, LocalDateTime createTime, Integer atBat) {
         this.result = result;
         this.createTime = createTime;
+        this.atBat = atBat;
     }
 
     public GameLog(Result result, LocalDateTime createTime, Integer pitcher, Integer hitter, Integer atBat) {

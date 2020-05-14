@@ -59,12 +59,6 @@ public class InGameService {
         LocalDateTime now = LocalDateTime.now();
         inGameDAO.addGameLog(new GameLog(result, now, pitcher.getId(), hitter.getId(), atBat.getId()));
 
-        // 1-2. 게임 로그 - 3 STRIKE가 되어서 OUT이 되는 경우 한번 더 게임 로그 생성
-        if (atBat.is3Strikes()) {
-            inGameDAO.addGameLog(new GameLog(Result.OUT, now, pitcher.getId(), hitter.getId(), atBat.getId()));
-        } else if(atBat.is4Balls()) {
-            inGameDAO.addGameLog(new GameLog(Result.HIT, now, pitcher.getId(), hitter.getId(), atBat.getId()));
-        }
         // 2. 타석 업데이트
         if (result == Result.STRIKE || result == Result.BALL) {
             inGameDAO.updateAtBat(atBat);
@@ -143,13 +137,13 @@ public class InGameService {
             throw new InAppropriateRequest();
         }
         Integer opposite = inGameDAO.findOppositeTeamIdByGameIdAndTeamId(gameId, teamId);
-        AtBat atBat = inGameDAO.findLastAtBatByHalfInning(halfInning.getId());
+        AtBat atBat = inGameDAO.findAtBatById(log.getAtBat());
         Player pitcher = inGameDAO.findPitcherByTeamId(opposite);
         Player hitter = null;
         if (teamGame.isHome()) {
-            hitter = inGameDAO.findHitterByOrder(teamId, game.getAwayBattingOrder());
-        } else {
             hitter = inGameDAO.findHitterByOrder(teamId, game.getHomeBattingOrder());
+        } else {
+            hitter = inGameDAO.findHitterByOrder(teamId, game.getAwayBattingOrder());
         }
         // 세션에 조회한 로그 생성 날짜 저장
         session.setAttribute(SELECT_TIME_SESSION, log.getCreateTime());
