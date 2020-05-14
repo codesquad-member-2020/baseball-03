@@ -42,6 +42,7 @@ public class PitchingDTO {
         this.pitcher = builder.pitcher;
         this.hitter = builder.hitter;
         this.log = builder.log;
+        this.base = builder.base;
     }
 
     public static class Builder {
