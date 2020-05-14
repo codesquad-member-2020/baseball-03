@@ -63,8 +63,8 @@ public class GameService {
     }
 
     private void initAtBat(Integer gameId, Integer teamId) {
-        Integer halfInningId = gameDAO.findHalfInningId(gameId, teamId, checkHome(gameId, teamId));
-        Integer hitterId = gameDAO.findHitterId(gameId, teamId, true);
+        Integer halfInningId = gameDAO.findHalfInningId(gameId, 1, true);
+        Integer hitterId = gameDAO.findHitterId(gameId, gameDAO.findAttackTeamIdWithGameId(gameId, true), true);
         gameDAO.addAtBat(halfInningId, hitterId);
     }
 }
