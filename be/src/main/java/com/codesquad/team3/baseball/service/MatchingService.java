@@ -30,15 +30,14 @@ public class MatchingService {
         return matchingDAO.selectAllTeamGames();
     }
 
-    public Map<String, Boolean> getSelectionResult(Integer gameId, Integer teamId) {
+    public Map<String, Boolean> getSelectionResult(Integer gameId, Integer teamId, Integer userId) {
         Map<String,Boolean> result = new HashMap<>();
-        result.put("isHome", setTeamGame(gameId, teamId));
-        result.put("isReady", true);
+        result.put("isHome", setTeamGame(gameId, teamId, userId));
+        result.put("isReady", checkMatching(gameId));
         return result;
     }
 
-
-    private boolean setTeamGame(Integer gameId, Integer teamId) {
+    private boolean setTeamGame(Integer gameId, Integer teamId, Integer userId) {
         Map<String,Object> matchData = matchingDAO.getMatchDataWithGameIdAndTeamId(gameId,teamId);
 
         if(matchData.isEmpty()) {
@@ -49,6 +48,14 @@ public class MatchingService {
             throw new CanNotSelectException();
         }
 
+        matchingDAO.updateUserIdAtTeamGame(gameId,teamId,userId);
+
         return (Boolean)matchData.get("is_home");
+    }
+
+    private Boolean checkMatching(Integer gameId) {
+        int teamPerGame = 2;
+        int selectedTeamCount = matchingDAO.countSeletedGameWithGameId(gameId);
+        return selectedTeamCount == teamPerGame;
     }
 }
