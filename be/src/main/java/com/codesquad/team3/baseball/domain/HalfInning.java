@@ -128,17 +128,15 @@ public class HalfInning {
     private void updateBases() {
         if (thirdBase) {
             addScore();
-            this.thirdBase = false;
             this.homeBase = true;
         }
         if (secondBase) {
             this.thirdBase = true;
-            this.secondBase = false;
         }
         if (firstBase) {
             this.secondBase = true;
         }
-        this.firstBase = false;
+        this.firstBase = true;
     }
 
     @Override
