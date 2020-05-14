@@ -20,10 +20,6 @@ public class AtBat {
         return id;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
     public int getStrike() {
         return strike;
     }
