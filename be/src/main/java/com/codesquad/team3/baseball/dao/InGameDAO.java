@@ -12,7 +12,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +46,19 @@ public class InGameDAO {
                 (rs, rowNum) -> new AtBat(
                         rs.getInt("id"),
                         halfInningId,
+                        rs.getInt("hitter"),
+                        rs.getInt("strikes"),
+                        rs.getInt("balls")));
+    }
+
+    public AtBat findAtBatById(Integer atBatId) {
+        String sql = "SELECT id, half_inning, hitter, strikes, balls" +
+                " FROM at_bat" +
+                " WHERE id = :atBatId";
+        return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("atBatId", atBatId),
+                (rs, rowNum) -> new AtBat(
+                        rs.getInt("id"),
+                        rs.getInt("half_inning"),
                         rs.getInt("hitter"),
                         rs.getInt("strikes"),
                         rs.getInt("balls")));
@@ -139,7 +151,7 @@ public class InGameDAO {
     // 공격 api에서 사용
     // 가장 최근 게임 로그의 생성 시간과 비교
     public GameLog findLastGameLog(Integer gameId) throws EmptyResultDataAccessException {
-        String sql = "SELECT gl.result, gl.create_time AS create_time FROM game_log gl" +
+        String sql = "SELECT gl.result AS result, gl.create_time AS create_time, gl.at_bat AS at_bat FROM game_log gl" +
                 " LEFT OUTER JOIN at_bat at ON gl.at_bat = at.id" +
                 " LEFT OUTER JOIN half_inning hi ON at.half_inning = hi.id" +
                 " WHERE hi.game = :gameId" +
@@ -148,7 +160,8 @@ public class InGameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("gameId", gameId),
                 (rs, rowNum) -> new GameLog(
                         Result.valueOf(rs.getString("result")),
-                        rs.getTimestamp("create_time").toLocalDateTime()));
+                        rs.getTimestamp("create_time").toLocalDateTime(),
+                        rs.getInt("at_bat")));
     }
 
     public void addGameLog(GameLog log) {
