@@ -5,6 +5,7 @@ import com.codesquad.team3.baseball.dto.PitchingDTO;
 import com.codesquad.team3.baseball.dto.ResponseData;
 import com.codesquad.team3.baseball.dto.Status;
 import com.codesquad.team3.baseball.service.GameService;
+import com.codesquad.team3.baseball.service.InGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +21,13 @@ public class GameController {
 
     @Autowired
     private GameService gameService;
+    @Autowired
+    private InGameService inGameService;
 
     @GetMapping("/init")
     public ResponseEntity<ResponseData> initGame(@PathVariable Integer gameId,
                                                  @PathVariable Integer teamId) {
-        gameService.initGame(gameId);
+        gameService.initGame(gameId, teamId);
         PitchingDTO pitchingDTO = gameService.getInitGameData(gameId, teamId);
 
         return new ResponseEntity<>(new ResponseData(Status.SUCCESS, pitchingDTO), HttpStatus.OK);
