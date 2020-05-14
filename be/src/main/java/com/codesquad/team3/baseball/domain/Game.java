@@ -57,8 +57,9 @@ public class Game {
         return halfInnings.get(halfInnings.size() - 1);
     }
 
-    public int getRounds() {
-        return halfInnings.size();
+    public int getRound() {
+        int countOfHalfInning = halfInnings.size();
+        return (countOfHalfInning % 2 == 0) ? (countOfHalfInning / 2) : (countOfHalfInning / 2 + 1);
     }
 
     public void addHalfInning(HalfInning halfInning) {

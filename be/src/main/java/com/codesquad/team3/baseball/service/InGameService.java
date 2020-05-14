@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Service
 public class InGameService {
-    
+
     private InGameDAO inGameDAO;
     private GameDAO gameDAO;
 
@@ -91,6 +91,9 @@ public class InGameService {
 
         // 5. 하프이닝 종료된 경우
         if (halfInning.isOver()) {
+            if (isGameOver(game, teamGame.isTop())) {
+                return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, result, atBat);
+            }
             // 5-1. 다음 하프 이닝 추가
             inGameDAO.addHalfInning(teamGame.getGame().getId(), !halfInning.isTop(), halfInning.getInning() + 1);
             // 5-2. 새로운 하프 이닝으로 대입
@@ -113,7 +116,7 @@ public class InGameService {
     }
 
     private PitchingDTO createPitchingDTO(TeamGame teamGame, Game game, HalfInning halfInning, Player pitcher, Player hitter, Result result, AtBat atBat) {
-        HalfInningDTO halfInningDTO = new HalfInningDTO(game.getRounds(), halfInning.isTop(), teamGame.isHome() != halfInning.isTop());
+        HalfInningDTO halfInningDTO = new HalfInningDTO(game.getRound(), halfInning.isTop(), teamGame.isHome() != halfInning.isTop());
         PitcherDTO pitcherDTO = new PitcherDTO(pitcher.getName(), pitcher.getPitches());
         HitterDTO hitterDTO = new HitterDTO.Builder()
                 .name(hitter.getName())
@@ -154,12 +157,12 @@ public class InGameService {
                 .filter((HalfInning::isTop))
                 .mapToInt(HalfInning::getScore)
                 .sum();
-        gameScores.put("away", scores);
+        gameScores.put("home", scores);
         scores = game.getHalfInnings().stream()
                 .filter(halfInning -> !halfInning.isTop())
                 .mapToInt(HalfInning::getScore)
                 .sum();
-        gameScores.put("home", scores);
+        gameScores.put("away", scores);
         return gameScores;
     }
 
@@ -169,5 +172,25 @@ public class InGameService {
         counts.put(Result.BALL, atBat.getBallCount());
         counts.put(Result.OUT, halfInning.getOutCount());
         return counts;
+    }
+
+    private boolean isGameOver(Game game, boolean isTop) {
+        final int ROUND_OVER = 9;
+        final int ROUND_FINAL = 12;
+        int round = game.getRound();
+        Map<String, Integer> gameScores = getGameScores(game);
+        int homeScore = gameScores.get("home");
+        int awayScore = gameScores.get("away");
+
+        if (round == ROUND_OVER && isTop) { // 초에 home이 이기고 있다면
+            return homeScore > awayScore; // away가 이기고 있거나 동점인 경우
+        }
+        if ((round == ROUND_FINAL) && !isTop) {
+            return true;
+        }
+        if (round >= ROUND_OVER && !isTop) {
+            return homeScore != awayScore; // 동점이면 false
+        }
+        return false;
     }
 }
