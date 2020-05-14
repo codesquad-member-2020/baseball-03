@@ -12,8 +12,14 @@ public class GameLog {
     private Integer hitter;
     private Integer atBat;
 
-    public GameLog(Result result, Integer pitcher, Integer hitter, Integer atBat) {
+    public GameLog(Result result, LocalDateTime createTime) {
         this.result = result;
+        this.createTime = createTime;
+    }
+
+    public GameLog(Result result, LocalDateTime createTime, Integer pitcher, Integer hitter, Integer atBat) {
+        this.result = result;
+        this.createTime = createTime;
         this.pitcher = pitcher;
         this.hitter = hitter;
         this.atBat = atBat;

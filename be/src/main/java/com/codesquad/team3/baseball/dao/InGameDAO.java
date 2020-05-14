@@ -4,6 +4,7 @@ import com.codesquad.team3.baseball.domain.*;
 import com.codesquad.team3.baseball.dto.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -11,6 +12,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -132,6 +134,21 @@ public class InGameDAO {
                         .team(rs.getInt("team"))
                         .pitches(rs.getInt("pitch"))
                         .build());
+    }
+
+    // 공격 api에서 사용
+    // 가장 최근 게임 로그의 생성 시간과 비교
+    public GameLog findLastGameLog(Integer gameId) throws EmptyResultDataAccessException {
+        String sql = "SELECT gl.result, gl.create_time AS create_time FROM game_log gl" +
+                " LEFT OUTER JOIN at_bat at ON gl.at_bat = at.id" +
+                " LEFT OUTER JOIN half_inning hi ON at.half_inning = hi.id" +
+                " WHERE hi.game = :gameId" +
+                " ORDER BY gl.id DESC" +
+                " LIMIT 1;";
+        return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("gameId", gameId),
+                (rs, rowNum) -> new GameLog(
+                        Result.valueOf(rs.getString("result")),
+                        rs.getTimestamp("create_time").toLocalDateTime()));
     }
 
     public void addGameLog(GameLog log) {

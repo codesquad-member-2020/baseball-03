@@ -1,5 +1,6 @@
 package com.codesquad.team3.baseball.controller;
 
+import com.codesquad.team3.baseball.domain.GameLog;
 import com.codesquad.team3.baseball.dto.ExceptionDTO;
 import com.codesquad.team3.baseball.dto.PitchingDTO;
 import com.codesquad.team3.baseball.dto.ResponseData;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +58,12 @@ public class GameController {
 
     @GetMapping("")
     public ResponseEntity<ResponseData> attack(@PathVariable Integer gameId,
-                                               @PathVariable Integer teamId) {
-        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, null), HttpStatus.OK);
+                                               @PathVariable Integer teamId,
+                                               HttpSession session) {
+        GameLog log = inGameService.getLastGameLog(gameId);
+        if (inGameService.isUpdatedGameLog(session, log)) {
+            return new ResponseEntity<>(new ResponseData(Status.MODIFIED, inGameService.getLastPitching(gameId, teamId, log, session)), HttpStatus.OK);
+        }
+        return ResponseEntity.noContent().build();
     }
 }
