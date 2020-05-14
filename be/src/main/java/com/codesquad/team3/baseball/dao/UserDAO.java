@@ -32,6 +32,7 @@ public class UserDAO {
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
                 user.setNickname(rs.getString("nickname"));
+                user.setTeam(rs.getInt("team"));
                 return user;
             }));
         } catch (EmptyResultDataAccessException e) {

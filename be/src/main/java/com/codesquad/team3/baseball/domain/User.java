@@ -18,6 +18,8 @@ public class User {
 
     private int draw;
 
+    private Integer team;
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -34,12 +36,20 @@ public class User {
         this.nickname = nickname;
     }
 
+    public void setTeam(Integer team) {
+        this.team = team;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public boolean matchPassword(String password) {
         return this.password.equals(password);
+    }
+
+    public boolean teamIsNull() {
+        return team == null;
     }
 
 }
