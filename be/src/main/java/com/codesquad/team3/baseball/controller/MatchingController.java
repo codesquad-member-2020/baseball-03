@@ -5,6 +5,7 @@ import com.codesquad.team3.baseball.dto.ExceptionDTO;
 import com.codesquad.team3.baseball.dto.ResponseData;
 import com.codesquad.team3.baseball.dto.Status;
 import com.codesquad.team3.baseball.exception.CanNotSelectException;
+import com.codesquad.team3.baseball.exception.DuplicateSelectionException;
 import com.codesquad.team3.baseball.exception.NonLoginException;
 import com.codesquad.team3.baseball.exception.NotFoundException;
 import com.codesquad.team3.baseball.service.MatchingService;
@@ -71,11 +72,22 @@ public class MatchingController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionDTO("ERROR", content));
     }
 
+    @ExceptionHandler(DuplicateSelectionException.class)
+    public ResponseEntity<ExceptionDTO> duplicateSelection() {
+        Map<String, String> content = new HashMap<>();
+        content.put("message", "이미 팀을 선택했습니다.");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionDTO("ERROR", content));
+    }
+
     private Integer getUserId(HttpSession session) {
         User user = (User)session.getAttribute("user");
 
         if(user == null) {
             throw new NonLoginException();
+        }
+
+        if(!user.teamIsNull()) {
+            throw new DuplicateSelectionException();
         }
 
         return user.getId();
