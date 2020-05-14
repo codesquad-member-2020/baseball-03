@@ -10,14 +10,13 @@ public class GameLog {
     private LocalDateTime createTime;
     private Integer pitcher;
     private Integer hitter;
-    private Integer halfInning;
+    private Integer atBat;
 
-    public GameLog(Result result, LocalDateTime createTime, Integer pitcher, Integer hitter, Integer halfInning) {
+    public GameLog(Result result, Integer pitcher, Integer hitter, Integer atBat) {
         this.result = result;
-        this.createTime = createTime;
         this.pitcher = pitcher;
         this.hitter = hitter;
-        this.halfInning = halfInning;
+        this.atBat = atBat;
     }
 
     public Result getResult() {
@@ -36,7 +35,7 @@ public class GameLog {
         return hitter;
     }
 
-    public Integer getHalfInning() {
-        return halfInning;
+    public Integer getAtBat() {
+        return atBat;
     }
 }
