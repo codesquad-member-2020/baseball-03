@@ -1,5 +1,6 @@
 package com.codesquad.team3.baseball.controller;
 
+import com.codesquad.team3.baseball.domain.User;
 import com.codesquad.team3.baseball.dto.ExceptionDTO;
 import com.codesquad.team3.baseball.dto.ResponseData;
 import com.codesquad.team3.baseball.dto.Status;
@@ -40,11 +41,7 @@ public class MatchingController {
     public ResponseEntity<ResponseData> selectGame(@PathVariable int gameId,
                                                    @PathVariable int teamId,
                                                    HttpSession session) {
-        if(!checkLogin(session)) {
-            throw new NonLoginException();
-        }
-
-        Map<String, Boolean> content = matchingService.getSelectionResult(gameId, teamId);
+        Map<String, Boolean> content = matchingService.getSelectionResult(gameId, teamId, getUserId(session));
         return new ResponseEntity<>(new ResponseData(Status.SUCCESS, content), HttpStatus.OK);
     }
 
@@ -74,7 +71,13 @@ public class MatchingController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionDTO("ERROR", content));
     }
 
-    private boolean checkLogin(HttpSession session) {
-        return session.getAttribute("user") != null;
+    private Integer getUserId(HttpSession session) {
+        User user = (User)session.getAttribute("user");
+
+        if(user == null) {
+            throw new NonLoginException();
+        }
+
+        return user.getId();
     }
 }
