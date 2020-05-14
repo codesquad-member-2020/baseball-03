@@ -87,4 +87,9 @@ public class MatchingDAO {
         String sql = "UPDATE user SET team = ? WHERE id = ?";
         jdbcTemplate.update(sql, new Object[]{teamId, userId});
     }
+
+    public Integer findTeamIdWithUserId(Integer userId) {
+        String sql = "SELECT team FROM user WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{userId}, Integer.class);
+    }
 }
