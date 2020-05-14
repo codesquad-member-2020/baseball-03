@@ -131,20 +131,5 @@ extension GameViewController:  UICollectionViewDelegateFlowLayout {
         
         return UIEdgeInsets(top: 0, left: insetY, bottom: 0, right: insetY)
     }
-    
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        guard let collectionView = scrollView as? UICollectionView else {return}
-//
-//        print(collectionView.contentOffset)
-//        var willMoveCell: UICollectionViewCell
-//
-//        collectionView.visibleCells.forEach{
-//            let cellFrame = $0.frame.minX - $0.frame.width
-////            print(collectionView.indexPath(for: $0))
-////            print()
-//        }
-//
-//        collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-//    }
 }
 

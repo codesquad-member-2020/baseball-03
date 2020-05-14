@@ -186,7 +186,7 @@
                                                                 <constraint firstAttribute="width" secondItem="bWt-lu-DF2" secondAttribute="height" multiplier="1:1" id="G8H-Hv-StM"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-sA-sKC" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
+                                                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-sA-sKC" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="36.5" y="0.0" width="15.5" height="15.5"/>
                                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
@@ -268,7 +268,7 @@
                                                                 <constraint firstAttribute="width" secondItem="9Rw-ep-ANG" secondAttribute="height" multiplier="1:1" id="Dih-Lb-jKm"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCE-qC-1VI" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
+                                                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCE-qC-1VI" customClass="ScoreView" customModule="BaseBall" customModuleProvider="target">
                                                             <rect key="frame" x="36.5" y="0.0" width="15.5" height="15.5"/>
                                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
