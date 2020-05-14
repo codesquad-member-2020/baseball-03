@@ -17,7 +17,7 @@ CREATE TABLE user (
     win INT NOT NULL ,
     lose INT NOT NULL ,
     draw INT NOT NULL,
-    team INT NOT NULL
+    team INT DEFAULT NULL
 );
 
 CREATE TABLE team (
