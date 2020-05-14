@@ -72,6 +72,8 @@ CREATE TABLE half_inning (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     score INT DEFAULT 0 NOT NULL ,
     outs INT DEFAULT 0 NOT NULL ,
+    strikes INT DEFAULT 0 NOT NULL ,
+    balls INT DEFAULT 0 NOT NULL ,
     is_top BOOLEAN NOT NULL ,
     inning INT NOT NULL ,
     first_base BOOLEAN DEFAULT false NOT NULL ,
@@ -81,11 +83,18 @@ CREATE TABLE half_inning (
     game INT REFERENCES game(id)
 );
 
+CREATE TABLE at_bat (
+    id INT AUTO_INCREMENT PRIMARY KEY ,
+    strikes INT DEFAULT 0 NOT NULL ,
+    balls INT DEFAULT 0 NOT NULL ,
+    half_inning INT REFERENCES half_inning(id) ,
+    hitter INT REFERENCES player(id)
+);
+
 CREATE TABLE game_log (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     result ENUM('STRIKE', 'HIT', 'BALL', 'OUT') NOT NULL ,
     create_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     pitcher INT REFERENCES player(id) ,
-    half_inning INT REFERENCES half_inning(id) ,
-    hitter INT REFERENCES player(id)
+    at_bat INT REFERENCES at_bat(id)
 );

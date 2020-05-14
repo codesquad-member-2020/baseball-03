@@ -4,8 +4,8 @@ import com.codesquad.team3.baseball.dao.GameDAO;
 import com.codesquad.team3.baseball.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,25 +17,26 @@ public class GameService {
     private GameDAO gameDAO;
 
     @Transactional
-    public void initGame(Integer gameId) {
-        if(gameDAO.getHalfInningCount(gameId)==0){
+    public void initGame(Integer gameId, Integer teamId) {
+        if (gameDAO.getHalfInningCount(gameId) == 0) {
             gameDAO.addHalfInning(gameId, true, 1);
             addTeamRecord(gameId);
+            initAtBat(gameId, teamId);
         }
     }
 
     public PitchingDTO getInitGameData(Integer gameId, Integer teamId) {
         return new PitchingDTO.Builder()
-                                    .isHome(checkHome(gameId,teamId))
-                                    .team(getTeamsName(gameId))
-                                    .pitcher(initPitcher(gameId))
-                                    .hitter(initHitter(gameId))
-                                    .build();
+                .isHome(checkHome(gameId, teamId))
+                .team(getTeamsName(gameId))
+                .pitcher(initPitcher(gameId))
+                .hitter(initHitter(gameId))
+                .build();
     }
 
     private void addTeamRecord(Integer gameId) {
         List<Integer> teams = gameDAO.findDefenceTeamIdWithGameId(gameId);
-        for (Integer team:teams) {
+        for (Integer team : teams) {
             gameDAO.addTeamPitcherRecordRecords(gameId, team);
             gameDAO.addTeamHitterRecordRecords(gameId, team);
         }
@@ -61,4 +62,9 @@ public class GameService {
         return team;
     }
 
+    private void initAtBat(Integer gameId, Integer teamId) {
+        Integer halfInningId = gameDAO.findHalfInningId(gameId, 1, true);
+        Integer hitterId = gameDAO.findHitterId(gameId, gameDAO.findAttackTeamIdWithGameId(gameId, true), true);
+        gameDAO.addAtBat(halfInningId, hitterId);
+    }
 }

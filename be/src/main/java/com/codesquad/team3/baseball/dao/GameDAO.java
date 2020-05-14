@@ -117,6 +117,31 @@ public class GameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, parameterSource, Integer.class);
     }
 
+    public Integer findHalfInningId(Integer gameId, int inning, boolean isTop) {
+        String sql = "SELECT id FROM half_inning WHERE game = :game_id AND inning = :inning AND is_top = :is_top";
+        SqlParameterSource parameterSource = new MapSqlParameterSource("game_id", gameId).addValue("inning", inning).addValue("is_top", isTop);
+        return namedParameterJdbcTemplate.queryForObject(sql,parameterSource,Integer.class);
+    }
+
+    public Integer findHitterId(Integer gameId, Integer teamId, boolean isTop) {
+        Integer nowHitterBattingOrder = findBattingOrderWithGameId(gameId, isTop);
+        String sql = "SELECT p.id " +
+                " FROM player p" +
+                " WHERE team = :team " +
+                " AND batting_order = :batting_order";
+        return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource()
+                .addValue("team", teamId)
+                .addValue("batting_order", nowHitterBattingOrder), Integer.class);
+    }
+
+    public void addAtBat(Integer halfInningId, Integer hitterId) {
+        String sql = "INSERT INTO at_bat (half_inning, hitter)" +
+                " VALUES (:half_inning, :hitter)";
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource()
+                .addValue("half_inning", halfInningId)
+                .addValue("hitter", hitterId));
+    }
+
     private List<Integer> findHitterIds(Integer teamId) {
         String sql = "SELECT id FROM player WHERE team = :team_id AND is_pitcher = false";
         SqlParameterSource namedParameters = new MapSqlParameterSource("team_id", teamId);

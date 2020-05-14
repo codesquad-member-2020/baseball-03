@@ -4,7 +4,9 @@ import com.codesquad.team3.baseball.dto.ExceptionDTO;
 import com.codesquad.team3.baseball.dto.PitchingDTO;
 import com.codesquad.team3.baseball.dto.ResponseData;
 import com.codesquad.team3.baseball.dto.Status;
+import com.codesquad.team3.baseball.exception.InAppropriateRequest;
 import com.codesquad.team3.baseball.service.GameService;
+import com.codesquad.team3.baseball.service.InGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +22,13 @@ public class GameController {
 
     @Autowired
     private GameService gameService;
+    @Autowired
+    private InGameService inGameService;
 
     @GetMapping("/init")
     public ResponseEntity<ResponseData> initGame(@PathVariable Integer gameId,
                                                  @PathVariable Integer teamId) {
-        gameService.initGame(gameId);
+        gameService.initGame(gameId, teamId);
         PitchingDTO pitchingDTO = gameService.getInitGameData(gameId, teamId);
 
         return new ResponseEntity<>(new ResponseData(Status.SUCCESS, pitchingDTO), HttpStatus.OK);
@@ -40,7 +44,14 @@ public class GameController {
     @PostMapping("")
     public ResponseEntity<ResponseData> defend(@PathVariable Integer gameId,
                                                @PathVariable Integer teamId) {
-        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, null), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, inGameService.getPitchingResult(gameId, teamId)), HttpStatus.OK);
+    }
+
+    @ExceptionHandler(InAppropriateRequest.class)
+    public ResponseEntity<ExceptionDTO> handleInAppropriateRequest(InAppropriateRequest e) {
+        Map<String, String> content = new HashMap<>();
+        content.put("message", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionDTO("ERROR", content));
     }
 
     @GetMapping("")
