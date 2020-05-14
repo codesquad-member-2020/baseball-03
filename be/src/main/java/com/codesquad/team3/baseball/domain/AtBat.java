@@ -2,16 +2,22 @@ package com.codesquad.team3.baseball.domain;
 
 public class AtBat {
 
+    private Integer id;
     private Integer halfInning;
     private Integer hitter;
     private int strike;
     private int ball;
 
-    public AtBat(Integer halfInning, Integer hitter, int strike, int ball) {
+    public AtBat(Integer id, Integer halfInning, Integer hitter, int strike, int ball) {
+        this.id = id;
         this.halfInning = halfInning;
         this.hitter = hitter;
         this.strike = strike;
         this.ball = ball;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public int getStrike() {
