@@ -34,6 +34,10 @@ public class User {
         this.nickname = nickname;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public boolean matchPassword(String password) {
         return this.password.equals(password);
     }
