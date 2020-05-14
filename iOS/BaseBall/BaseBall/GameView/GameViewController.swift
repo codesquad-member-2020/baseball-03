@@ -10,8 +10,6 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    @IBOutlet weak var playerTableView: UITableView!
-    @IBOutlet weak var recordTableView: UITableView!
     @IBOutlet weak var pitchButton: UIButton!
     @IBOutlet weak var electronicView: ElectronicView!
     @IBAction func pitchButtonPushed(_ sender: UIButton) {
@@ -22,8 +20,6 @@ class GameViewController: UIViewController {
     }
     
     private var isAttack = false
-    private let recordDataSource = RecordDataSource()
-    private let playerDataSource = PlayerDataSource()
     private let useCase = MatchInProgressUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private let matchInProgressManager = MatchInProgressManager()
@@ -31,9 +27,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.electronicView.layer.cornerRadius = self.electronicView.frame.width / 20
-        playerTableView.delegate = self
-        playerTableView.dataSource = playerDataSource
-        recordTableView.dataSource = recordDataSource
         setupPitchButton()
         setupUseCase()
         setupObserver()
@@ -83,11 +76,5 @@ class GameViewController: UIViewController {
                 self.electronicView.setHomeTeamImage(url: url)
             }
         })
-    }
-}
-
-extension GameViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / 2
     }
 }

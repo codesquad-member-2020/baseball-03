@@ -20,3 +20,4 @@ import UIKit
         self.layer.cornerRadius = self.frame.height / 2
     }
 }
+
