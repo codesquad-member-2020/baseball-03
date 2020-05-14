@@ -1,6 +1,6 @@
 INSERT INTO user (id ,email, password, nickname, win, lose, draw, team)
 VALUES (1, 'jay@codesquad.com', '1234', '제이', 0, 0, 0, null),
-        (2, 'olaf@codesquad.com', '1234', '올라프', 0, 0, 0, null),
+        (2, 'olaf@codesquad.com', '1234', '올라프', 0, 0, 0, 2),
         (3, 'sally@codesquad.com', '1234', '샐리', 0, 0, 0, null),
         (4, 'lynn@codesquad.com', '1234', '린', 0, 0, 0, null);
 
@@ -57,7 +57,7 @@ VALUES (1, 1, 1, false),
 
 INSERT INTO team_game (team, game, user, is_home)
 VALUES (1, 1, null, true), (2, 1, 2, false),
-        (3, 2, 3, true), (4, 2, 4, false),
+        (3, 2, null, true), (4, 2, null, false),
         (5, 3, null, true), (6, 3, null, false),
         (7, 4, null, true), (8, 4, null, false),
         (9, 5, null, true), (10, 5, null, false);
