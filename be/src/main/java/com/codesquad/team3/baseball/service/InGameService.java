@@ -64,6 +64,7 @@ public class InGameService {
         }
 
         // 3. 투수 레코드는 매번 업데이트
+        pitcher.addPitches();
         inGameDAO.updatePitcherRecord(pitcher.getId(), gameId, teamId);
 
         // 4. 선수 교체
