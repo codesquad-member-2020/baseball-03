@@ -15,6 +15,11 @@ public class Player {
     private Integer outs;
     private Integer pitches;
 
+    private static final int TOTAL = 1000;
+    private static final int CHANCE_OF_OUT = 50;
+    private int chanceOfHit;
+    private int chanceOfStrikeOrBall;
+
     public Player(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
@@ -26,6 +31,10 @@ public class Player {
         this.hits = builder.hits;
         this.outs = builder.outs;
         this.pitches = builder.pitches;
+        if (!this.isPitcher) {
+            this.chanceOfHit = (int)(average * TOTAL);
+            this.chanceOfStrikeOrBall = ((TOTAL - chanceOfHit) / 2 - CHANCE_OF_OUT);
+        }
     }
 
     public Integer getId() {
@@ -61,20 +70,22 @@ public class Player {
     }
 
     public Result hit() {
-        int hit = (int)(average * 1000);
-        int strike = ((1000 - hit) / 2 - 50);
-        int ball = ((1000 - hit) / 2 - 50);
-        int result = (int)(Math.random() * 1000);
+        int result = (int)(Math.random() * TOTAL);
 
-        if(result < hit){
+        if (result < chanceOfHit){
             return Result.HIT;
-        }else if(result < hit + strike){
-            return Result.STRIKE;
-        }else if(result >= (hit + strike) && result < (hit + strike + ball)){
-            return Result.BALL;
-        }else{
-            return Result.OUT;
         }
+        if (result < chanceOfHit + chanceOfStrikeOrBall){
+            return Result.STRIKE;
+        }
+        if (result < (chanceOfHit + chanceOfStrikeOrBall * 2)) {
+            return Result.BALL;
+        }
+        return Result.OUT;
+    }
+
+    public void addPitches() {
+        pitches++;
     }
 
     public static class Builder {
