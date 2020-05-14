@@ -1,5 +1,5 @@
 package com.codesquad.team3.baseball.exception;
 
-public class CanNotLoginException extends RuntimeException {
+public class DuplicateLoginException extends RuntimeException {
     private String message;
 }
