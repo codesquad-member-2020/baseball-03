@@ -88,8 +88,9 @@ CREATE TABLE at_bat (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     strikes INT DEFAULT 0 NOT NULL ,
     balls INT DEFAULT 0 NOT NULL ,
-    half_inning INT REFERENCES half_inning(id) ,
-    hitter INT REFERENCES player(id)
+    half_inning INT ,
+    hitter INT REFERENCES player(id) ,
+    FOREIGN KEY (half_inning) REFERENCES half_inning(id) ON DELETE CASCADE
 );
 
 CREATE TABLE game_log (
@@ -97,5 +98,6 @@ CREATE TABLE game_log (
     result ENUM('STRIKE', 'HIT', 'BALL', 'OUT') NOT NULL ,
     create_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     pitcher INT REFERENCES player(id) ,
-    at_bat INT REFERENCES at_bat(id)
+    at_bat INT ,
+    FOREIGN KEY (at_bat) REFERENCES at_bat(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
