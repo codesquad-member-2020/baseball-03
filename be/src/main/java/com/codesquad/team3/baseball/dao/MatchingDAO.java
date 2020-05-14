@@ -74,4 +74,13 @@ public class MatchingDAO {
     }
 
 
+    public void updateUserIdAtTeamGame(Integer gameId, Integer teamId, Integer userId) {
+        String sql = "UPDATE team_game SET user = ? WHERE game = ? AND team = ?";
+        jdbcTemplate.update(sql, new Object[]{userId, gameId, teamId});
+    }
+
+    public int countSeletedGameWithGameId(Integer gameId) {
+        String sql = "SELECT COUNT(user) FROM team_game WHERE game = ? AND user is not null";
+        return jdbcTemplate.queryForObject(sql, new Object[]{gameId}, Integer.class);
+    }
 }
