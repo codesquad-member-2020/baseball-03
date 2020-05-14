@@ -52,11 +52,11 @@ public class InGameService {
 
         // DB 갱신
         // 1. 게임 로그 - 항상
-        inGameDAO.addGameLog(new GameLog(result, pitcher.getId(), hitter.getId(), halfInning.getId()));
+        inGameDAO.addGameLog(new GameLog(result, pitcher.getId(), hitter.getId(), atBat.getId()));
 
         // 1-2. 게임 로그 - 3 STRIKE가 되어서 OUT이 되는 경우 한번 더 게임 로그 생성
         if (atBat.is3Strikes()) {
-            inGameDAO.addGameLog(new GameLog(Result.OUT, pitcher.getId(), hitter.getId(), halfInning.getId()));
+            inGameDAO.addGameLog(new GameLog(Result.OUT, pitcher.getId(), hitter.getId(), atBat.getId()));
         }
         // 2. 타석 업데이트
         if (result == Result.STRIKE || result == Result.BALL) {
