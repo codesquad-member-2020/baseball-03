@@ -4,6 +4,7 @@ import com.codesquad.team3.baseball.dao.GameDAO;
 import com.codesquad.team3.baseball.dao.InGameDAO;
 import com.codesquad.team3.baseball.domain.*;
 import com.codesquad.team3.baseball.dto.*;
+import com.codesquad.team3.baseball.exception.InAppropriateRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,11 @@ public class InGameService {
 
         Game game = teamGame.getGame();
         HalfInning halfInning = game.getLastHalfInning();
+        // * 예외
+        // 초에 away가 수비 요청을 보낸 경우
+        if ((halfInning.isTop() && !teamGame.isHome()) || (!halfInning.isTop() && teamGame.isHome())) {
+            throw new InAppropriateRequest();
+        }
         AtBat atBat = inGameDAO.findLastAtBatByHalfInning(halfInning.getId());
         Integer opposite = inGameDAO.findOppositeTeamIdByGameIdAndTeamId(gameId, teamId);
 
@@ -108,7 +114,14 @@ public class InGameService {
     private PitchingDTO createPitchingDTO(TeamGame teamGame, Game game, HalfInning halfInning, Player pitcher, Player hitter, Result result, AtBat atBat) {
         HalfInningDTO halfInningDTO = new HalfInningDTO(game.getRounds(), halfInning.isTop(), teamGame.isHome() != halfInning.isTop());
         PitcherDTO pitcherDTO = new PitcherDTO(pitcher.getName(), pitcher.getPitches());
-        HitterDTO hitterDTO = new HitterDTO(hitter.getName(), hitter.getBattingOrder(), hitter.getAtBats(), hitter.getHits(), hitter.getOuts(), hitter.getAverage());
+        HitterDTO hitterDTO = new HitterDTO.Builder()
+                .name(hitter.getName())
+                .order(hitter.getBattingOrder())
+                .atBats(hitter.getAtBats())
+                .hits(hitter.getHits())
+                .outs(hitter.getOuts())
+                .avg(hitter.getAverage())
+                .build();
         Map<Base, Boolean> base = getBases(halfInning);
         Map<String, Integer> gameScore = getGameScores(game);
         LogDTO logDTO = new LogDTO(result, getCounts(halfInning, atBat), result == Result.OUT || atBat.is3Strikes(), result == Result.HIT);
