@@ -8,6 +8,7 @@ import com.codesquad.team3.baseball.exception.InAppropriateRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,11 +53,14 @@ public class InGameService {
 
         // DB 갱신
         // 1. 게임 로그 - 항상
-        inGameDAO.addGameLog(new GameLog(result, pitcher.getId(), hitter.getId(), atBat.getId()));
+        LocalDateTime now = LocalDateTime.now();
+        inGameDAO.addGameLog(new GameLog(result, now, pitcher.getId(), hitter.getId(), atBat.getId()));
 
         // 1-2. 게임 로그 - 3 STRIKE가 되어서 OUT이 되는 경우 한번 더 게임 로그 생성
         if (atBat.is3Strikes()) {
-            inGameDAO.addGameLog(new GameLog(Result.OUT, pitcher.getId(), hitter.getId(), atBat.getId()));
+            inGameDAO.addGameLog(new GameLog(Result.OUT, now, pitcher.getId(), hitter.getId(), atBat.getId()));
+        } else if(atBat.is4Balls()) {
+            inGameDAO.addGameLog(new GameLog(Result.HIT, now, pitcher.getId(), hitter.getId(), atBat.getId()));
         }
         // 2. 타석 업데이트
         if (result == Result.STRIKE || result == Result.BALL) {

@@ -4,7 +4,6 @@ import com.codesquad.team3.baseball.domain.*;
 import com.codesquad.team3.baseball.dto.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -136,10 +135,11 @@ public class InGameDAO {
     }
 
     public void addGameLog(GameLog log) {
-        String sql = "INSERT INTO game_log (result, pitcher, at_bat)" +
-                " VALUES (:result, :pitcher, :at_bat)";
+        String sql = "INSERT INTO game_log (result, create_time, pitcher, at_bat)" +
+                " VALUES (:result, :create_time, :pitcher, :at_bat)";
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource()
                 .addValue("result", log.getResult().name())
+                .addValue("create_time", log.getCreateTime())
                 .addValue("pitcher", log.getPitcher())
                 .addValue("at_bat", log.getAtBat()));
     }
