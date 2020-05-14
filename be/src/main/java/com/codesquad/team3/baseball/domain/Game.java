@@ -26,11 +26,11 @@ public class Game {
     }
 
     public void nextHomeBattingOrder() {
-        homeBattingOrder = ++homeBattingOrder == 10 ? 0 : homeBattingOrder;
+        homeBattingOrder = ++homeBattingOrder == 10 ? 1 : homeBattingOrder;
     }
 
     public void nextAwayBattingOrder() {
-        awayBattingOrder = ++awayBattingOrder == 10 ? 0 : awayBattingOrder;
+        awayBattingOrder = ++awayBattingOrder == 10 ? 1 : awayBattingOrder;
     }
 
     public void setOver(boolean over) {
@@ -59,5 +59,9 @@ public class Game {
 
     public int getRounds() {
         return halfInnings.size();
+    }
+
+    public void addHalfInning(HalfInning halfInning) {
+        halfInnings.add(halfInning);
     }
 }
