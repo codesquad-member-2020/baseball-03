@@ -5,6 +5,7 @@ import com.codesquad.team3.baseball.dto.GameDTO;
 import com.codesquad.team3.baseball.dto.TeamDTO;
 import com.codesquad.team3.baseball.exception.CanNotSelectException;
 import com.codesquad.team3.baseball.exception.NotFoundException;
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -37,6 +38,7 @@ public class MatchingService {
         return result;
     }
 
+    @Modifying
     private boolean setTeamGame(Integer gameId, Integer teamId, Integer userId) {
         Map<String,Object> matchData = matchingDAO.getMatchDataWithGameIdAndTeamId(gameId,teamId);
 
@@ -49,6 +51,7 @@ public class MatchingService {
         }
 
         matchingDAO.updateUserIdAtTeamGame(gameId,teamId,userId);
+        matchingDAO.updateTeamIdAtUser(userId,teamId);
 
         return (Boolean)matchData.get("is_home");
     }
