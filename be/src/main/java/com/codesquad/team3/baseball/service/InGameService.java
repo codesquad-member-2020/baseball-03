@@ -119,8 +119,8 @@ public class InGameService {
                 .name(hitter.getName())
                 .order(hitter.getBattingOrder())
                 .atBats(hitter.getAtBats())
-                .hits(hitter.getHits())
-                .outs(hitter.getOuts())
+                .hits(hitter.getHitCount())
+                .outs(hitter.getOutCount())
                 .avg(hitter.getAverage())
                 .build();
         Map<Base, Boolean> base = getBases(halfInning);
@@ -165,9 +165,9 @@ public class InGameService {
 
     private Map<Result, Integer> getCounts(HalfInning halfInning, AtBat atBat) {
         Map<Result, Integer> counts = new HashMap<>();
-        counts.put(Result.STRIKE, atBat.getStrike());
-        counts.put(Result.BALL, atBat.getBall());
-        counts.put(Result.OUT, halfInning.getOut());
+        counts.put(Result.STRIKE, atBat.getStrikeCount());
+        counts.put(Result.BALL, atBat.getBallCount());
+        counts.put(Result.OUT, halfInning.getOutCount());
         return counts;
     }
 }

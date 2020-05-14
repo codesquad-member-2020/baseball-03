@@ -8,7 +8,7 @@ public class HalfInning {
     private int inning;
     private boolean isTop;
     private int score;
-    private int out;
+    private int outCount;
     private boolean firstBase;
     private boolean secondBase;
     private boolean thirdBase;
@@ -25,7 +25,7 @@ public class HalfInning {
         this.inning = builder.inning;
         this.isTop = builder.isTop;
         this.score = builder.score;
-        this.out = builder.out;
+        this.outCount = builder.outCount;
         this.firstBase = builder.firstBase;
         this.secondBase = builder.secondBase;
         this.thirdBase = builder.thirdBase;
@@ -48,8 +48,8 @@ public class HalfInning {
         return score;
     }
 
-    public int getOut() {
-        return out;
+    public int getOutCount() {
+        return outCount;
     }
 
     public boolean isFirstBase() {
@@ -73,11 +73,11 @@ public class HalfInning {
     }
 
     public int addOut(){
-        return this.out++;
+        return this.outCount++;
     }
 
     public int initOut() {
-        return this.out = 0;
+        return this.outCount = 0;
     }
 
     public boolean turnFirst(boolean status) {
@@ -100,13 +100,13 @@ public class HalfInning {
             case STRIKE:
                 atBat.addStrike();
                 if (atBat.is3Strikes()) {
-                    out++;
+                    outCount++;
                     return true;
                 }
                 return false;
             case OUT:
-                out++;
-                if (out == 3) {
+                outCount++;
+                if (outCount == 3) {
                     return true;
                 }
                 return true;
@@ -122,7 +122,7 @@ public class HalfInning {
     }
 
     public boolean isOver() {
-        return out == 3;
+        return outCount == 3;
     }
 
     private void updateBases() {
@@ -148,7 +148,7 @@ public class HalfInning {
                 ", inning=" + inning +
                 ", isTop=" + isTop +
                 ", score=" + score +
-                ", out=" + out +
+                ", outCount=" + outCount +
                 ", firstBase=" + firstBase +
                 ", secondBase=" + secondBase +
                 ", thirdBase=" + thirdBase +
@@ -162,7 +162,7 @@ public class HalfInning {
         private int inning;
         private boolean isTop;
         private int score;
-        private int out;
+        private int outCount;
         private boolean firstBase;
         private boolean secondBase;
         private boolean thirdBase;
@@ -187,8 +187,8 @@ public class HalfInning {
             return this;
         }
 
-        public Builder out(int out) {
-            this.out = out;
+        public Builder outCount(int outCount) {
+            this.outCount = outCount;
             return this;
         }
 

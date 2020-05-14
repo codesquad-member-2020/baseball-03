@@ -11,8 +11,8 @@ public class Player {
     private int battingOrder;
     private Integer team;
     private Integer atBats;
-    private Integer hits;
-    private Integer outs;
+    private Integer hitCount;
+    private Integer outCount;
     private Integer pitches;
 
     private static final int TOTAL = 1000;
@@ -28,8 +28,8 @@ public class Player {
         this.battingOrder = builder.battingOrder;
         this.team = builder.team;
         this.atBats = builder.atBats;
-        this.hits = builder.hits;
-        this.outs = builder.outs;
+        this.hitCount = builder.hitCount;
+        this.outCount = builder.outCount;
         this.pitches = builder.pitches;
         if (!this.isPitcher) {
             this.chanceOfHit = (int)(average * TOTAL);
@@ -57,12 +57,12 @@ public class Player {
         return atBats;
     }
 
-    public Integer getHits() {
-        return hits;
+    public Integer getHitCount() {
+        return hitCount;
     }
 
-    public Integer getOuts() {
-        return outs;
+    public Integer getOutCount() {
+        return outCount;
     }
 
     public Integer getPitches() {
@@ -96,8 +96,8 @@ public class Player {
         private int battingOrder;
         private Integer team;
         private int atBats;
-        private int hits;
-        private int outs;
+        private int hitCount;
+        private int outCount;
         private int pitches;
 
         public Builder(Integer id) {
@@ -134,13 +134,13 @@ public class Player {
             return this;
         }
 
-        public Builder hits(Integer hits) {
-            this.hits = hits;
+        public Builder hitCount(Integer hitCount) {
+            this.hitCount = hitCount;
             return this;
         }
 
-        public Builder outs(Integer outs) {
-            this.outs = outs;
+        public Builder outCount(Integer outCount) {
+            this.outCount = outCount;
             return this;
         }
 

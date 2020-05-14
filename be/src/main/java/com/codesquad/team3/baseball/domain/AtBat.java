@@ -5,42 +5,42 @@ public class AtBat {
     private Integer id;
     private Integer halfInning;
     private Integer hitter;
-    private int strike;
-    private int ball;
+    private int strikeCount;
+    private int ballCount;
 
-    public AtBat(Integer id, Integer halfInning, Integer hitter, int strike, int ball) {
+    public AtBat(Integer id, Integer halfInning, Integer hitter, int strikeCount, int ballCount) {
         this.id = id;
         this.halfInning = halfInning;
         this.hitter = hitter;
-        this.strike = strike;
-        this.ball = ball;
+        this.strikeCount = strikeCount;
+        this.ballCount = ballCount;
     }
     
     public Integer getId() {
         return id;
     }
 
-    public int getStrike() {
-        return strike;
+    public int getStrikeCount() {
+        return strikeCount;
     }
 
-    public int getBall() {
-        return ball;
+    public int getBallCount() {
+        return ballCount;
     }
 
     public int addStrike() {
-        return ++strike;
+        return ++strikeCount;
     }
 
     public int addBall() {
-        return ++ball;
+        return ++ballCount;
     }
 
     public boolean is3Strikes() {
-        return strike == 3;
+        return strikeCount == 3;
     }
 
     public boolean is4Balls() {
-        return ball == 4;
+        return ballCount == 4;
     }
 }
