@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS team;
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY ,
     email VARCHAR(64) UNIQUE NOT NULL ,
+    password VARCHAR(64) NOT NULL ,
     nickname VARCHAR(64) NOT NULL ,
     win INT NOT NULL ,
     lose INT NOT NULL ,
