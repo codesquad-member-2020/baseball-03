@@ -43,7 +43,7 @@ public class GameController {
     @PostMapping("")
     public ResponseEntity<ResponseData> defend(@PathVariable Integer gameId,
                                                @PathVariable Integer teamId) {
-        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, null), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, inGameService.getPitchingResult(gameId, teamId)), HttpStatus.OK);
     }
 
     @GetMapping("")
