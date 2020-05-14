@@ -16,7 +16,8 @@ CREATE TABLE user (
     nickname VARCHAR(64) NOT NULL ,
     win INT NOT NULL ,
     lose INT NOT NULL ,
-    draw INT NOT NULL
+    draw INT NOT NULL,
+    team INT NOT NULL
 );
 
 CREATE TABLE team (

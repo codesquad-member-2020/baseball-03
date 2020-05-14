@@ -1,8 +1,8 @@
-INSERT INTO user (id ,email, password, nickname, win, lose, draw)
-VALUES (1, 'jay@codesquad.com', '1234', '제이', 0, 0, 0),
-        (2, 'olaf@codesquad.com', '1234', '올라프', 0, 0, 0),
-        (3, 'sally@codesquad.com', '1234', '샐리', 0, 0, 0),
-        (4, 'lynn@codesquad.com', '1234', '린', 0, 0, 0);
+INSERT INTO user (id ,email, password, nickname, win, lose, draw, team)
+VALUES (1, 'jay@codesquad.com', '1234', '제이', 0, 0, 0, 0),
+        (2, 'olaf@codesquad.com', '1234', '올라프', 0, 0, 0, 0),
+        (3, 'sally@codesquad.com', '1234', '샐리', 0, 0, 0, 0),
+        (4, 'lynn@codesquad.com', '1234', '린', 0, 0, 0, 0);
 
 INSERT INTO team (id, name, url, thumbnail_url, color)
 VALUES (1, '두산', 'https://user-images.githubusercontent.com/33659848/81492104-4c596000-92d0-11ea-8aa9-267b0c971a11.png', 'https://user-images.githubusercontent.com/33659848/81492137-80348580-92d0-11ea-9334-ef4023bffc09.png', '#100F27'),
@@ -56,8 +56,8 @@ VALUES (1, 1, 1, false),
         (5, 1, 1, false);
 
 INSERT INTO team_game (team, game, user, is_home)
-VALUES (1, 1, 1, true), (2, 1, 2, false),
-        (3, 2, null, true), (4, 2, null, false),
+VALUES (1, 1, null, true), (2, 1, 2, false),
+        (3, 2, 3, true), (4, 2, 4, false),
         (5, 3, null, true), (6, 3, null, false),
-        (7, 4, 3, true), (8, 4, null, false),
+        (7, 4, null, true), (8, 4, null, false),
         (9, 5, null, true), (10, 5, null, false);
