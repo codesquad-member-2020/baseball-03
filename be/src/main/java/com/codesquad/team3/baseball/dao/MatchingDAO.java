@@ -3,11 +3,16 @@ package com.codesquad.team3.baseball.dao;
 import com.codesquad.team3.baseball.dto.GameDTO;
 import com.codesquad.team3.baseball.dto.TeamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class MatchingDAO {
@@ -55,4 +60,18 @@ public class MatchingDAO {
             return new GameDTO(rs.getInt("game_id"), home.build(), away.build());
         });
     }
+
+    public Map<String, Object> getMatchDataWithGameIdAndTeamId(Integer gameId, Integer teamId) {
+        Map<String,Object> matchData = new HashMap<>();
+
+        String sql = "SELECT user, is_home FROM team_game WHERE game = ? AND team = ?";
+        try{
+            matchData = jdbcTemplate.queryForMap(sql, new Object[] {gameId, teamId});
+        } catch (EmptyResultDataAccessException e) {
+            return matchData;
+        }
+        return matchData;
+    }
+
+
 }
