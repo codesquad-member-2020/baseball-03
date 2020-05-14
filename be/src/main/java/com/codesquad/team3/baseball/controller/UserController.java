@@ -5,11 +5,9 @@ import com.codesquad.team3.baseball.domain.User;
 import com.codesquad.team3.baseball.dto.ExceptionDTO;
 import com.codesquad.team3.baseball.dto.ResponseData;
 import com.codesquad.team3.baseball.dto.Status;
-import com.codesquad.team3.baseball.exception.CanNotLoginException;
+import com.codesquad.team3.baseball.exception.DuplicateLoginException;
 import com.codesquad.team3.baseball.exception.NotFoundException;
 import com.codesquad.team3.baseball.exception.NotMatchPasswordException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +34,7 @@ public class UserController {
         User user = userDAO.getUser(email);
 
         if(checkLogined(session)){
-            throw new CanNotLoginException();
+            throw new DuplicateLoginException();
         }
 
         if(!user.matchPassword(password)) {
@@ -76,7 +74,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ExceptionDTO("ERROR", content));
     }
 
-    @ExceptionHandler(CanNotLoginException.class)
+    @ExceptionHandler(DuplicateLoginException.class)
     public ResponseEntity<ExceptionDTO> cannotLogin() {
         Map<String, String> content = new HashMap<>();
         content.put("message", "이미 로그인 상태입니다.");
