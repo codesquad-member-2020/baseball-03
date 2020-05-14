@@ -47,8 +47,11 @@ public class MatchingController {
     }
 
     @GetMapping("/games/{gameId}/teams/{teamId}/matching")
-    public ResponseEntity<ResponseData> selectGame() {
-        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, null), HttpStatus.OK);
+    public ResponseEntity<ResponseData> selectGame(@PathVariable int gameId,
+                                                   HttpSession session) {
+        checkLogin((User)session.getAttribute("user"));
+        Map<String, Boolean> content = matchingService.checkMatchingNow(gameId);
+        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, content), HttpStatus.OK);
     }
 
     @ExceptionHandler(NonLoginException.class)
@@ -82,14 +85,18 @@ public class MatchingController {
     private Integer getUserId(HttpSession session) {
         User user = (User)session.getAttribute("user");
 
-        if(user == null) {
-            throw new NonLoginException();
-        }
+        checkLogin(user);
 
         if(!user.teamIsNull()) {
             throw new DuplicateSelectionException();
         }
 
         return user.getId();
+    }
+
+    private void checkLogin(User user) {
+        if(user == null) {
+            throw new NonLoginException();
+        }
     }
 }
