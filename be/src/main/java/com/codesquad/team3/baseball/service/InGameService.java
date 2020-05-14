@@ -175,7 +175,7 @@ public class InGameService {
                 .build();
         Map<Base, Boolean> base = getBases(halfInning);
         Map<String, Integer> gameScore = getGameScores(game);
-        LogDTO logDTO = new LogDTO(result, getCounts(halfInning, atBat), result == Result.OUT || atBat.is3Strikes(), result == Result.HIT);
+        LogDTO logDTO = new LogDTO(result, getCounts(halfInning, atBat), result == Result.OUT || atBat.is3Strikes(), result == Result.HIT || atBat.is4Balls());
 
         return new PitchingDTO.Builder()
                 .isOver(halfInning.isOver())
