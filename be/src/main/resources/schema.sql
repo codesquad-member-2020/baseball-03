@@ -59,7 +59,7 @@ CREATE TABLE pitcher_record (
 );
 
 CREATE TABLE hitter_record (
-    at_bat INT DEFAULT 1 NOT NULL ,
+    at_bat INT DEFAULT 0 NOT NULL ,
     hit INT DEFAULT 0 NOT NULL ,
     outs INT DEFAULT 0 NOT NULL ,
     team_game_team INT REFERENCES team_game(team),
