@@ -10,6 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var inningCollectionView: UICollectionView!
     @IBOutlet weak var pitchButton: UIButton!
     @IBOutlet weak var electronicView: ElectronicView!
     @IBAction func pitchButtonPushed(_ sender: UIButton) {
@@ -30,6 +31,8 @@ class GameViewController: UIViewController {
         setupPitchButton()
         setupUseCase()
         setupObserver()
+        inningCollectionView.dataSource = self
+        inningCollectionView.delegate = self
     }
     
     private func setupObserver() {
@@ -78,3 +81,33 @@ class GameViewController: UIViewController {
         })
     }
 }
+
+extension GameViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 11
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InningCell", for: indexPath) as? InningCollectionViewCell else {return UICollectionViewCell()}
+        cell.inningLabel.text
+            = "\(indexPath.item + 1)회"
+        return cell
+    }
+}
+
+extension GameViewController:  UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else {return}
+        cell.select()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else {return}
+        cell.deSelect()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 4, height: collectionView.frame.height)
+    }
+}
+
