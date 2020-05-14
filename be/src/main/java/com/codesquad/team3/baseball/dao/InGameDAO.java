@@ -74,7 +74,7 @@ public class InGameDAO {
         return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("gameId", gameId),
                 (rs, rowNum) -> new HalfInning.Builder(rs.getInt("id"))
                         .score(rs.getInt("score"))
-                        .out(rs.getInt("outs"))
+                        .outCount(rs.getInt("outs"))
                         .isTop(rs.getBoolean("is_top"))
                         .inning(rs.getInt("inning"))
                         .firstBase(rs.getBoolean("first_base"))
@@ -113,8 +113,8 @@ public class InGameDAO {
                         .battingOrder(rs.getInt("batting_order"))
                         .team(rs.getInt("team"))
                         .atBats(rs.getInt("at_bat"))
-                        .hits(rs.getInt("hit"))
-                        .outs(rs.getInt("outs"))
+                        .hitCount(rs.getInt("hit"))
+                        .outCount(rs.getInt("outs"))
                         .build());
     }
 
@@ -168,8 +168,8 @@ public class InGameDAO {
                 " balls = :ball" +
                 " WHERE id = :id";
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource()
-                .addValue("strikes", atBat.getStrike())
-                .addValue("ball", atBat.getBall())
+                .addValue("strikes", atBat.getStrikeCount())
+                .addValue("ball", atBat.getBallCount())
                 .addValue("id", atBat.getId()));
     }
 
@@ -210,7 +210,7 @@ public class InGameDAO {
                 .addValue("second", halfInning.isSecondBase())
                 .addValue("third", halfInning.isThirdBase())
                 .addValue("home", halfInning.isHomeBase())
-                .addValue("outs", halfInning.getOut())
+                .addValue("outs", halfInning.getOutCount())
                 .addValue("id", halfInning.getId()));
     }
 
@@ -240,7 +240,7 @@ public class InGameDAO {
         return namedParameterJdbcTemplate.query(sql, new MapSqlParameterSource("gameId", gameId),
                 (rs, rowNum) -> new HalfInning.Builder(rs.getInt("id"))
                         .score(rs.getInt("score"))
-                        .out(rs.getInt("outs"))
+                        .outCount(rs.getInt("outs"))
                         .isTop(rs.getBoolean("is_top"))
                         .inning(rs.getInt("inning"))
                         .firstBase(rs.getBoolean("first_base"))
