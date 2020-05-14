@@ -64,5 +64,4 @@ public class Game {
     public void addHalfInning(HalfInning halfInning) {
         halfInnings.add(halfInning);
     }
-
 }
