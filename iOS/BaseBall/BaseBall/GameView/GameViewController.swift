@@ -89,25 +89,46 @@ extension GameViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InningCell", for: indexPath) as? InningCollectionViewCell else {return UICollectionViewCell()}
-        cell.inningLabel.text
-            = "\(indexPath.item + 1)회"
+        
+        cell.inningLabel.text = "\(indexPath.item + 1)회"
+        
+        guard let selected = collectionView.indexPathsForSelectedItems?.first else {
+            if indexPath.item == 0 {
+                cell.select()
+            }
+            return cell
+        }
+        
+        if selected.item == indexPath.item {
+            cell.select()
+        } else {
+            cell.deSelect()
+        }
+        
         return cell
     }
+
 }
 
 extension GameViewController:  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else {return}
+        collectionView.visibleCells.forEach {
+            guard let cell = $0 as? InningCollectionViewCell else {return}
+            cell.deSelect()
+        }
         cell.select()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else {return}
-        cell.deSelect()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 4, height: collectionView.frame.height)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let cellWidth = collectionView.frame.width / 3
+        let insetY = (collectionView.frame.width - cellWidth) / 2
+        
+        return UIEdgeInsets(top: 0, left: insetY, bottom: 0, right: insetY)
     }
 }
 

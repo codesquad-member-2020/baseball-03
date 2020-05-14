@@ -13,13 +13,13 @@ struct MatchListResponse: Decodable {
 }
 
 struct Match: Decodable {
-    var matchId: String
+    var matchId: Int
     var home: TeamPreview
     var away: TeamPreview
 }
 
 struct TeamPreview: Decodable {
-    var id: String
+    var id: Int
     var name: String
     var thumbnail_url: String
 }

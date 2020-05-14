@@ -91,7 +91,7 @@ class GameListViewController: UIViewController {
                 gameListView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2).isActive = true
                 gameListView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95).isActive = true
                 
-                gameListView.setGameLabel(order: match.matchId)
+                gameListView.setGameLabel(order: String(match.matchId))
                 
                 self.imageUseCase.requestTeamImage(name: match.away.name + "_thumbnail", from: match.away.thumbnail_url, failureHandler: {
                     AlertView.errorHandling(viewController: self, error: $0)
