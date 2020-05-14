@@ -49,7 +49,7 @@ public class User {
     }
 
     public boolean teamIsNull() {
-        return team == null;
+        return team == 0;
     }
 
 }
