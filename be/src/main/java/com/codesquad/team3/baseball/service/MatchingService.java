@@ -58,4 +58,10 @@ public class MatchingService {
         int selectedTeamCount = matchingDAO.countSeletedGameWithGameId(gameId);
         return selectedTeamCount == teamPerGame;
     }
+
+    public Map<String, Boolean> checkMatchingNow(Integer gameId) {
+        Map<String,Boolean> result = new HashMap<>();
+        result.put("isReady", checkMatching(gameId));
+        return result;
+    }
 }
