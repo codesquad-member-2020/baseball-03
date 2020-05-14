@@ -4,6 +4,7 @@ import com.codesquad.team3.baseball.dao.MatchingDAO;
 import com.codesquad.team3.baseball.dto.GameDTO;
 import com.codesquad.team3.baseball.dto.TeamDTO;
 import com.codesquad.team3.baseball.exception.CanNotSelectException;
+import com.codesquad.team3.baseball.exception.DuplicateSelectionException;
 import com.codesquad.team3.baseball.exception.NotFoundException;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,8 @@ public class MatchingService {
 
     @Modifying
     private boolean setTeamGame(Integer gameId, Integer teamId, Integer userId) {
+        checkDuplicateSelection(userId);
+
         Map<String,Object> matchData = matchingDAO.getMatchDataWithGameIdAndTeamId(gameId,teamId);
 
         if(matchData.isEmpty()) {
@@ -54,6 +57,14 @@ public class MatchingService {
         matchingDAO.updateTeamIdAtUser(userId,teamId);
 
         return (Boolean)matchData.get("is_home");
+    }
+
+    private void checkDuplicateSelection(Integer userId) {
+        Integer team = matchingDAO.findTeamIdWithUserId(userId);
+
+        if(team != null){
+            throw new DuplicateSelectionException();
+        }
     }
 
     private Boolean checkMatching(Integer gameId) {
