@@ -59,7 +59,7 @@ CREATE TABLE pitcher_record (
 );
 
 CREATE TABLE hitter_record (
-    at_bat INT DEFAULT 0 NOT NULL ,
+    at_bat INT DEFAULT 1 NOT NULL ,
     hit INT DEFAULT 0 NOT NULL ,
     outs INT DEFAULT 0 NOT NULL ,
     team_game_team INT REFERENCES team_game(team),
@@ -85,6 +85,8 @@ CREATE TABLE half_inning (
 
 CREATE TABLE at_bat (
     id INT AUTO_INCREMENT PRIMARY KEY ,
+    strikes INT DEFAULT 0 NOT NULL ,
+    balls INT DEFAULT 0 NOT NULL ,
     half_inning INT REFERENCES half_inning(id) ,
     hitter INT REFERENCES player(id)
 );
@@ -94,6 +96,5 @@ CREATE TABLE game_log (
     result ENUM('STRIKE', 'HIT', 'BALL', 'OUT') NOT NULL ,
     create_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     pitcher INT REFERENCES player(id) ,
-    half_inning INT REFERENCES half_inning(id) ,
-    hitter INT REFERENCES player(id)
+    at_bat INT REFERENCES at_bat(id)
 );
