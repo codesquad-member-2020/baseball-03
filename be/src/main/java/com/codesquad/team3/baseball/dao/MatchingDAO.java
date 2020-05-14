@@ -73,7 +73,6 @@ public class MatchingDAO {
         return matchData;
     }
 
-
     public void updateUserIdAtTeamGame(Integer gameId, Integer teamId, Integer userId) {
         String sql = "UPDATE team_game SET user = ? WHERE game = ? AND team = ?";
         jdbcTemplate.update(sql, new Object[]{userId, gameId, teamId});
