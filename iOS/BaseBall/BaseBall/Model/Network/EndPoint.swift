@@ -13,4 +13,5 @@ enum EndPoint {
     static let teams = "teams"
     static let games = "games"
     static let matchInit = "games/1/teams/1/init"
+    static let defence = "games/1/teams/1"
 }

@@ -38,6 +38,8 @@ import UIKit
     
     func setPitcher(pitcher: Pitcher) {
         self.playerInfo.text = pitcher.name
+        guard let count = pitcher.pitchCount else {return}
+        self.recordLabel.text = "투구 \(count)"
     }
     
     func setHiiter(hitter: Hitter) {

@@ -19,6 +19,11 @@ class GameViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.pitchButton.alpha = 0
         }
+        useCase.requestMatchUpdate(failureHandler: {
+            AlertView.errorHandling(viewController: self, error: $0)
+        }, completed: {
+            self.matchInProgressManager.insert(match: $0)
+        })
     }
     
     private var isAttack = false
@@ -50,13 +55,18 @@ class GameViewController: UIViewController {
                                                selector: #selector(recordsUpdated),
                                                name: .RecordsUpdated,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateUI
+            ),
+                                               name: .MatchInProgressUpdated,
+                                               object: nil)
     }
     
     private func setupUseCase() {
-        useCase.requestMatchList(failureHandler: {
+        useCase.requestMatchInProgress(failureHandler: {
             AlertView.errorHandling(viewController: self, error: $0)
         }, completed:  {
-            self.matchInProgressManager.insertMatch(matchInProgress: $0)
+            self.matchInProgressManager.setMatch(matchInProgress: $0)
         })
     }
     
@@ -99,6 +109,21 @@ class GameViewController: UIViewController {
     @objc func recordsUpdated() {
         DispatchQueue.main.async {
             self.recordTableView.reloadData()
+        }
+    }
+    
+    @objc func updateUI() {
+        DispatchQueue.main.async {
+            self.pitchButton.isEnabled = true
+            UIView.animate(withDuration: 0.5) {
+                self.pitchButton.alpha = 1
+            }
+            
+            guard let pitcher = self.matchInProgressManager.currentPitcher() else {return}
+            guard let hitter = self.matchInProgressManager.currentHitter() else {return}
+            guard let log = self.matchInProgressManager.currentLog() else {return}
+            self.recordManager.update(pitcher: pitcher, hitter: hitter, log: log)
+            self.electronicView.setSBO(log: log)
         }
     }
 }

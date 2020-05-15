@@ -10,27 +10,39 @@ import Foundation
 
 class MatchInProgressManager {
     
-    private var matchInProgress: MatchInProgress?
+    private var matchInProgress: [MatchInProgress]?
     
-    func insertMatch(matchInProgress: MatchInProgress) {
-        self.matchInProgress = matchInProgress
+    func setMatch(matchInProgress: MatchInProgress) {
+        self.matchInProgress = [MatchInProgress]()
+        self.matchInProgress?.append(matchInProgress)
         NotificationCenter.default.post(name: .MatchInProgressInserted,
                                         object: nil)
     }
     
+    func insert(match: MatchInProgress) {
+        self.matchInProgress?.insert(match, at: 0)
+        NotificationCenter.default.post(name: .MatchInProgressUpdated,
+                                        object: nil)
+    }
+    
     func teamInfo() -> TeamInMatch? {
-        return matchInProgress?.team
+        return matchInProgress?[0].team
     }
     
     func currentPitcher() -> Pitcher? {
-        return matchInProgress?.pitcher
+        return matchInProgress?[0].pitcher
     }
     
     func currentHitter() -> Hitter? {
-        return matchInProgress?.hitter
+        return matchInProgress?[0].hitter
+    }
+    
+    func currentLog() -> Log? {
+        return matchInProgress?[0].log
     }
 }
 
 extension Notification.Name {
     static let MatchInProgressInserted = Notification.Name("MatchInProgressInserted")
+    static let MatchInProgressUpdated = Notification.Name("MatchInProgressUpdated")
 }

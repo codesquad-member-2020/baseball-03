@@ -18,11 +18,20 @@ struct MatchInProgressUseCase {
         }
     }
     
+    struct MatchUpdateRequest: Request {
+        var path: String {
+            return EndPoint.defaultURL + EndPoint.defence
+        }
+        var httpMethod: HTTPMethod {
+            return .post
+        }
+    }
+    
     init(networkManager: NetworkManageable) {
         self.networkManager = networkManager
     }
     
-    func requestMatchList(failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(MatchInProgress) -> ()) {
+    func requestMatchInProgress(failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(MatchInProgress) -> ()) {
         networkManager.loadResource(request: MatchInProgressRequest()) {
             switch $0 {
             case .failure(let error):
@@ -33,6 +42,24 @@ struct MatchInProgressUseCase {
                     completed(model.content)
                 } catch {
                     failureHandler(.DecodeError)
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func requestMatchUpdate(failureHandler: @escaping (NetworkManager.NetworkError) -> (), completed: @escaping(MatchInProgress) -> ()) {
+        networkManager.loadResource(request: MatchUpdateRequest()) {
+            switch $0 {
+            case .failure(let error):
+                failureHandler(error)
+            case .success(let data):
+                do {
+                    let model = try JSONDecoder().decode(MatchInProgressResponse.self, from: data)
+                    completed(model.content)
+                } catch {
+                    failureHandler(.DecodeError)
+                    print(error)
                 }
             }
         }

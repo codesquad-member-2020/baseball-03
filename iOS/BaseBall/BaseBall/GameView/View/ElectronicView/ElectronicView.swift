@@ -15,6 +15,9 @@ import UIKit
     @IBOutlet weak var awayLabel: UILabel!
     @IBOutlet weak var homeImageView: UIImageView!
     @IBOutlet weak var homeLabel: UILabel!
+    @IBOutlet weak var strikeStackView: UIStackView!
+    @IBOutlet weak var ballStackView: UIStackView!
+    @IBOutlet weak var outStackView: UIStackView!
     
     private let xibName = String(describing: ElectronicView.self)
     
@@ -48,5 +51,78 @@ import UIKit
     
     func setHomeTeamImage(url: URL) {
         self.homeImageView.image = UIImage(named: url.path)
+    }
+    
+    func setSBO(log: Log) {
+        let count = log.count
+        
+        setStrike(count: count.STRIKE)
+        setBall(count: count.BALL)
+        setOut(count: count.OUT)
+        
+        if count.STRIKE == 3 || count.BALL == 4{
+            resetStrike()
+            resetBall()
+        }
+        
+        if count.OUT == 3 {
+            resetSBO()
+        }
+        
+        guard let hit = log.isHit else {return}
+        guard let out = log.isOut else {return}
+        
+        if hit || out{
+            resetBall()
+            resetStrike()
+        }
+    }
+    
+    func setStrike(count: Int) {
+        for (index, view) in strikeStackView.subviews.enumerated() {
+            if index == count - 1 {
+                view.backgroundColor = .yellow
+            }
+        }
+    }
+    
+    func setBall(count: Int) {
+        for (index, view) in ballStackView.subviews.enumerated() {
+            if index == count - 1 {
+                view.backgroundColor = .green
+            }
+        }
+    }
+    
+    func setOut(count: Int) {
+        for (index, view) in outStackView.subviews.enumerated() {
+            if index == count - 1 {
+                view.backgroundColor = .red
+            }
+        }
+    }
+    
+    func resetStrike() {
+        strikeStackView.subviews.forEach {
+            $0.backgroundColor = .darkGray
+        }
+    }
+    
+    func resetBall() {
+        ballStackView.subviews.forEach {
+            $0.backgroundColor = .darkGray
+        }
+    }
+    
+    func resetOut() {
+        outStackView.subviews.forEach {
+            $0.backgroundColor = .darkGray
+        }
+    }
+    
+    func resetSBO() {
+        resetStrike()
+        resetBall()
+        resetOut()
     }
 }
