@@ -10,19 +10,14 @@ public class PlayerDTO {
 
     private int pitchCount;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private int order;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private int atBats;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private int hits;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private int outs;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private float avg;
 
     public PlayerDTO(Builder builder) {
@@ -33,6 +28,18 @@ public class PlayerDTO {
         this.hits = builder.hits;
         this.outs = builder.outs;
         this.avg = builder.avg;
+    }
+
+    public int getAtBats() {
+        return atBats;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public int getOuts() {
+        return outs;
     }
 
     public static class Builder {
