@@ -13,10 +13,12 @@ import UIKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = true
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = true
     }
 }

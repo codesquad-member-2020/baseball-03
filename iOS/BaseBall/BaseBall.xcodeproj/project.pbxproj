@@ -17,6 +17,7 @@
 		A53AFF3F246D9D8C00B83F27 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AFF3E246D9D8C00B83F27 /* RecordView.swift */; };
 		A53AFF41246D9D9400B83F27 /* RecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53AFF40246D9D9400B83F27 /* RecordView.xib */; };
 		A53AFF43246D9F5300B83F27 /* CircleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AFF42246D9F5300B83F27 /* CircleLabel.swift */; };
+		A53AFF45246DA3E900B83F27 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AFF44246DA3E900B83F27 /* RecordTableViewCell.swift */; };
 		A545AEDD246155450094C821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AEDC246155450094C821 /* AppDelegate.swift */; };
 		A545AEE6246155450094C821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE4246155450094C821 /* Main.storyboard */; };
 		A545AEE8246155470094C821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE7246155470094C821 /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		A53AFF3E246D9D8C00B83F27 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		A53AFF40246D9D9400B83F27 /* RecordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordView.xib; sourceTree = "<group>"; };
 		A53AFF42246D9F5300B83F27 /* CircleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLabel.swift; sourceTree = "<group>"; };
+		A53AFF44246DA3E900B83F27 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		A545AED9246155450094C821 /* BaseBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A545AEDC246155450094C821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A545AEE5246155450094C821 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				A53AFF3E246D9D8C00B83F27 /* RecordView.swift */,
 				A53AFF40246D9D9400B83F27 /* RecordView.xib */,
 				A53AFF42246D9F5300B83F27 /* CircleLabel.swift */,
+				A53AFF44246DA3E900B83F27 /* RecordTableViewCell.swift */,
 			);
 			path = PlayerCell;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				A587E3042468242700371BE4 /* TeamList.swift in Sources */,
 				A58D4634246D934C001CD958 /* PaddingLabel.swift in Sources */,
 				A5B67FB12467C5A0000D8C54 /* Request.swift in Sources */,
+				A53AFF45246DA3E900B83F27 /* RecordTableViewCell.swift in Sources */,
 				A587E30724682AB000371BE4 /* TeamListUseCase.swift in Sources */,
 				A545AEDD246155450094C821 /* AppDelegate.swift in Sources */,
 				A5BAE622246D6B4D00009FEE /* InningCollectionViewCell.swift in Sources */,

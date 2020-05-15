@@ -12,6 +12,7 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var inningCollectionView: UICollectionView!
     @IBOutlet weak var pitchButton: UIButton!
+    @IBOutlet weak var recordTableView: UITableView!
     @IBOutlet weak var electronicView: ElectronicView!
     @IBAction func pitchButtonPushed(_ sender: UIButton) {
         self.pitchButton.isEnabled = false
@@ -33,6 +34,10 @@ class GameViewController: UIViewController {
         setupObserver()
         inningCollectionView.dataSource = self
         inningCollectionView.delegate = self
+        recordTableView.estimatedRowHeight = 40
+             recordTableView.rowHeight = UITableView.automaticDimension
+        recordTableView.dataSource = self
+        recordTableView.delegate = self
     }
     
     private func setupObserver() {
@@ -79,6 +84,23 @@ class GameViewController: UIViewController {
                 self.electronicView.setHomeTeamImage(url: url)
             }
         })
+    }
+}
+
+extension GameViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell") as? RecordTableViewCell else {return UITableViewCell()}
+        return cell
+    }
+}
+
+extension GameViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
