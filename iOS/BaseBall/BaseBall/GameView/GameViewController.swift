@@ -126,10 +126,9 @@ class GameViewController: UIViewController {
             guard let homeScore = self.matchInProgressManager.homeScore() else {return}
             guard let awayScore = self.matchInProgressManager.awayScore() else {return}
             
+            self.recordManager.update(pitcher: pitcher, log: log)
             if preHitter.name != hitter.name {
-                self.recordManager.insertNewPlayer(pitcher: pitcher, hitter: hitter, log: log)
-            } else {
-                self.recordManager.update(pitcher: pitcher, hitter: hitter, log: log)
+                self.recordManager.insertNewPlayer(pitcher: pitcher, hitter: hitter)
             }
             
             self.electronicView.setSBO(log: log)

@@ -19,19 +19,18 @@ class RecordManager {
     
     func setRecords(pitcher: Pitcher, hitter: Hitter) {
         playerRecords = [PlayerRecord]()
-        playerRecords?.append(PlayerRecord(player: pitcher, records: [String]()))
-        playerRecords?.append(PlayerRecord(player: hitter, records: [String]()))
+        playerRecords?.append(PlayerRecord(player: pitcher, records: [Record]()))
+        playerRecords?.append(PlayerRecord(player: hitter, records: [Record]()))
     }
     
-    func insertNewPlayer(pitcher: Pitcher, hitter: Hitter, log: Log) {
-        playerRecords?[0] = PlayerRecord(player: pitcher, records: [String]())
-        playerRecords?.insert(PlayerRecord(player: hitter, records: [log.result]), at: 1)
+    func insertNewPlayer(pitcher: Pitcher, hitter: Hitter) {
+        playerRecords?[0] = PlayerRecord(player: pitcher, records: [Record]())
+        playerRecords?.insert(PlayerRecord(player: hitter, records: [Record]()), at: 1)
     }
     
-    func update(pitcher: Pitcher, hitter: Hitter, log: Log) {
+    func update(pitcher: Pitcher, log: Log) {
         playerRecords?[0].player = pitcher
-        playerRecords?[1].player = hitter
-        playerRecords?[1].records.insert(log.result, at: 0)
+        playerRecords?[1].records.insert(Record(SBO: log.result, count: log.count), at: 0)
     }
     
     func pitcher() -> PlayerRecord? {
@@ -49,7 +48,12 @@ class RecordManager {
 
 struct PlayerRecord {
     var player: HasName
-    var records: [String]
+    var records: [Record]
+}
+
+struct Record {
+    var SBO: String
+    var count: Count
 }
 
 extension Notification.Name {
