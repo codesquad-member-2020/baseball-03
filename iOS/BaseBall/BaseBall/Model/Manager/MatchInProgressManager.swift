@@ -52,6 +52,10 @@ class MatchInProgressManager {
     func awayScore() -> Int? {
         return matchInProgress?[0].gameScore?.away
     }
+    
+    func base() -> Base? {
+        return matchInProgress?[0].base
+    }
 }
 
 extension Notification.Name {

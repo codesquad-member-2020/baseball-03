@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var pitchButton: UIButton!
     @IBOutlet weak var recordTableView: UITableView!
     @IBOutlet weak var electronicView: ElectronicView!
+    @IBOutlet weak var fieldView: FieldView!
     @IBAction func pitchButtonPushed(_ sender: UIButton) {
         self.pitchButton.isEnabled = false
         UIView.animate(withDuration: 0.5) {
@@ -125,6 +126,7 @@ class GameViewController: UIViewController {
             guard let log = self.matchInProgressManager.currentLog() else {return}
             guard let homeScore = self.matchInProgressManager.homeScore() else {return}
             guard let awayScore = self.matchInProgressManager.awayScore() else {return}
+            guard let base = self.matchInProgressManager.base() else {return}
             
             self.recordManager.update(pitcher: pitcher, log: log)
             if preHitter.name != hitter.name {
@@ -135,6 +137,12 @@ class GameViewController: UIViewController {
             
             self.electronicView.homeScoreLabel.text = "\(homeScore)"
             self.electronicView.awayScoreLabel.text = "\(awayScore)"
+
+            self.fieldView.setFirstBase(factor: base.FIRST)
+            self.fieldView.setSecondBase(factor: base.SECOND)
+            self.fieldView.setThirdBase(factor: base.THIRD)
+            self.fieldView.setHomeBase(factor: base.HOME)
+
         }
     }
 }

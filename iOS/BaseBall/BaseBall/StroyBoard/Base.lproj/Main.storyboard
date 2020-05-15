@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gec-sP-8yx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hKE-Le-CYK">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -679,6 +679,7 @@
                     <tabBarItem key="tabBarItem" title="Play" image="ball" landscapeImage="ball" id="fqh-xO-muW"/>
                     <connections>
                         <outlet property="electronicView" destination="QNZ-fR-98A" id="dnX-Vd-DcK"/>
+                        <outlet property="fieldView" destination="t1I-RM-qJe" id="tDt-Nk-QfI"/>
                         <outlet property="inningCollectionView" destination="9sm-6G-bWP" id="sX3-Ye-0qe"/>
                         <outlet property="pitchButton" destination="zLN-j0-5ow" id="jxI-oQ-PJN"/>
                         <outlet property="recordTableView" destination="4EF-Br-nK4" id="MEv-CM-7xl"/>
