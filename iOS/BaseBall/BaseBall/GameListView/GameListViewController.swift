@@ -29,7 +29,7 @@ class GameListViewController: UIViewController {
     
     private func setupUseCase() {
         useCase.requestMatchList(failureHandler: {
-            self.errorHandling(error: $0)
+            AlertView.errorHandling(viewController: self, error: $0)
         }, completed: {
             self.matchListManager.insertMatchList(matchList: $0)
         })
@@ -91,10 +91,10 @@ class GameListViewController: UIViewController {
                 gameListView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2).isActive = true
                 gameListView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.95).isActive = true
                 
-                gameListView.setGameLabel(order: match.matchId)
+                gameListView.setGameLabel(order: String(match.matchId))
                 
                 self.imageUseCase.requestTeamImage(name: match.away.name + "_thumbnail", from: match.away.thumbnail_url, failureHandler: {
-                    self.errorHandling(error: $0)
+                    AlertView.errorHandling(viewController: self, error: $0)
                 }, completed: {
                     let data = $0
                     DispatchQueue.main.async {
@@ -104,7 +104,7 @@ class GameListViewController: UIViewController {
                 })
                 
                 self.imageUseCase.requestTeamImage(name: match.home.name + "_thumbnail", from: match.home.thumbnail_url, failureHandler: {
-                    self.errorHandling(error: $0)
+                    AlertView.errorHandling(viewController: self, error: $0)
                 }, completed: {
                     let data = $0
                     DispatchQueue.main.async {
@@ -114,19 +114,6 @@ class GameListViewController: UIViewController {
                 })
             }
         }
-    }
-    
-    private func alertError(message: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "문제가 생겼어요", message: message, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "넵...", style: .default)
-            alert.addAction(ok)
-            self.present(alert, animated: true)
-        }
-    }
-    
-    private func errorHandling(error: NetworkManager.NetworkError) {
-        alertError(message: error.message())
     }
     
     @objc func matchListInserted() {

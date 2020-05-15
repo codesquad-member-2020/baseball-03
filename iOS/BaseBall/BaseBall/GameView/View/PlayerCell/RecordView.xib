@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="DungGeunMo.ttf">
+            <string>DungGeunMo</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordView" customModule="BaseBall" customModuleProvider="target">
+            <connections>
+                <outlet property="SBOLabel" destination="7mq-GH-rtO" id="CuO-lY-ZmP"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="JvU-dM-EmO"/>
+                <outlet property="orderLabel" destination="2TJ-ZW-7q9" id="fNS-US-btH"/>
+                <outlet property="scoreLabel" destination="LJY-ok-KQU" id="Qnd-TS-vGg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="87"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TJ-ZW-7q9" customClass="CircleLabel" customModule="BaseBall" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="35" width="17" height="17"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2TJ-ZW-7q9" secondAttribute="height" multiplier="1:1" id="x0o-5m-9C3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스트라이크ㅎ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mq-GH-rtO">
+                    <rect key="frame" x="27" y="7.5" width="348.5" height="72.5"/>
+                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJY-ok-KQU">
+                    <rect key="frame" x="375.5" y="35" width="25.5" height="17"/>
+                    <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="17"/>
+                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="height" secondItem="7mq-GH-rtO" secondAttribute="height" multiplier="1.2" id="1c0-2Z-fET"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LJY-ok-KQU" secondAttribute="trailing" id="CQi-DV-WI7"/>
+                <constraint firstItem="7mq-GH-rtO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="E63-Fu-IyR"/>
+                <constraint firstItem="LJY-ok-KQU" firstAttribute="leading" secondItem="7mq-GH-rtO" secondAttribute="trailing" id="HQw-Iy-HXl"/>
+                <constraint firstItem="2TJ-ZW-7q9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KnF-aX-h2P"/>
+                <constraint firstItem="2TJ-ZW-7q9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="URI-7g-0jM"/>
+                <constraint firstItem="7mq-GH-rtO" firstAttribute="leading" secondItem="2TJ-ZW-7q9" secondAttribute="trailing" constant="10" id="cTL-WC-Xg1"/>
+                <constraint firstItem="LJY-ok-KQU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tvt-Kj-ehl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="118.11594202898551" y="-38.504464285714285"/>
+        </view>
+    </objects>
+</document>

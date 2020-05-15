@@ -39,4 +39,14 @@ struct ImageUseCase {
             }
         }
     }
+    
+    func loadTeamImage(name: String, failureHandler: @escaping (String) -> (), completed: @escaping(URL) -> ()) {
+        let imageURL = cachesDirectory.appendingPathComponent(name)
+        
+        guard FileManager.default.fileExists(atPath: imageURL.path) else {
+            failureHandler("이미지가 없습니다.")
+            return
+        }
+        completed(imageURL)
+    }
 }

@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     
     private var logoButton = UIButton()
     private var loginLabel = UILabel()
-
+    
     private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     private let useCase = TeamListUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     private func setupModel() {
         useCase.requestTeamList(failureHandler: {
-            self.errorHandling(error: $0)
+            AlertView.errorHandling(viewController: self, error: $0)
         }, completed: {
             self.teamListManager.insertTeamList(teamList: $0)
         })
@@ -65,19 +65,6 @@ class LoginViewController: UIViewController {
         self.blurView.frame = self.view.frame
     }
     
-    private func alertError(message: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "문제가 생겼어요", message: message, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "넵...", style: .default)
-            alert.addAction(ok)
-            self.present(alert, animated: true)
-        }
-    }
-    
-    private func errorHandling(error: NetworkManager.NetworkError) {
-        alertError(message: error.message())
-    }
-    
     @objc func logoButtonPushed(_ sender: UIButton) {
         guard let gameListViewController = storyboard?.instantiateViewController(identifier: "GameListViewController") else {return}
         gameListViewController.modalPresentationStyle = .overFullScreen
@@ -95,7 +82,7 @@ class LoginViewController: UIViewController {
             group.enter()
             queue.async {
                 self.imageUseCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
-                    self.errorHandling(error: $0)
+                    AlertView.errorHandling(viewController: self, error: $0)
                 }, completed: {_ in
                     group.leave()
                 })
@@ -108,7 +95,7 @@ class LoginViewController: UIViewController {
             }
             
             self.imageUseCase.requestTeamImage(name: team.name, from: team.url, failureHandler: {
-                self.errorHandling(error: $0)
+                AlertView.errorHandling(viewController: self, error: $0)
             }, completed: {
                 let image = UIImage(contentsOfFile: $0.path)
                 DispatchQueue.main.async {

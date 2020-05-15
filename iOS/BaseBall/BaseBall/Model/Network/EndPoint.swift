@@ -9,7 +9,9 @@
 import Foundation
 
 enum EndPoint {
-    static let defaultURL = "https://69612ad4-ca1b-4bc6-a7e2-a7d141c32cb5.mock.pstmn.io/api/"
+    static let defaultURL = "http://3.34.105.57/api/"
     static let teams = "teams"
     static let games = "games"
+    static let matchInit = "games/1/teams/1/init"
+    static let defence = "games/1/teams/1"
 }

@@ -11,6 +11,30 @@ import UIKit
 @IBDesignable class FieldView: UIView {
     
     static var isRotate = true
+    private var firstBasefactor = false
+    private var secondBasefactor = false
+    private var thirdBasefactor = false
+    private var homeBasefactor = false
+    
+    func setFirstBase(factor: Bool) {
+        self.firstBasefactor = factor
+        self.setNeedsDisplay()
+    }
+    
+    func setSecondBase(factor: Bool) {
+        self.secondBasefactor = factor
+        self.setNeedsDisplay()
+    }
+    
+    func setThirdBase(factor: Bool) {
+        self.thirdBasefactor = factor
+        self.setNeedsDisplay()
+    }
+    
+    func setHomeBase(factor: Bool) {
+        self.homeBasefactor = factor
+        self.setNeedsDisplay()
+    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -27,12 +51,12 @@ import UIKit
     private func setupFieldPath() {
         let side = sqrt(pow(self.frame.height / 2, 2) + pow(self.frame.height / 2, 2))
         let center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
-            
+        
         let square = UIBezierPath(roundedRect: CGRect(origin: CGPoint(x: -side, y: -side), size: CGSize(width: side * 2, height: side * 2)), cornerRadius: 20)
         UIColor(named: "FieldColor")?.setFill()
         square.rotate(translate: center, angle: 45)
         square.fill()
-    
+        
         let radius = side
         let circleCenter = CGPoint(x: side * 0.8, y: side * 0.8)
         let basePath = UIBezierPath()
@@ -124,21 +148,36 @@ import UIKit
         homeBaseCircle.fill()
         
         UIColor.white.set()
-
+        
         let baseSide = side / 20
         let firstBase = UIBezierPath(rect: CGRect(origin: firstBaseCenter, size: CGSize(width: baseSide, height: baseSide)))
         firstBase.apply(CGAffineTransform(translationX: -baseSide , y: 0))
         firstBase.rotate(translate: center, angle: 45)
+        if firstBasefactor {
+            UIColor.red.set()
+        }
         firstBase.fill()
+        
+        UIColor.white.set()
         
         let secondBase = UIBezierPath(rect: CGRect(origin: secondBaseCenter, size: CGSize(width: baseSide, height: baseSide)))
         secondBase.rotate(translate: center, angle: 45)
+        if secondBasefactor {
+            UIColor.red.set()
+        }
         secondBase.fill()
+        
+        UIColor.white.set()
         
         let thirdBase = UIBezierPath(rect: CGRect(origin: thirdBaseCenter, size: CGSize(width: baseSide, height: baseSide)))
         thirdBase.apply(CGAffineTransform(translationX: 0, y: -baseSide))
         thirdBase.rotate(translate: center, angle: 45)
+        if thirdBasefactor {
+            UIColor.red.set()
+        }
         thirdBase.fill()
+        
+        UIColor.white.set()
         
         let homeBase = drawSquare(center: homeBaseCenter, xSide: baseSide, ySide: baseSide * 1.5)
         homeBase.apply(CGAffineTransform(translationX: -homeBaseCenter.x, y: -homeBaseCenter.y))
@@ -158,7 +197,9 @@ import UIKit
         homeBaseBottom.apply(CGAffineTransform(translationX: -baseSide / 4, y: -baseSide / 4))
         homeBaseBottom.rotate(translate: center, angle: 45)
         homeBaseBottom.close()
+        
         homeBaseBottom.fill()
+        
         
         UIColor(named: "GroundColor")?.setFill()
         let pitcherMount = UIBezierPath()
