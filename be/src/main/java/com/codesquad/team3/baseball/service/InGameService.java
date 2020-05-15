@@ -116,7 +116,21 @@ public class InGameService {
         return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, result, atBat);
     }
 
-    public GameLog getLastGameLog(Integer gameId) {
+    @Transactional
+    public PitchingDTO getLastPitching(Integer gameId, Integer teamId, HttpSession session) {
+        GameLog log = getLastGameLog(gameId);
+        if (log == null) {
+            return null;
+        }
+        if (!isUpdatedGameLog(session, log)) {
+            return null;
+        }
+        // 세션에 조회한 로그 생성 날짜 저장
+        session.setAttribute(SELECT_TIME_SESSION, log.getCreateTime());
+        return createPitchingDTO(gameId, teamId, log);
+    }
+
+    private GameLog getLastGameLog(Integer gameId) {
         GameLog log;
         try {
             log = inGameDAO.findLastGameLog(gameId);
@@ -126,32 +140,37 @@ public class InGameService {
         return log;
     }
 
-    @Transactional
-    public PitchingDTO getLastPitching(Integer gameId, Integer teamId, GameLog log, HttpSession session) {
+    private PitchingDTO createPitchingDTO(Integer gameId, Integer teamId, GameLog log) {
         TeamGame teamGame = inGameDAO.findTeamGameByGameIdAndTeamId(gameId, teamId);
         Game game = teamGame.getGame();
         HalfInning halfInning = game.getLastHalfInning();
-        // * 예외
-        // 초에 home이 공격 요청을 보낸 경우
-        if ((halfInning.isTop() && teamGame.isHome()) || (!halfInning.isTop() && !teamGame.isHome())) {
-            throw new InAppropriateRequest();
-        }
-        Integer opposite = inGameDAO.findOppositeTeamIdByGameIdAndTeamId(gameId, teamId);
         AtBat atBat = inGameDAO.findAtBatById(log.getAtBat());
-        Player pitcher = inGameDAO.findPitcherByTeamId(opposite);
+        AtBat newAtBat = inGameDAO.findLastAtBat(gameId);
+        Integer opposite = inGameDAO.findOppositeTeamIdByGameIdAndTeamId(gameId, teamId);
+        Player pitcher = null;
         Player hitter = null;
-        if (teamGame.isHome()) {
-            hitter = inGameDAO.findHitterByOrder(teamId, game.getHomeBattingOrder());
-        } else {
-            hitter = inGameDAO.findHitterByOrder(teamId, game.getAwayBattingOrder());
+        // 선수가 교체된 경우 가장 최근 게임 로그는 새로운 타석을 반영하지 못하므로
+        // 단 선수가 교체된 경우와 타석이 교체된 경우를 구분해야 한다.
+        if (atBat.equals(newAtBat) || inGameDAO.isManyAtBatsInHalfInning(newAtBat.getId())) {
+            pitcher = inGameDAO.findPitcherByTeamId(opposite);
+            if (teamGame.isHome()) {
+                hitter = inGameDAO.findHitterByOrder(teamId, game.getHomeBattingOrder());
+            } else {
+                hitter = inGameDAO.findHitterByOrder(teamId, game.getAwayBattingOrder());
+            }
+            return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, log.getResult(), newAtBat);
         }
-        // 세션에 조회한 로그 생성 날짜 저장
-        session.setAttribute(SELECT_TIME_SESSION, log.getCreateTime());
-        return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, log.getResult(), atBat);
+        pitcher = inGameDAO.findPitcherByTeamId(teamId);
+        if (teamGame.isHome()) {
+            hitter = inGameDAO.findHitterByOrder(opposite, game.getAwayBattingOrder());
+        } else {
+            hitter = inGameDAO.findHitterByOrder(opposite, game.getHomeBattingOrder());
+        }
+        return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, log.getResult(), newAtBat);
     }
 
-    public boolean isUpdatedGameLog(HttpSession session, GameLog log) {
-        LocalDateTime selectTime = (LocalDateTime)session.getAttribute(SELECT_TIME_SESSION);
+    private boolean isUpdatedGameLog(HttpSession session, GameLog log) {
+        LocalDateTime selectTime = (LocalDateTime) session.getAttribute(SELECT_TIME_SESSION);
         if (log == null) {
             return false;
         }

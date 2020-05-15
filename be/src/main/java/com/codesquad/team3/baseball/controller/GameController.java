@@ -1,6 +1,5 @@
 package com.codesquad.team3.baseball.controller;
 
-import com.codesquad.team3.baseball.domain.GameLog;
 import com.codesquad.team3.baseball.dto.ExceptionDTO;
 import com.codesquad.team3.baseball.dto.PitchingDTO;
 import com.codesquad.team3.baseball.dto.ResponseData;
@@ -60,10 +59,10 @@ public class GameController {
     public ResponseEntity<ResponseData> attack(@PathVariable Integer gameId,
                                                @PathVariable Integer teamId,
                                                HttpSession session) {
-        GameLog log = inGameService.getLastGameLog(gameId);
-        if (inGameService.isUpdatedGameLog(session, log)) {
-            return new ResponseEntity<>(new ResponseData(Status.MODIFIED, inGameService.getLastPitching(gameId, teamId, log, session)), HttpStatus.OK);
+        PitchingDTO pitchingDTO = inGameService.getLastPitching(gameId, teamId, session);
+        if (pitchingDTO == null) {
+            return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(new ResponseData(Status.MODIFIED, pitchingDTO), HttpStatus.OK);
     }
 }
