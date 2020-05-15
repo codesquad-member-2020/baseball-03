@@ -121,8 +121,15 @@ class GameViewController: UIViewController {
             
             guard let pitcher = self.matchInProgressManager.currentPitcher() else {return}
             guard let hitter = self.matchInProgressManager.currentHitter() else {return}
+            guard let preHitter = self.matchInProgressManager.prevHitter() else {return}
             guard let log = self.matchInProgressManager.currentLog() else {return}
-            self.recordManager.update(pitcher: pitcher, hitter: hitter, log: log)
+            
+            if preHitter.name != hitter.name {
+                self.recordManager.insertNewPlayer(pitcher: pitcher, hitter: hitter, log: log)
+            } else {
+                self.recordManager.update(pitcher: pitcher, hitter: hitter, log: log)
+            }
+            
             self.electronicView.setSBO(log: log)
         }
     }
@@ -141,8 +148,7 @@ extension GameViewController: UITableViewDataSource {
             cell.setRecord(pitcher: pitcher)
         } else {
             guard let record = recordManager.hitter(at: indexPath.row) else {return cell}
-            guard let hitter = record.player as? Hitter else {return cell}
-            cell.setRecord(hitter: hitter)
+            cell.setRecord(record: record)
         }
         return cell
     }

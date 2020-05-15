@@ -23,11 +23,15 @@ class RecordManager {
         playerRecords?.append(PlayerRecord(player: hitter, records: [String]()))
     }
     
+    func insertNewPlayer(pitcher: Pitcher, hitter: Hitter, log: Log) {
+        playerRecords?[0] = PlayerRecord(player: pitcher, records: [String]())
+        playerRecords?.insert(PlayerRecord(player: hitter, records: [log.result]), at: 1)
+    }
+    
     func update(pitcher: Pitcher, hitter: Hitter, log: Log) {
         playerRecords?[0].player = pitcher
         playerRecords?[1].player = hitter
         playerRecords?[1].records.insert(log.result, at: 0)
-        print(playerRecords?[1].records)
     }
     
     func pitcher() -> PlayerRecord? {

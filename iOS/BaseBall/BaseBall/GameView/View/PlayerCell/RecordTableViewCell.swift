@@ -17,7 +17,8 @@ class RecordTableViewCell: UITableViewCell {
         pitcherHitterView.setPitcher(pitcher: pitcher)
     }
     
-    func setRecord(hitter: Hitter) {
+    func setRecord(record: PlayerRecord) {
+        guard let hitter = record.player as? Hitter else {return}
         pitcherHitterView.setHiiter(hitter: hitter)
     }
 }

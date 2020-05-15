@@ -37,6 +37,10 @@ class MatchInProgressManager {
         return matchInProgress?[0].hitter
     }
     
+    func prevHitter() -> Hitter? {
+        return matchInProgress?[1].hitter
+    }
+    
     func currentLog() -> Log? {
         return matchInProgress?[0].log
     }

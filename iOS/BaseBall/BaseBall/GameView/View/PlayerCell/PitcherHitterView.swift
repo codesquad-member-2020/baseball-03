@@ -40,6 +40,9 @@ import UIKit
         self.playerInfo.text = pitcher.name
         guard let count = pitcher.pitchCount else {return}
         self.recordLabel.text = "투구 \(count)"
+        piterHitterLabel.text = "투수"
+        piterHitterLabel.backgroundColor = .red
+        playerLabel.text = "player"
     }
     
     func setHiiter(hitter: Hitter) {
