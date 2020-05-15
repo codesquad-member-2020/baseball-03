@@ -12,4 +12,12 @@ class RecordTableViewCell: UITableViewCell {
     
     @IBOutlet weak var pitcherHitterView: PitcherHitterView!
     @IBOutlet weak var recordStackView: UIStackView!
+    
+    func setPitcherCell(pitcher: Pitcher) {
+        pitcherHitterView.setPitcher(pitcher: pitcher)
+    }
+    
+    func setHitterCell(hitter: Hitter) {
+        pitcherHitterView.setHiiter(hitter: hitter)
+    }
 }

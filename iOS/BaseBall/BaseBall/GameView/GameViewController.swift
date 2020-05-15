@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
     private let useCase = MatchInProgressUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private let matchInProgressManager = MatchInProgressManager()
+    private let recordManager = RecordManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class GameViewController: UIViewController {
         inningCollectionView.dataSource = self
         inningCollectionView.delegate = self
         recordTableView.estimatedRowHeight = 40
-             recordTableView.rowHeight = UITableView.automaticDimension
+        recordTableView.rowHeight = UITableView.automaticDimension
         recordTableView.dataSource = self
         recordTableView.delegate = self
     }
@@ -44,6 +45,10 @@ class GameViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setupUI),
                                                name: .MatchInProgressInserted,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(recordsUpdated),
+                                               name: .RecordsUpdated,
                                                object: nil)
     }
     
@@ -84,16 +89,36 @@ class GameViewController: UIViewController {
                 self.electronicView.setHomeTeamImage(url: url)
             }
         })
+        
+        guard let pitcher = self.matchInProgressManager.currentPitcher() else {return}
+        guard let hitter = self.matchInProgressManager.currentHitter() else {return}
+        
+        recordManager.setRecords(pitcher: pitcher, hitter: hitter)
+    }
+    
+    @objc func recordsUpdated() {
+        DispatchQueue.main.async {
+            self.recordTableView.reloadData()
+        }
     }
 }
 
 extension GameViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return recordManager.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell") as? RecordTableViewCell else {return UITableViewCell()}
+        if indexPath.row == 0 {
+            guard let record = recordManager.pitcher() else {return cell}
+            guard let pitcher = record.player as? Pitcher else {return cell}
+            cell.setPitcherCell(pitcher: pitcher)
+        } else {
+            guard let record = recordManager.hitter(at: indexPath.row) else {return cell}
+            guard let hitter = record.player as? Hitter else {return cell}
+            cell.setHitterCell(hitter: hitter)
+        }
         return cell
     }
 }
@@ -129,7 +154,7 @@ extension GameViewController: UICollectionViewDataSource {
         
         return cell
     }
-
+    
 }
 
 extension GameViewController:  UICollectionViewDelegateFlowLayout {

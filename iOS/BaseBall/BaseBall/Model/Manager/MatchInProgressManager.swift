@@ -9,6 +9,7 @@
 import Foundation
 
 class MatchInProgressManager {
+    
     private var matchInProgress: MatchInProgress?
     
     func insertMatch(matchInProgress: MatchInProgress) {
@@ -19,6 +20,14 @@ class MatchInProgressManager {
     
     func teamInfo() -> TeamInMatch? {
         return matchInProgress?.team
+    }
+    
+    func currentPitcher() -> Pitcher? {
+        return matchInProgress?.pitcher
+    }
+    
+    func currentHitter() -> Hitter? {
+        return matchInProgress?.hitter
     }
 }
 

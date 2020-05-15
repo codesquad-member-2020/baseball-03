@@ -18,6 +18,7 @@
 		A53AFF41246D9D9400B83F27 /* RecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53AFF40246D9D9400B83F27 /* RecordView.xib */; };
 		A53AFF43246D9F5300B83F27 /* CircleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AFF42246D9F5300B83F27 /* CircleLabel.swift */; };
 		A53AFF45246DA3E900B83F27 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AFF44246DA3E900B83F27 /* RecordTableViewCell.swift */; };
+		A53AFF47246E223A00B83F27 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AFF46246E223A00B83F27 /* RecordManager.swift */; };
 		A545AEDD246155450094C821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A545AEDC246155450094C821 /* AppDelegate.swift */; };
 		A545AEE6246155450094C821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE4246155450094C821 /* Main.storyboard */; };
 		A545AEE8246155470094C821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A545AEE7246155470094C821 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		A53AFF40246D9D9400B83F27 /* RecordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordView.xib; sourceTree = "<group>"; };
 		A53AFF42246D9F5300B83F27 /* CircleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLabel.swift; sourceTree = "<group>"; };
 		A53AFF44246DA3E900B83F27 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		A53AFF46246E223A00B83F27 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		A545AED9246155450094C821 /* BaseBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A545AEDC246155450094C821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A545AEE5246155450094C821 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				A587E30B24682EF500371BE4 /* TeamListManager.swift */,
 				A5C95A8724692CC400549905 /* MatchListManager.swift */,
 				A5B40D35246BE2F200A972E2 /* MatchInProgressManager.swift */,
+				A53AFF46246E223A00B83F27 /* RecordManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				A5BAE625246D8C6D00009FEE /* PitcherHitterView.swift in Sources */,
 				A5B40D3A246BE4EF00A972E2 /* AlertView.swift in Sources */,
 				A5C95A8824692CC400549905 /* MatchListManager.swift in Sources */,
+				A53AFF47246E223A00B83F27 /* RecordManager.swift in Sources */,
 				A5C95A82246917AD00549905 /* MatchListUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

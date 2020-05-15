@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasName {
+    var name: String {get set}
+}
+
 struct MatchInProgressResponse: Decodable {
     var content: MatchInProgress
 }
@@ -24,11 +28,11 @@ struct TeamInMatch: Decodable {
     var away: String
 }
 
-struct Pitcher: Decodable {
+struct Pitcher: Decodable, HasName {
     var name: String
 }
 
-struct Hitter: Decodable {
+struct Hitter: Decodable, HasName {
     var name: String
     var order: Int
 }

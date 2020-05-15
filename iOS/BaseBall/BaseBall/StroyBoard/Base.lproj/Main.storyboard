@@ -60,22 +60,22 @@
                                 <rect key="frame" x="0.0" y="43.999999999999993" width="375" height="81.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4h-Rk-goD" userLabel="Versus Label">
-                                        <rect key="frame" x="168.66666666666666" y="25.666666666666671" width="37.666666666666657" height="30"/>
+                                        <rect key="frame" x="168.66666666666666" y="23" width="37.666666666666657" height="35"/>
                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JMD-em-8NJ" userLabel="Away Stack View">
-                                        <rect key="frame" x="0.0" y="23" width="150" height="35"/>
+                                        <rect key="frame" x="0.0" y="20" width="150" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한화" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgJ-31-KzT" userLabel="Team Name Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="95" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="41"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="35"/>
                                                 <color key="textColor" name="Hanwha"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWP-nb-W0n" userLabel="Team Score Label">
-                                                <rect key="frame" x="115" y="0.0" width="35" height="35"/>
+                                                <rect key="frame" x="111" y="0.0" width="39" height="41"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="35"/>
                                                 <color key="textColor" name="Hanwha"/>
                                                 <nil key="highlightedColor"/>
@@ -83,16 +83,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gvf-Qs-bgG" userLabel="Home Stack View">
-                                        <rect key="frame" x="225" y="23" width="150" height="35"/>
+                                        <rect key="frame" x="225" y="20" width="150" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqR-A6-nB4" userLabel="Team Score Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="17.666666666666668" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="19.666666666666668" height="41"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="35"/>
                                                 <color key="textColor" name="Samsung"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="삼성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnk-vT-2o5" userLabel="Team Name Label">
-                                                <rect key="frame" x="37.666666666666679" y="0.0" width="112.33333333333331" height="35"/>
+                                                <rect key="frame" x="39.666666666666679" y="0.0" width="110.33333333333331" height="41"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="35"/>
                                                 <color key="textColor" name="Samsung"/>
                                                 <nil key="highlightedColor"/>
@@ -117,76 +117,76 @@
                                 <rect key="frame" x="0.0" y="125.33333333333331" width="375" height="603.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="039-8M-ICX">
-                                        <rect key="frame" x="56.333333333333343" y="0.0" width="300" height="20"/>
+                                        <rect key="frame" x="56.333333333333343" y="0.0" width="300" height="23.333333333333332"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxm-BI-quq">
-                                                <rect key="frame" x="0.0" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cr-dy-nva">
-                                                <rect key="frame" x="24.999999999999993" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="24.999999999999993" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olz-Uq-U3N">
-                                                <rect key="frame" x="49.999999999999993" y="0.0" width="25.000000000000007" height="20"/>
+                                                <rect key="frame" x="49.999999999999993" y="0.0" width="25.000000000000007" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUq-aI-3Ik">
-                                                <rect key="frame" x="75" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="75" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmh-nE-s5k">
-                                                <rect key="frame" x="100" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="100" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbu-ow-7Qj">
-                                                <rect key="frame" x="125" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="125" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z5-V5-vLo">
-                                                <rect key="frame" x="150" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="150" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63k-bF-R6y">
-                                                <rect key="frame" x="175" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="175" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpH-5C-Xpj">
-                                                <rect key="frame" x="199.99999999999997" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="199.99999999999997" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WX-7p-eMD">
-                                                <rect key="frame" x="224.99999999999997" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="224.99999999999997" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rto-CH-9Yf">
-                                                <rect key="frame" x="250" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="250" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQm-VS-zAp">
-                                                <rect key="frame" x="275" y="0.0" width="25" height="20"/>
+                                                <rect key="frame" x="275" y="0.0" width="25" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
@@ -194,86 +194,86 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lwn-C0-9Xs" userLabel="Division View">
-                                        <rect key="frame" x="56.333333333333343" y="23.000000000000014" width="300" height="2"/>
+                                        <rect key="frame" x="56.333333333333343" y="26.333333333333329" width="300" height="2"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="4le-Ox-n4T"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UZo-bb-d6a" userLabel="Detail Score Stack View">
-                                        <rect key="frame" x="56.333333333333343" y="28.000000000000014" width="300" height="50"/>
+                                        <rect key="frame" x="56.333333333333343" y="31.333333333333325" width="300" height="56.666666666666657"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DmQ-Js-grl" userLabel="Away Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="23.333333333333332"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSX-Tv-kfS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy8-TF-RWm">
-                                                        <rect key="frame" x="24.999999999999993" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="24.999999999999993" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1k-KZ-Aic">
-                                                        <rect key="frame" x="49.999999999999993" y="0.0" width="25.000000000000007" height="20"/>
+                                                        <rect key="frame" x="49.999999999999993" y="0.0" width="25.000000000000007" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNX-Bv-ykV">
-                                                        <rect key="frame" x="75" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="75" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmZ-zC-Ia6">
-                                                        <rect key="frame" x="100" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="100" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q1-1I-Dgr">
-                                                        <rect key="frame" x="125" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="125" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoV-4u-LQa">
-                                                        <rect key="frame" x="150" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="150" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udC-o1-Cf5">
-                                                        <rect key="frame" x="175" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="175" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEX-72-jmo">
-                                                        <rect key="frame" x="199.99999999999997" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="199.99999999999997" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUY-0A-nGN">
-                                                        <rect key="frame" x="224.99999999999997" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="224.99999999999997" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvX-mg-H4T">
-                                                        <rect key="frame" x="250" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="250" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ez-qm-NzB">
-                                                        <rect key="frame" x="275" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="275" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -281,76 +281,76 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KyT-3N-lKu" userLabel="Home Stack View">
-                                                <rect key="frame" x="0.0" y="30" width="300" height="20"/>
+                                                <rect key="frame" x="0.0" y="33.333333333333343" width="300" height="23.333333333333329"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-cD-gNN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a1-P1-ybR">
-                                                        <rect key="frame" x="24.999999999999993" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="24.999999999999993" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81s-y3-dBw">
-                                                        <rect key="frame" x="49.999999999999993" y="0.0" width="25.000000000000007" height="20"/>
+                                                        <rect key="frame" x="49.999999999999993" y="0.0" width="25.000000000000007" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R80-xR-xoB">
-                                                        <rect key="frame" x="75" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="75" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cse-hm-uR7">
-                                                        <rect key="frame" x="100" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="100" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOg-xp-YkV">
-                                                        <rect key="frame" x="125" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="125" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gp-ki-ade">
-                                                        <rect key="frame" x="150" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="150" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-d4-SFC">
-                                                        <rect key="frame" x="175" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="175" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zra-wE-J2b">
-                                                        <rect key="frame" x="199.99999999999997" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="199.99999999999997" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-Br-BY2">
-                                                        <rect key="frame" x="224.99999999999997" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="224.99999999999997" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFx-by-wKU">
-                                                        <rect key="frame" x="250" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="250" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cai-uc-33V">
-                                                        <rect key="frame" x="275" y="0.0" width="25" height="20"/>
+                                                        <rect key="frame" x="275" y="0.0" width="25" height="23.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -360,16 +360,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P0Y-DG-QYT" userLabel="Team Name Stack View">
-                                        <rect key="frame" x="0.0" y="28.000000000000014" width="56.333333333333336" height="50"/>
+                                        <rect key="frame" x="0.0" y="31.333333333333325" width="56.333333333333336" height="56.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한화" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tm-16-B8e" userLabel="Away Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="28.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="삼성" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEt-60-BPI" userLabel="Home Stack View">
-                                                <rect key="frame" x="0.0" y="25" width="56.333333333333336" height="25"/>
+                                                <rect key="frame" x="0.0" y="28.333333333333343" width="56.333333333333336" height="28.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="20"/>
                                                 <color key="textColor" name="NeonColor"/>
                                                 <nil key="highlightedColor"/>
@@ -377,60 +377,60 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWe-2I-abx" userLabel="Division View">
-                                        <rect key="frame" x="56.333333333333343" y="81.000000000000014" width="300" height="2"/>
+                                        <rect key="frame" x="56.333333333333343" y="91.000000000000014" width="300" height="2"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="oKe-cv-lDk"/>
                                         </constraints>
                                     </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="w0g-xP-F4Q" userLabel="Taam Select Segmented Control">
-                                        <rect key="frame" x="18.666666666666657" y="123" width="337.66666666666674" height="32"/>
+                                        <rect key="frame" x="18.666666666666657" y="133" width="337.66666666666674" height="32"/>
                                         <segments>
                                             <segment title="Hanwha"/>
                                             <segment title="Samsung"/>
                                         </segments>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ftj-Lq-iny">
-                                        <rect key="frame" x="0.0" y="174.00000000000003" width="375" height="429.66666666666674"/>
+                                        <rect key="frame" x="0.0" y="184.00000000000003" width="375" height="419.66666666666674"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PlayerInfoCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerInfoCell" id="K4F-x8-GxB" customClass="PlayerInfoCell" customModule="BaseBall" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="17.333333969116211"/>
+                                                <rect key="frame" x="0.0" y="28" width="375" height="20.333333969116211"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K4F-x8-GxB" id="WwU-lm-Ufv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="17.333333969116211"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333969116211"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oPq-cW-P5J">
-                                                            <rect key="frame" x="18.666666666666657" y="0.0" width="337.66666666666674" height="17.333333333333332"/>
+                                                            <rect key="frame" x="18.666666666666657" y="0.0" width="337.66666666666674" height="20.333333333333332"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Batting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9s-yh-sew">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="67.666666666666671" height="17.333333333333332"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="67.666666666666671" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타석" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jm-p3-fac">
-                                                                    <rect key="frame" x="67.666666666666657" y="0.0" width="67.333333333333343" height="17.333333333333332"/>
+                                                                    <rect key="frame" x="67.666666666666657" y="0.0" width="67.333333333333343" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안타" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeE-Lw-wPS">
-                                                                    <rect key="frame" x="135" y="0.0" width="67.666666666666686" height="17.333333333333332"/>
+                                                                    <rect key="frame" x="135" y="0.0" width="67.666666666666686" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아웃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOD-rO-Kcy">
-                                                                    <rect key="frame" x="202.66666666666669" y="0.0" width="67.333333333333314" height="17.333333333333332"/>
+                                                                    <rect key="frame" x="202.66666666666669" y="0.0" width="67.333333333333314" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="평균" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFD-vM-8Lw">
-                                                                    <rect key="frame" x="270" y="0.0" width="67.666666666666686" height="17.333333333333332"/>
+                                                                    <rect key="frame" x="270" y="0.0" width="67.666666666666686" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="DungGeunMo" family="DungGeunMo" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -598,7 +598,7 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4EF-Br-nK4">
-                                <rect key="frame" x="0.0" y="495.66666666666669" width="375" height="233.33333333333331"/>
+                                <rect key="frame" x="0.0" y="505.66666666666669" width="375" height="223.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="60" id="6hz-AA-cvA" customClass="RecordTableViewCell" customModule="BaseBall" customModuleProvider="target">
@@ -609,7 +609,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U6H-s7-mm4" userLabel="Record Stack View">
-                                                    <rect key="frame" x="18.666666666666657" y="30" width="337.66666666666674" height="25"/>
+                                                    <rect key="frame" x="18.666666666666657" y="40" width="337.66666666666674" height="15"/>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ts3-Qm-OJH">
                                                     <rect key="frame" x="0.0" y="55" width="375" height="5"/>
@@ -629,7 +629,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Ts3-Qm-OJH" secondAttribute="bottom" id="5SA-Bo-82N"/>
                                                 <constraint firstItem="U6H-s7-mm4" firstAttribute="centerX" secondItem="xIv-lQ-IWT" secondAttribute="centerX" id="8cM-cC-XOc"/>
-                                                <constraint firstItem="U6H-s7-mm4" firstAttribute="top" secondItem="qaB-hr-Yfo" secondAttribute="bottom" id="I1W-6S-Rd5"/>
+                                                <constraint firstItem="U6H-s7-mm4" firstAttribute="top" secondItem="qaB-hr-Yfo" secondAttribute="bottom" constant="10" id="I1W-6S-Rd5"/>
                                                 <constraint firstItem="qaB-hr-Yfo" firstAttribute="centerX" secondItem="xIv-lQ-IWT" secondAttribute="centerX" id="VlT-4g-iQV"/>
                                                 <constraint firstItem="qaB-hr-Yfo" firstAttribute="width" secondItem="xIv-lQ-IWT" secondAttribute="width" multiplier="0.9" id="bsF-lw-W4F"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ts3-Qm-OJH" secondAttribute="trailing" id="cqV-Eb-H5U"/>
@@ -668,7 +668,7 @@
                             <constraint firstItem="GnE-2V-9vw" firstAttribute="trailing" secondItem="flK-WO-XCn" secondAttribute="trailing" id="iw2-mw-sjB"/>
                             <constraint firstItem="GnE-2V-9vw" firstAttribute="bottom" secondItem="4EF-Br-nK4" secondAttribute="bottom" id="k2d-T8-rGG"/>
                             <constraint firstItem="GnE-2V-9vw" firstAttribute="trailing" secondItem="9sm-6G-bWP" secondAttribute="trailing" id="nHt-bS-5ca"/>
-                            <constraint firstItem="4EF-Br-nK4" firstAttribute="top" secondItem="9sm-6G-bWP" secondAttribute="bottom" id="nKe-dT-dOs"/>
+                            <constraint firstItem="4EF-Br-nK4" firstAttribute="top" secondItem="9sm-6G-bWP" secondAttribute="bottom" constant="10" id="nKe-dT-dOs"/>
                             <constraint firstItem="QNZ-fR-98A" firstAttribute="top" secondItem="GnE-2V-9vw" secondAttribute="top" id="otW-KT-JVu"/>
                             <constraint firstAttribute="trailing" secondItem="RfH-h4-gFX" secondAttribute="trailing" id="qj6-ar-fH7"/>
                             <constraint firstItem="GnE-2V-9vw" firstAttribute="trailing" secondItem="4EF-Br-nK4" secondAttribute="trailing" id="u97-fx-hOc"/>

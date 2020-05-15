@@ -35,4 +35,16 @@ import UIKit
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
+    
+    func setPitcher(pitcher: Pitcher) {
+        self.playerInfo.text = pitcher.name
+    }
+    
+    func setHiiter(hitter: Hitter) {
+        self.playerInfo.text = "\(hitter.order)번 타자 " + hitter.name
+        recordLabel.text = ""
+        piterHitterLabel.text = "타자"
+        piterHitterLabel.backgroundColor = .blue
+        playerLabel.text = ""
+    }
 }
