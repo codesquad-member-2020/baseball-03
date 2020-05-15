@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +49,19 @@ public class InGameDAO {
                 (rs, rowNum) -> new AtBat(
                         rs.getInt("id"),
                         halfInningId,
+                        rs.getInt("hitter"),
+                        rs.getInt("strikes"),
+                        rs.getInt("balls")));
+    }
+
+    public AtBat findAtBatById(Integer atBatId) {
+        String sql = "SELECT id, half_inning, hitter, strikes, balls" +
+                " FROM at_bat" +
+                " WHERE id = :atBatId";
+        return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("atBatId", atBatId),
+                (rs, rowNum) -> new AtBat(
+                        rs.getInt("id"),
+                        rs.getInt("half_inning"),
                         rs.getInt("hitter"),
                         rs.getInt("strikes"),
                         rs.getInt("balls")));
@@ -135,11 +151,52 @@ public class InGameDAO {
                         .build());
     }
 
+    // 공격 api에서 사용
+    // 가장 최근 게임 로그의 생성 시간과 비교
+    public GameLog findLastGameLog(Integer gameId) throws EmptyResultDataAccessException {
+        String sql = "SELECT gl.result AS result, gl.create_time AS create_time, gl.at_bat AS at_bat FROM game_log gl" +
+                " LEFT OUTER JOIN at_bat at ON gl.at_bat = at.id" +
+                " LEFT OUTER JOIN half_inning hi ON at.half_inning = hi.id" +
+                " WHERE hi.game = :gameId" +
+                " ORDER BY gl.id DESC" +
+                " LIMIT 1;";
+        return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("gameId", gameId),
+                (rs, rowNum) -> new GameLog(
+                        Result.valueOf(rs.getString("result")),
+                        rs.getTimestamp("create_time").toLocalDateTime(),
+                        rs.getInt("at_bat")));
+    }
+
+    public AtBat findLastAtBat(Integer gameId) {
+        String sql = "SELECT ab.id AS at_bat_id, ab.half_inning, ab.hitter, ab.strikes, ab.balls" +
+                " FROM at_bat ab" +
+                " LEFT OUTER JOIN half_inning hi ON ab.half_inning = hi.id" +
+                " WHERE hi.game = :gameId" +
+                " ORDER BY ab.id DESC" +
+                " LIMIT 1";
+        return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("gameId", gameId),
+                (rs, rowNum) -> new AtBat(
+                        rs.getInt("at_bat_id"),
+                        rs.getInt("half_inning"),
+                        rs.getInt("hitter"),
+                        rs.getInt("strikes"),
+                        rs.getInt("balls")));
+    }
+
+    public boolean isManyAtBatsInHalfInning(Integer atBatId) {
+        String sql = "SELECT COUNT(half_inning) > 1" +
+                " FROM at_bat ab" +
+                " WHERE ab.half_inning = (SELECT half_inning" +
+                " FROM at_bat WHERE id = :atBatId)";
+        return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource("atBatId", atBatId), Boolean.class);
+    }
+
     public void addGameLog(GameLog log) {
-        String sql = "INSERT INTO game_log (result, pitcher, at_bat)" +
-                " VALUES (:result, :pitcher, :at_bat)";
+        String sql = "INSERT INTO game_log (result, create_time, pitcher, at_bat)" +
+                " VALUES (:result, :create_time, :pitcher, :at_bat)";
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource()
                 .addValue("result", log.getResult().name())
+                .addValue("create_time", log.getCreateTime())
                 .addValue("pitcher", log.getPitcher())
                 .addValue("at_bat", log.getAtBat()));
     }

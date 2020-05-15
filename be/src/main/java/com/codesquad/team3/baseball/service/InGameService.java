@@ -5,15 +5,19 @@ import com.codesquad.team3.baseball.dao.InGameDAO;
 import com.codesquad.team3.baseball.domain.*;
 import com.codesquad.team3.baseball.dto.*;
 import com.codesquad.team3.baseball.exception.InAppropriateRequest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class InGameService {
 
+    private static final String SELECT_TIME_SESSION = "select_time";
     private InGameDAO inGameDAO;
     private GameDAO gameDAO;
 
@@ -52,12 +56,9 @@ public class InGameService {
 
         // DB 갱신
         // 1. 게임 로그 - 항상
-        inGameDAO.addGameLog(new GameLog(result, pitcher.getId(), hitter.getId(), atBat.getId()));
+        LocalDateTime now = LocalDateTime.now();
+        inGameDAO.addGameLog(new GameLog(result, now, pitcher.getId(), hitter.getId(), atBat.getId()));
 
-        // 1-2. 게임 로그 - 3 STRIKE가 되어서 OUT이 되는 경우 한번 더 게임 로그 생성
-        if (atBat.is3Strikes()) {
-            inGameDAO.addGameLog(new GameLog(Result.OUT, pitcher.getId(), hitter.getId(), atBat.getId()));
-        }
         // 2. 타석 업데이트
         if (result == Result.STRIKE || result == Result.BALL) {
             inGameDAO.updateAtBat(atBat);
@@ -115,6 +116,71 @@ public class InGameService {
         return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, result, atBat);
     }
 
+    @Transactional
+    public PitchingDTO getLastPitching(Integer gameId, Integer teamId, HttpSession session) {
+        GameLog log = getLastGameLog(gameId);
+        if (log == null) {
+            return null;
+        }
+        if (!isUpdatedGameLog(session, log)) {
+            return null;
+        }
+        // 세션에 조회한 로그 생성 날짜 저장
+        session.setAttribute(SELECT_TIME_SESSION, log.getCreateTime());
+        return createPitchingDTO(gameId, teamId, log);
+    }
+
+    private GameLog getLastGameLog(Integer gameId) {
+        GameLog log;
+        try {
+            log = inGameDAO.findLastGameLog(gameId);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+        return log;
+    }
+
+    private PitchingDTO createPitchingDTO(Integer gameId, Integer teamId, GameLog log) {
+        TeamGame teamGame = inGameDAO.findTeamGameByGameIdAndTeamId(gameId, teamId);
+        Game game = teamGame.getGame();
+        HalfInning halfInning = game.getLastHalfInning();
+        AtBat atBat = inGameDAO.findAtBatById(log.getAtBat());
+        AtBat newAtBat = inGameDAO.findLastAtBat(gameId);
+        Integer opposite = inGameDAO.findOppositeTeamIdByGameIdAndTeamId(gameId, teamId);
+        Player pitcher = null;
+        Player hitter = null;
+        // 선수가 교체된 경우 가장 최근 게임 로그는 새로운 타석을 반영하지 못하므로
+        // 단 선수가 교체된 경우와 타석이 교체된 경우를 구분해야 한다.
+        if (atBat.equals(newAtBat) || inGameDAO.isManyAtBatsInHalfInning(newAtBat.getId())) {
+            pitcher = inGameDAO.findPitcherByTeamId(opposite);
+            if (teamGame.isHome()) {
+                hitter = inGameDAO.findHitterByOrder(teamId, game.getHomeBattingOrder());
+            } else {
+                hitter = inGameDAO.findHitterByOrder(teamId, game.getAwayBattingOrder());
+            }
+            return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, log.getResult(), newAtBat);
+        }
+        pitcher = inGameDAO.findPitcherByTeamId(teamId);
+        if (teamGame.isHome()) {
+            hitter = inGameDAO.findHitterByOrder(opposite, game.getAwayBattingOrder());
+        } else {
+            hitter = inGameDAO.findHitterByOrder(opposite, game.getHomeBattingOrder());
+        }
+        return createPitchingDTO(teamGame, game, halfInning, pitcher, hitter, log.getResult(), newAtBat);
+    }
+
+    private boolean isUpdatedGameLog(HttpSession session, GameLog log) {
+        LocalDateTime selectTime = (LocalDateTime) session.getAttribute(SELECT_TIME_SESSION);
+        if (log == null) {
+            return false;
+        }
+        if (selectTime == null) {
+            session.setAttribute(SELECT_TIME_SESSION, log.getCreateTime());
+            return true;
+        }
+        return selectTime.isBefore(log.getCreateTime());
+    }
+
     private PitchingDTO createPitchingDTO(TeamGame teamGame, Game game, HalfInning halfInning, Player pitcher, Player hitter, Result result, AtBat atBat) {
         HalfInningDTO halfInningDTO = new HalfInningDTO(game.getRound(), halfInning.isTop(), teamGame.isHome() != halfInning.isTop());
         PitcherDTO pitcherDTO = new PitcherDTO(pitcher.getName(), pitcher.getPitches());
@@ -128,7 +194,7 @@ public class InGameService {
                 .build();
         Map<Base, Boolean> base = getBases(halfInning);
         Map<String, Integer> gameScore = getGameScores(game);
-        LogDTO logDTO = new LogDTO(result, getCounts(halfInning, atBat), result == Result.OUT || atBat.is3Strikes(), result == Result.HIT);
+        LogDTO logDTO = new LogDTO(result, getCounts(halfInning, atBat), result == Result.OUT || atBat.is3Strikes(), result == Result.HIT || atBat.is4Balls());
 
         return new PitchingDTO.Builder()
                 .isOver(halfInning.isOver())

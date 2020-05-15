@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +57,12 @@ public class GameController {
 
     @GetMapping("")
     public ResponseEntity<ResponseData> attack(@PathVariable Integer gameId,
-                                               @PathVariable Integer teamId) {
-        return new ResponseEntity<>(new ResponseData(Status.SUCCESS, null), HttpStatus.OK);
+                                               @PathVariable Integer teamId,
+                                               HttpSession session) {
+        PitchingDTO pitchingDTO = inGameService.getLastPitching(gameId, teamId, session);
+        if (pitchingDTO == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return new ResponseEntity<>(new ResponseData(Status.MODIFIED, pitchingDTO), HttpStatus.OK);
     }
 }
