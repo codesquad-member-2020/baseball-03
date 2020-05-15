@@ -10,8 +10,7 @@ import Foundation
 
 class RecordManager {
     
-    private var pitcherRecord: PlayerRecord?
-    private var hitterRecords: [PlayerRecord]? {
+    private var playerRecords: [PlayerRecord]? {
         didSet {
             NotificationCenter.default.post(name: .RecordsUpdated,
                                             object: nil)
@@ -19,21 +18,21 @@ class RecordManager {
     }
     
     func setRecords(pitcher: Pitcher, hitter: Hitter) {
-        hitterRecords = [PlayerRecord]()
-        pitcherRecord? = PlayerRecord(player: pitcher, records: [String]())
-        hitterRecords?.append(PlayerRecord(player: hitter, records: [String]()))
+        playerRecords = [PlayerRecord]()
+        playerRecords?.append(PlayerRecord(player: pitcher, records: [String]()))
+        playerRecords?.append(PlayerRecord(player: hitter, records: [String]()))
     }
     
     func pitcher() -> PlayerRecord? {
-        return pitcherRecord
+        return playerRecords?[0]
     }
     
     func hitter(at index: Int) -> PlayerRecord? {
-        return hitterRecords?[index - 1]
+        return playerRecords?[index]
     }
     
     func count() -> Int {
-        return (hitterRecords?.count ?? 0) + 1
+        return playerRecords?.count ?? 0
     }
 }
 

@@ -113,11 +113,11 @@ extension GameViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             guard let record = recordManager.pitcher() else {return cell}
             guard let pitcher = record.player as? Pitcher else {return cell}
-            cell.setPitcherCell(pitcher: pitcher)
+            cell.setRecord(pitcher: pitcher)
         } else {
             guard let record = recordManager.hitter(at: indexPath.row) else {return cell}
             guard let hitter = record.player as? Hitter else {return cell}
-            cell.setHitterCell(hitter: hitter)
+            cell.setRecord(hitter: hitter)
         }
         return cell
     }
