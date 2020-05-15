@@ -15,10 +15,30 @@ public class ScoreDTO {
 
     private int total;
 
-    public ScoreDTO(String name, boolean isAttack, List<Integer> scores, int total) {
+    public ScoreDTO() {}
+
+    public ScoreDTO(String name, boolean isAttack, List<Integer> scores) {
         this.name = name;
         this.isAttack = isAttack;
         this.scores = scores;
-        this.total = total;
+        this.total = sumScores();
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAttack(boolean attack) {
+        isAttack = attack;
+    }
+
+    public void setScores(List<Integer> scores) {
+        this.scores = scores;
+    }
+
+    private int sumScores() {
+        System.out.println("Sfasdf:" + this.scores);
+        return this.scores.stream().reduce(Integer::sum).get();
+    }
+
 }
