@@ -44,6 +44,14 @@ class MatchInProgressManager {
     func currentLog() -> Log? {
         return matchInProgress?[0].log
     }
+    
+    func homeScore() -> Int? {
+        return matchInProgress?[0].gameScore?.home
+    }
+    
+    func awayScore() -> Int? {
+        return matchInProgress?[0].gameScore?.away
+    }
 }
 
 extension Notification.Name {

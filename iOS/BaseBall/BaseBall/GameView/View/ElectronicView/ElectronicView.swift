@@ -13,8 +13,10 @@ import UIKit
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var awayImageView: UIImageView!
     @IBOutlet weak var awayLabel: UILabel!
+    @IBOutlet weak var awayScoreLabel: UILabel!
     @IBOutlet weak var homeImageView: UIImageView!
     @IBOutlet weak var homeLabel: UILabel!
+    @IBOutlet weak var homeScoreLabel: UILabel!
     @IBOutlet weak var strikeStackView: UIStackView!
     @IBOutlet weak var ballStackView: UIStackView!
     @IBOutlet weak var outStackView: UIStackView!

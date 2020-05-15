@@ -16,10 +16,12 @@
             <connections>
                 <outlet property="awayImageView" destination="UHD-OW-Bp8" id="lgo-dy-AiU"/>
                 <outlet property="awayLabel" destination="M2E-2P-h9J" id="eG6-r0-EzV"/>
+                <outlet property="awayScoreLabel" destination="6fI-m2-RXU" id="blW-tu-M1G"/>
                 <outlet property="ballStackView" destination="AKy-sm-cze" id="D6c-0O-tro"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="m7I-R0-Gj8"/>
                 <outlet property="homeImageView" destination="Lg0-fY-1x4" id="mjw-Ng-Jnd"/>
                 <outlet property="homeLabel" destination="xWM-6Z-NLv" id="ViZ-rt-yAs"/>
+                <outlet property="homeScoreLabel" destination="FMe-2s-Owr" id="bJ2-cF-DnN"/>
                 <outlet property="outStackView" destination="IOO-vi-Hz7" id="qbN-hU-FZy"/>
                 <outlet property="strikeStackView" destination="mP2-Zw-8JE" id="5qx-gH-7O6"/>
             </connections>

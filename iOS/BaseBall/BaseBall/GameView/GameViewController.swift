@@ -123,6 +123,8 @@ class GameViewController: UIViewController {
             guard let hitter = self.matchInProgressManager.currentHitter() else {return}
             guard let preHitter = self.matchInProgressManager.prevHitter() else {return}
             guard let log = self.matchInProgressManager.currentLog() else {return}
+            guard let homeScore = self.matchInProgressManager.homeScore() else {return}
+            guard let awayScore = self.matchInProgressManager.awayScore() else {return}
             
             if preHitter.name != hitter.name {
                 self.recordManager.insertNewPlayer(pitcher: pitcher, hitter: hitter, log: log)
@@ -131,6 +133,9 @@ class GameViewController: UIViewController {
             }
             
             self.electronicView.setSBO(log: log)
+            
+            self.electronicView.homeScoreLabel.text = "\(homeScore)"
+            self.electronicView.awayScoreLabel.text = "\(awayScore)"
         }
     }
 }
