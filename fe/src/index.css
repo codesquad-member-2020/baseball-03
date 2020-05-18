@@ -1,0 +1,22 @@
+@import 'reset.css';
+
+@font-face {
+  font-family: 'vtfont'; 
+  src: url('//tistory4.daumcdn.net/tistory/214191/skin/images/neodgm.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'vtfont', 굴림;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}

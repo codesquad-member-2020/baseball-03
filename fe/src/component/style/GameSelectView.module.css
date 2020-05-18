@@ -1,0 +1,21 @@
+.body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
+}
+
+.header {
+  margin-top: 40px;
+  font-size: xxx-large;
+}
+
+.listHeader {
+  margin-top: 30px;
+  font-size: xx-large;
+}

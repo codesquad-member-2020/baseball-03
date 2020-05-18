@@ -1,0 +1,181 @@
+.body {
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  color: white;
+  background-image: url("../../image/ground.png");
+  background-size: 85px;
+  background-repeat: repeat;
+  position: relative;
+  overflow: scroll;
+}
+
+.box {
+  box-sizing: border-box;
+  background-color: black;
+  border-radius: 20px;
+  padding: 10px;
+  position: absolute;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.scoreBox {
+  width: 420px;
+  height: 125px;
+  left: 50px;
+  top: 50px;
+  display: flex;
+}
+
+.titleBox {
+  display: flex;
+  margin: 5px;
+  height: 45px;
+  align-items: center;
+  font-size: xx-large;
+}
+
+.isPlayingBox {
+  width: 10px;
+  height: 45px;
+  margin-right: 12px;
+}
+
+.score {
+  width: 30px;
+  text-align: center;
+  margin: 0 15px;
+}
+
+.halfInning {
+  font-size: xx-large;
+  align-self: center;
+}
+
+.countWrap {
+  align-self: center;
+  margin-left: 40px;
+}
+
+.strike,
+.ball,
+.out {
+  display: flex;
+  font-size: xx-large;
+}
+
+.circleWrap {
+  display: flex;
+  margin-left: 10px;
+  align-self: center;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+.yellow {
+  background-color: #f7c503;
+}
+
+.green {
+  background-color: #17c937;
+}
+
+.red {
+  background-color: #f9614e;
+}
+
+.pitcherHitter {
+  width: 420px;
+  height: 125px;
+  left: 520px;
+  top: 50px;
+  font-size: xx-large;
+}
+
+.phName {
+  color: #ccedf3;
+  margin: 0 10px;
+}
+
+.phNum {
+  color: #537f8f;
+  margin-left: 5px;
+}
+
+.pitchButton {
+  color: white;
+  font-family: "vtfont", 굴림;
+  left: 50px;
+  top: 610px;
+  font-size: xx-large;
+  padding: 15px;
+  z-index: 1;
+}
+
+.pitchButton:hover {
+  color: #f9614e;
+}
+
+.stadiumImg {
+  position: absolute;
+  background-color: transparent;
+  left: 100px;
+  top: 200px;
+  width: 500px;
+}
+
+.player {
+  position: absolute;
+  font-size: xxx-large;
+  /* transform: scaleX(-1); */
+  -webkit-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+  -moz-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+  -ms-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+  -o-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 10px 10px rgba(255, 0, 0, 1));
+}
+
+@keyframes runToFirst {
+  0% {
+    left: 343px;
+    top: 573px;
+  }
+  100% {
+    left: 422px;
+    top: 478px;
+    transform: scaleX(-1);
+  }
+}
+
+.first {
+  left: 422px;
+  top: 478px;
+  transform: scaleX(-1);
+  animation: runToFirst 3s linear;
+}
+
+.second {
+  transform: scaleX(-1);
+  left: 321px;
+  top: 376px;
+}
+
+.third {
+  transform: scaleX(1);
+  left: 243px;
+  top: 478px;
+}
+
+.log {
+  width: 250px;
+  height: 450px;
+  left: 690px;
+  top: 225px;
+  overflow: scroll;
+}
